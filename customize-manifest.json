@@ -2,7 +2,7 @@
     "app": "26",
     "scope": "ALL",
     "desktop": {
-        "js": ["./src/main.ts"],
+        "js": ["dist/KintoneCustomization.js"],
         "css": []
     },
     "mobile": {
