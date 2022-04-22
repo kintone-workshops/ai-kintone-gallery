@@ -19,6 +19,7 @@
     "./fields.d.ts"
   ],
   "include": [
-    "src/main.ts"
+    "src/main.ts",
+    "src/requests/get_records.ts"
   ],
 }

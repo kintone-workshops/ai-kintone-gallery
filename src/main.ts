@@ -1,4 +1,5 @@
-import './style.css'
+import './style.css';
+import postToMedium from './requests/post_api';
 
 interface Event {
   appId: number;
@@ -8,10 +9,30 @@ interface Event {
 
 (function () {
   "use strict";
-
   kintone.events.on('app.record.detail.show', function (event: Event) {
-    const message = "Hello from Vite";
+    const message = "re-add content types?? and include";
     console.log(message);
     console.log(event.record.title.value)
+
+    const body = {
+      title: event.record.title.value,
+      contentFormat: "markdown",
+      content: event.record.body.value,
+      tags: ["kintone", "typescript", "low-code"],
+      publishStatus: "public"
+    }
+
+    // Create a button
+    var mySpaceFieldButton = document.createElement('button');
+    mySpaceFieldButton.id = 'publishToMedium';
+    mySpaceFieldButton.innerHTML = 'Publish To Medium!';
+
+    //Run a function when the button is clicked
+    mySpaceFieldButton.onclick = function () {
+      console.log("button clicked!")
+      postToMedium(body);
+    };
+    //Set button on the Blank space field
+    kintone.app.record.getSpaceElement('publishToMedium')!.appendChild(mySpaceFieldButton);
   });
 })();
