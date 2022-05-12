@@ -3,7 +3,7 @@
     "scope": "ALL",
     "desktop": {
         "js": ["dist/KintoneCustomization.js"],
-        "css": []
+        "css": ["dist/main.css"]
     },
     "mobile": {
         "js": [],

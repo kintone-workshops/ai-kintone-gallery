@@ -10,9 +10,6 @@ interface Event {
 (function () {
   "use strict";
   kintone.events.on('app.record.detail.show', function (event: Event) {
-    const message = "re-add content types?? and include";
-    console.log(message);
-    console.log(event.record.title.value)
 
     const body = {
       title: event.record.title.value,
@@ -25,7 +22,8 @@ interface Event {
     // Create a button
     var mySpaceFieldButton = document.createElement('button');
     mySpaceFieldButton.id = 'publishToMedium';
-    mySpaceFieldButton.innerHTML = 'Publish To Medium!';
+    mySpaceFieldButton.className = 'uploadButton';
+    mySpaceFieldButton.innerHTML = 'Publish To Medium';
 
     //Run a function when the button is clicked
     mySpaceFieldButton.onclick = function () {

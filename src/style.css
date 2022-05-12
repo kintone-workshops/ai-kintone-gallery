@@ -6,3 +6,8 @@
   color: #2c3e50;
   margin-top: 60px;
 }
+
+.uploadButton {
+  box-shadow: none;
+  border-radius: 0px;
+}

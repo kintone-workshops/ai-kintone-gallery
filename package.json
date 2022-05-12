@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build --emptyOutDir",
     "preview": "vite preview",
     "start": "node scripts/npm-start.js",
     "upload": "env-cmd --verbose kintone-customize-uploader --watch customize-manifest.json"
