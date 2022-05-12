@@ -1,4 +1,4 @@
-# Publish Directly to Medium.com with [Kintone Web Database](https://developer.kintone.io/hc/en-us/)
+# Publish Directly to Medium.com with [Kintone Web Database](https://kintone.dev)
 
 ![Banner Image](./docs/images/banner.gif)
 
@@ -8,7 +8,6 @@ Check out [meetup.com/Kintone-Developers](https://www.meetup.com/Kintone-Develop
 ## Outline <!-- omit in toc --> <!-- markdownlint-disable MD007 -->
 
 * [Get Started](#get-started)
-  * [⚡ Notes ⚡](#-notes-)
 * [Overview of the Repo](#overview-of-the-repo)
 * [Kintone Web Database & Credentials](#kintone-web-database--credentials)
   * [🚀 Getting your FREE Kintone Database](#-getting-your-free-kintone-database)
@@ -69,11 +68,7 @@ npm install -g @kintone/customize-uploader
 
 ## Kintone Web Database & Credentials
 
-_Built for teamwork, designed by you_ <!-- markdownlint-disable MD036 --> <!-- markdownlint-enable MD036 -->
-
 ### 🚀 Getting your FREE Kintone Database
-
-#### Sign-Up for your FREE Kintone Subdomain (Web Database) 🌐 <!-- omit in toc -->
 
 * [bit.ly/KDP_NEW](http://bit.ly/KDP_NEW)
 * ⚡ Only use lowercase, numbers, & hyphens in your subdomain
@@ -100,8 +95,6 @@ Be sure to click the **Save** and **Activate App** buttons! 💪
 
 Confused? 🤔 → Check out the [How to Create a Kintone Database App](https://youtu.be/pRtfn-8cf_I) video 📺
 
-<!-- ![Create_App_Demo.gif Kintone_React_Workshop v2.1](https://user-images.githubusercontent.com/30670749/125898739-1bc018ac-1740-40e0-91cc-ab829192d2ea.gif) -->
-
 ### 📺 How to Create a Kintone Database App | Video <!-- omit in toc -->
 
 <p align="center">
@@ -124,6 +117,8 @@ KINTONE_BASE_URL="https://example.kintone.com"
 KINTONE_USERNAME="example@gmail.com"
 KINTONE_PASSWORD="ILoveKintone!"
 VIEW_ID="1234567"
+VITE_AUTHOR_ID="12345abcde67890"
+VITE_API_TOKEN="09876edcba54321"
 ```
 
 ⚠️ DO NOT DELETE THE [.env.example](.env.example) FILE!  
@@ -157,7 +152,7 @@ So to ensure the file gets uploaded to the correct App, replace the `23` with yo
 ## Build the customization
 
 1. Build the customization in the following files inside `./src/`
-   * `main.ts`, `/src/requests/post_api.ts`, etc.
+   * `main.ts`, `/requests/post_api.ts`, etc.
 2. Run `npm run build` to compile your Typescript into Javascript output in the `/dist` folder.
 3. Run `npm run upload` to upload the compiled files to your Kintone subdomain.
    * To directly upload the Kintone customization, use `./dist/KintoneCustomization.js`.
@@ -184,11 +179,13 @@ If you get one of the following error messages, then please verify your `.env` f
 * `[webpack-cli] Error: Missing environment variable: KINTONE_USERNAME`
 * `[webpack-cli] Error: Missing environment variable: KINTONE_PASSWORD`
 * `[webpack-cli] Error: Missing environment variable: VIEW_ID`
+* `[webpack-cli] Error: Missing environment variable: AUTHOR_ID`
+* `[webpack-cli] Error: Missing environment variable: API_TOKEN`
 
 ### `npm install` command is not working
 
-1. Verify the Node.js & npm versions **inside** the `3D-Kintone-Gallery` folder
-2. Just installed Node.js? Verify you configured Node.js versions **inside** the `3D-Kintone-Gallery` folder
+1. Verify the Node.js & npm versions **inside** the `publish-to-medium` folder
+2. Just installed Node.js? Verify you configured Node.js versions **inside** the `publish-to-medium` folder
 
 * Mac: `nodenv local 14.5.0`
 * Windows: `nvm use 14.5.0`
