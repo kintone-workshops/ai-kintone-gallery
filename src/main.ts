@@ -15,6 +15,8 @@ interface Event {
 
     // The body of our API POST request
     const body = {
+
+      //TODO
       title: null, // The title of our article from our kintone record
       contentFormat: null, // String: The format we use: "markdown" or "html"
       content: null, // String: The body of our article, from our kintone record.
@@ -26,6 +28,8 @@ interface Event {
     // Create a button
     const mySpaceFieldButton = document.createElement('button');
     // Give it an id, class (for CSS), and text on the button.
+
+    //TODO
     mySpaceFieldButton.id = 'null';
     mySpaceFieldButton.className = 'null';
     mySpaceFieldButton.innerHTML = 'null';
@@ -33,6 +37,8 @@ interface Event {
     //Run a function when the button is clicked
     mySpaceFieldButton.onclick = function () {
       // Our function, imported above from ./requests/post_api.ts
+      // We need to call the function, and give it our post body data... 🧐
+      // TODO
       null
     };
     //Set button on the Blank space field
