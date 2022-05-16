@@ -122,7 +122,7 @@ Next, we need to tell our uploading scripts which Kintone App we will be working
 
 ```json
 {
-    "app": "23",
+    "app": "26",
     "scope": "ALL",
     ...
 ```
@@ -132,7 +132,7 @@ Next, we need to tell our uploading scripts which Kintone App we will be working
 We can find our App ID number easily from the URL of our Kintone App.  
 Go to your Kintone App and grab the URL. It should look this: `https://devevents.kintone.com/k/36/`  
 Kintone App's URL follows this template: `https://<SUBDOMAIN>.kintone.com/k/<App ID>/show#record=<RECORD ID>`  
-So then the `https://devevents.kintone.com/k/36/` URL tells us that this App's ID is `36`
+So then the `https://devevents.kintone.com/k/26/` URL tells us that this App's ID is `26`
 
 ![images/find-app-id.png](images/find-app-id.png)
 
@@ -150,7 +150,75 @@ We have two goals for our coding:
 
 2. Create a button to click, and when clicked, fire the postToMedium function.
 
-First, let's look at our data.
+First, let's look at our post body.
+
+![images/1.png](images/1.png)
+
+``` js
+    // The body of our API POST request
+    const body = {
+      title: null, // The title of our article from our kintone record
+      contentFormat: null, // String: The format we use: "markdown" or "html"
+      content: null, // String: The body of our article, from our kintone record.
+      tags: null, // Array: String "tags" for our article. Optional!
+      publishStatus: null, // String: The status of our article: "public", "draft", or "unlisted"
+      notifyFollowers: null // Boolean: Sends a notification after publishing.
+    }
+```
+
+For reference, the [Medium.com API docs](https://github.com/Medium/medium-api-docs#33-posts) on POST Requests are pretty simple!
+
+Our post title needs to come from our Kintone app. Remember that we set our `Title` field code to be lower-case `title` in our app. 
+
+![images/1-2.png](images/1-2.png)
+
+We can access the information on the show page easily in our code:
+
+![images/1-3.png](images/1-3.png)
+
+Next, according to the documentation, Medium articles can be submitted in either markdown, or html formats! Pretty cool. Let's go with `markdown` this time:
+
+![images/2.png](images/2.png)
+
+The content field should be our `Body` field from our app, which we designated with the `body` field code:
+
+![images/3-2.png](images/3-2.png)
+
+Just like above fill it in with the record variable:
+
+![images/3-1.png](images/3-1.png)
+
+Continue to fill in the body parameters. `tags` are up to you, depending on the contents of your article.
+`publishStatus` is the status of your article. We are going to publish immediately, but saving to your medium.com account's `drafts` is also possible!
+`notifyFollowers` will do exactly that, and takes a boolean, `true` or `false`. We're testing, so let's keep it as `false` for now.
+
+![images/5.png](images/5.png)
+
+And done! This should be good data to pass to our api call... but we'll need a button for our users to click in order to start the process.
+
+![images/6-1.png](images/6-1.png)
+
+Kintone allows you to append `HTML` elements to blank spaces in your Kintone App. When we setup our App, we added a `blank space`, and gave it the field code `publishToMedium`.
+
+![images/6-2.png](images/6-2.png)
+
+![images/6-3.png](images/6-3.png)
+
+We tell our App where to append our button by matching the `HTML` IDs. Give your button an ID that matches the field code: `publishToMedium`.
+
+![images/7.png](images/7.png)
+
+Our App's custom `CSS` is contained in [style.css](../src/style.css). We can style our button with a CSS class, `uploadButton`.
+
+Lastly, give our button a nice label, so our users can know what it does.
+
+![images/8.png](images/8.png)
+
+Last, we need our button to fire a function when clicked. That function should pass our post `body` data to the API function `publishToMedium`.
+
+In the button's `onClick` function, call the `publishToMedium` function we imported from [post_api.ts](../src/requests/post_api.ts).
+
+![images/9.png](images/9.png)
 
 ## Build & Upload the customization
 
