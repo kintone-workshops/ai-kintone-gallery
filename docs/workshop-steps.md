@@ -4,7 +4,6 @@
 
 * [Get Started](#get-started)
 * [Create a Kintone Web Database App](#create-a-kintone-web-database-app)
-* [Create a Medium Account](#create-a-medium-account)
 * [Create a Medium API Token](#create-a-medium-api-token)
 * [Get your Medium Author ID](#get-your-medium-author-id)
 * [Create a `.env` file](#create-a-env-file)
