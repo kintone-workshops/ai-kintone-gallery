@@ -81,7 +81,7 @@ npm install -g @kintone/customize-uploader
 
 ## Create a Kintone Web Database App
 
-Let's create a Kintone App with some Shapes and Sizes to display!
+Let's create a Kintone App with an article title, and text to send to Medium!
 
 Here are the required fields & their configurations for our workshop:
 
