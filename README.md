@@ -85,11 +85,11 @@ Let's create a Kintone App with some Shapes and Sizes to display!
 
 Here are the required fields & their configurations for our workshop:
 
-| Field Type | Field Name | Field Code  | Note                                    |
-| ---------- | ---------- | ----------- | --------------------------------------- |
-| Blank Space   | --- | `publishToMedium` | This is where our button will attach  |
-| Text     | Title     | `title`    | The title of our medium.com article         |
-| Text     | Body      | `body`     | The body text of our medium.com article     |
+| Field Type | Field Name | Field Code        | Note                                    |
+| ---------- | ---------- | ----------------- | --------------------------------------- |
+| Blank Space|    ---     | `publishToMedium` | This is where our button will attach    |
+| Text       | Title      | `title`           | The title of our medium.com article     |
+| Text       | Body       | `body`            | The body text of our medium.com article |
 
 Be sure to click the **Save** and **Activate App** buttons! 💪
 
@@ -116,7 +116,6 @@ Here is what your `.env` might look like:
 KINTONE_BASE_URL="https://example.kintone.com"
 KINTONE_USERNAME="example@gmail.com"
 KINTONE_PASSWORD="ILoveKintone!"
-VIEW_ID="1234567"
 VITE_AUTHOR_ID="12345abcde67890"
 VITE_API_TOKEN="09876edcba54321"
 ```
@@ -178,9 +177,8 @@ If you get one of the following error messages, then please verify your `.env` f
 * `[webpack-cli] Error: Missing environment variable: KINTONE_BASE_URL`
 * `[webpack-cli] Error: Missing environment variable: KINTONE_USERNAME`
 * `[webpack-cli] Error: Missing environment variable: KINTONE_PASSWORD`
-* `[webpack-cli] Error: Missing environment variable: VIEW_ID`
-* `[webpack-cli] Error: Missing environment variable: AUTHOR_ID`
-* `[webpack-cli] Error: Missing environment variable: API_TOKEN`
+* `[webpack-cli] Error: Missing environment variable: VITE_AUTHOR_ID`
+* `[webpack-cli] Error: Missing environment variable: VITE_API_TOKEN`
 
 ### `npm install` command is not working
 

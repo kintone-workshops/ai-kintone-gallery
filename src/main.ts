@@ -16,7 +16,7 @@ interface Event {
     // The body of our API POST request
     const body = {
       title: event.record.title.value, // The title of our article
-      contentFormat: "markdown", // The format: "markdown" or "html"?
+      contentFormat: "markdown", // The format: "markdown" or "html"
       content: event.record.body.value, // The body of our article.
       tags: ["kintone", "typescript", "low-code"], // An array of string "tags" for our article.
       publishStatus: "public", // The status of our article: "public", "draft", or "unlisted"
@@ -24,7 +24,7 @@ interface Event {
     }
 
     // Create a button
-    var mySpaceFieldButton = document.createElement('button');
+    const mySpaceFieldButton = document.createElement('button');
     // Give it an id, class (for CSS), and text on the button.
     mySpaceFieldButton.id = 'publishToMedium';
     mySpaceFieldButton.className = 'uploadButton';
