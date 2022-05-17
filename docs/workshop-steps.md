@@ -8,8 +8,9 @@
 * [Get Your Medium Author ID](#get-your-medium-author-id)
 * [Create a `.env` file](#create-a-env-file)
 * [Edit Your customize-manifest.json](#edit-your-customize-manifestjson)
-* [Edit main ts](#edit-main-ts)
+* [Edit main.ts](#edit-maints)
 * [Build & Upload the customization](#build--upload-the-customization)
+* [Check Your Work](#check-your-work)
 <!-- markdownlint-enable MD007 -->
 
 ## Get Started
@@ -32,7 +33,8 @@ npm install -g @kintone/customize-uploader
 
 ## Create a Kintone Web Database App
 
-Let's create a Kintone App with some Shapes and Sizes to display!
+Let's create a **Publish to Medium** Kintone App!  
+This is where you will be writing up the Markdown that will be published to your Medium.com.
 
 ![images/kintone-app-setup.gif](images/kintone-app-setup.gif)
 
@@ -50,19 +52,24 @@ Confused? 🤔 → Check out the [How to Create a Kintone Database App](https://
 
 ## Create a Medium API Token
 
-First, open up your [settings page](https://medium.com/me/settings) on your medium account, and click on integration tokens.
+First, head to [medium.com/me/settings](https://medium.com/me/settings) to open up your Medium account setting page.  
+Click on **Integration tokens** section.
 
 ![images/medium-settings-screen.png](images/medium-settings-screen.png)
 
-Create a new API Token. Don't worry; we have already revoked the one in this screenshot. 😈
+Create a new API Token.  
+_Don't worry; we have already revoked the one in this screenshot._ 😈
 
-![images/medium-token-screen.png](images/medium-token-screen.png)
-
-![images/medium-token-complete.png](images/medium-token-complete.png)
+| Input token description | Grab your integration token / API token |
+|-|-|
+| ![images/medium-token-screen.png](images/medium-token-screen.png) | ![images/medium-token-complete.png](images/medium-token-complete.png)
 
 ## Get Your Medium Author ID
 
-With our API token, we can easily get our Medium.com Author ID from the terminal. In the root folder (publish-to-medium), copy and paste the following curl command, replacing MY_API_TOKEN with your token.
+With the API token, we can easily get our Medium.com Author ID.
+
+Copy the curl command below and replace `MY_API_TOKEN` with your API token.  
+Then paste the command into your terminal & hit enter!
 
 ```shell
 
@@ -96,7 +103,7 @@ This will return your Author ID and other information in the terminal like so:
 }
 ```
 
-Copy and keep the "id" string, as we will be pasting it into our .env file shortly.
+Copy and keep the `"id"` string, as we will be pasting it into our .env file shortly.
 
 ## Create a `.env` file
 
@@ -121,55 +128,74 @@ Paste your API Token from Medium into the `VITE_API_TOKEN` field, and your Autho
 
 Next, we need to tell our uploading scripts which Kintone App we will be working on.
 
+Open your [customize-manifest.json](../customize-manifest.json) & update the `"app"` variable!
+
+This is what it will look like:
+
 ```json
 {
     "app": "26",
     "scope": "ALL",
-    ...
+    "desktop": {
+        "js": ["dist/KintoneCustomization.js"],
+        "css": ["dist/main.css"]
+    },
+    "mobile": {
+        "js": [],
+        "css": []
+    }
+}
 ```
 
-![images/customize-manifest.json](images/customize-manifest.png)
+<!-- ![images/customize-manifest.json](images/customize-manifest.png) -->
 
-We can find our App ID number easily from the URL of our Kintone App.  
-Go to your Kintone App and grab the URL. It should look this: `https://devevents.kintone.com/k/36/`  
-Kintone App's URL follows this template: `https://<SUBDOMAIN>.kintone.com/k/<App ID>/show#record=<RECORD ID>`  
+We can find our App ID number easily from the Kintone App's URL!
+
+Go to the Kintone App and grab the URL.  
+Example: `https://devevents.kintone.com/k/36/`
+
+Kintone App's URL follows this template:  
+`https://<SUBDOMAIN>.kintone.com/k/<App ID>/show#record=<RECORD ID>`
+
 So then the `https://devevents.kintone.com/k/26/` URL tells us that this App's ID is `26`
 
 ![images/find-app-id.png](images/find-app-id.png)
 
 ---
 
-## Edit main ts
+## Edit main.ts
 
-For this workshop, we will only be coding in [main.ts](../src/main.ts). However, our actual API POST request logic is contained in [post_api.ts](../src/requests/post_api.ts). You can check out that file to see how the POST request to the medium.com API is structured.
+For this workshop, we will only be coding in [main.ts](../src/main.ts).  
+However, our actual API POST request logic is contained in [post_api.ts](../src/requests/post_api.ts). You can check out that file to see how the POST request to the medium.com API is structured.
 
-Lastly, some TypeScript specific settings (type definitions!) are found in [fields.d.ts](../fields.d.ts). If you want to expand on this demo (adding an image stored in kintone to your article, for example), you will have to edit this file.
+Lastly, some TypeScript specific settings (type definitions!) are found in [fields.d.ts](../fields.d.ts).  
+If you want to expand on this demo (adding an image stored in kintone to your article, for example), you will have to edit this file.
 
 We have two goals for our coding:
 
-1. Format our data (simply called `body` in [main.ts](../src/main.ts)) to send to the postToMedium function
+1. Format our data (simply called `body` in [main.ts](../src/main.ts)) to send to the `postToMedium` function
 
-2. Create a button to click, and when clicked, fire the postToMedium function.
+2. Create a button to click, and when clicked, fire the `postToMedium` function.
 
 First, let's look at our post body.
 
 ![images/1-1.png](images/1-1.png)
 
 ``` js
-    // The body of our API POST request
-    const body = {
-      title: null, // The title of our article from our kintone record
-      contentFormat: null, // String: The format we use: "markdown" or "html"
-      content: null, // String: The body of our article, from our kintone record.
-      tags: null, // Array: String "tags" for our article. Optional!
-      publishStatus: null, // String: The status of our article: "public", "draft", or "unlisted"
-      notifyFollowers: null // Boolean: Sends a notification after publishing.
-    }
+  // The body of our API POST request
+  const body = {
+    title: null, // The title of our article from our kintone record
+    contentFormat: null, // String: The format we use: "markdown" or "html"
+    content: null, // String: The body of our article, from our kintone record.
+    tags: null, // Array: String "tags" for our article. Optional!
+    publishStatus: null, // String: The status of our article: "public", "draft", or "unlisted"
+    notifyFollowers: null // Boolean: Sends a notification after publishing.
+  }
 ```
 
 For reference, the [Medium.com API docs](https://github.com/Medium/medium-api-docs#33-posts) on POST Requests are pretty simple!
 
-Our post title needs to come from our Kintone app. Remember that we set our `Title` field code to be lower-case `title` in our app.
+Our post title needs to come from our Kintone App. Remember that we set our `Title` field code to be lower-case `title` in our app.
 
 ![images/1-2.png](images/1-2.png)
 
@@ -177,7 +203,8 @@ We can access the information on the show page easily in our code:
 
 ![images/1-3.png](images/1-3.png)
 
-Next, according to the documentation, Medium articles can be submitted in either markdown or HTML formats! Pretty cool. Let's go with `markdown` this time:
+Next, according to the documentation, Medium articles can be submitted in either Markdown or HTML formats! Pretty cool.  
+Let's go with `markdown` this time:
 
 ![images/2.png](images/2.png)
 
@@ -242,8 +269,11 @@ In the button's `onClick` function, call the `postToMedium` function we imported
 ## Build & Upload the customization
 
 With this, we can save our work and run kintone-customize-uploader!
-(See the [slides.pdf](../slides.pdf) for more info!) Run `npm run start` in your terminal. Navigate to your app, create a record with some markdown in it, and click the publish button!
+(See the [slides.pdf](../slides.pdf) for more info!) Run `npm run start` in your terminal. Navigate to your app, create a record with some Markdown in it, and click the publish button!
 
-Navigate to your publications on [medium.com](https://medium.com/me/stories/public) and bathe in your newfound journalistic fame!
+## Check Your Work
+
+Navigate to your publications and bathe in your newfound journalistic fame!  
+Go to [medium.com/me/stories/public](https://medium.com/me/stories/public)
 
 Good luck coding!
