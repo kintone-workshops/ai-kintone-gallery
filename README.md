@@ -56,12 +56,12 @@ npm install -g @kintone/customize-uploader
 |                                                              |                                                                              |                        |
 | [src/main.ts](src/main.ts)                                   | Heart of the project handling `<App />` and Kintone Events                   | Yes! Code it           |
 | [src/index.html](src/index.html)                             | HTML from which our vite app gets called from.                               | _Nope_                 |
-| [src/index.css](src/index.css)                               | Styling for the project can go here                                            | _Nope_                 |
+| [src/index.css](src/index.css)                               | Styling for the project can go here                                          | _Nope_                 |
 | [src/requests/post_api.ts](src/requests/post_api.ts)         | The logic of the Medium.com POST API call                                    | _Nope_                 |
 |                                                              |                                                                              |                        |
-| [fields.d.ts](fields.d.ts)                                     | Various type definitions for our typescript / Kintone environment                                           | _Nope_                 |
-| [tsconfig.json](tsconfig.json)                                     | Various settings for how typescript behaves                            | _Nope_                 |
-| [vite.config.js](vite.config.js)                                     | Various settings for how and where our typescript compiles to                 | _Nope_                |
+| [fields.d.ts](fields.d.ts)                                   | Various type definitions for our typescript / Kintone environment            | _Nope_                 |
+| [tsconfig.json](tsconfig.json)                               | Various settings for how typescript behaves                                  | _Nope_                 |
+| [vite.config.js](vite.config.js)                             | Various settings for how and where our typescript compiles to                | _Nope_                 |
 | [slides.pdf](slides.pdf)                                     | Workshop presentation's slide deck                                           |                        |
 
 ---
@@ -89,11 +89,11 @@ Kintone makes it easy to setup a web database with API routes for getting inform
 
 Here are the required fields & their configurations for our workshop:
 
-| Field Type | Field Name | Field Code        | Note                                    |
-| ---------- | ---------- | ----------------- | --------------------------------------- |
-| Blank Space|    ---     | `publishToMedium` | This is where our button will attach    |
-| Text       | Title      | `title`           | The title of our medium.com article     |
-| Text Area  | Body       | `body`            | The body text of our medium.com article |
+| Field Type  | Field Name | Field Code        | Note                                    |
+| ----------- | ---------- | ----------------- | --------------------------------------- |
+| Blank Space | ---        | `publishToMedium` | This is where our button will attach    |
+| Text        | Title      | `title`           | The title of our medium.com article     |
+| Text Area   | Body       | `body`            | The body text of our medium.com article |
 
 Be sure to click the **Save** and **Activate App** buttons! 💪
 
