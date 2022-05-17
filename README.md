@@ -93,7 +93,7 @@ Here are the required fields & their configurations for our workshop:
 | ---------- | ---------- | ----------------- | --------------------------------------- |
 | Blank Space|    ---     | `publishToMedium` | This is where our button will attach    |
 | Text       | Title      | `title`           | The title of our medium.com article     |
-| Text       | Body       | `body`            | The body text of our medium.com article |
+| Text Area  | Body       | `body`            | The body text of our medium.com article |
 
 Be sure to click the **Save** and **Activate App** buttons! 💪
 
