@@ -44,25 +44,26 @@ npm install -g @kintone/customize-uploader
 
 | File                                                         | Purpose                                                                      | Need to Modify?        |
 | ------------------------------------------------------------ | ---------------------------------------------------------------------------- | ---------------------- |
-| [package.json](package.json)                                 | Project's metadata & scripts for building and uploading the customization    | _Nope_                 |
-| [webpack.config.js](webpack.config.js)                       | Holds the Webpack's configuration for the react project                      | _Nope_                 |
+| [package.json](package.json)                                 | Project's metadata & scripts for building and uploading the customization    |                        |
+| [.env.example](.env.example)                                 | The template for the .env file                                               |                        |
+| [.env](.env)                                                 | Holds the Kintone login credential and View ID                               | Yes! - Create it       |
 |                                                              |                                                                              |                        |
-| [.env.example](.env.example)                                 | The template for the .env file                                               | _Nope_                 |
-| [.env](.env)                                                 | Holds the Kintone login credential and View ID                               | Yes! - Code it         |
+| [authorID.txt](authorID.txt)                                 | Template for the Medium Author ID curl command                               | Yes! - Add token       |
 |                                                              |                                                                              |                        |
-| [scripts/npm-start.js](scripts/npm-start.js)                 | Script that uses `npm-run-all` to run `build` & `upload` scripts in parallel | _Nope_                 |
+| [scripts/npm-start.js](scripts/npm-start.js)                 | Script that uses `npm-run-all` to run `build` & `upload` scripts in parallel |                        |
 | [customize-manifest.json](customize-manifest.json)           | Kintone Customize Uploader's configuration file                              | Yes! - Add your App ID |
-| [dist/KintoneCustomization.js](dist/KintoneCustomization.js) | The bundled JS build that will be uploaded to Kintone                        | _Nope_                 |
+| [dist/KintoneCustomization.js](dist/KintoneCustomization.js) | The bundled JS build that will be uploaded to Kintone                        |                        |
 |                                                              |                                                                              |                        |
-| [src/main.ts](src/main.ts)                                   | Heart of the project handling `<App />` and Kintone Events                   | Yes! Code it           |
-| [src/index.html](src/index.html)                             | HTML from which our vite app gets called from.                               | _Nope_                 |
-| [src/index.css](src/index.css)                               | Styling for the project can go here                                          | _Nope_                 |
-| [src/requests/post_api.ts](src/requests/post_api.ts)         | The logic of the Medium.com POST API call                                    | _Nope_                 |
+| [src/main.ts](src/main.ts)                                   | Heart of the project handling the API request body & adding a button         | Yes! Complete the code |
+| [src/style.css](src/style.css)                               | Styling for the project can go here                                          |                        |
+| [src/requests/post_api.ts](src/requests/post_api.ts)         | The logic of the Medium.com POST API call                                    |                        |
 |                                                              |                                                                              |                        |
-| [fields.d.ts](fields.d.ts)                                   | Various type definitions for our typescript / Kintone environment            | _Nope_                 |
-| [tsconfig.json](tsconfig.json)                               | Various settings for how typescript behaves                                  | _Nope_                 |
-| [vite.config.js](vite.config.js)                             | Various settings for how and where our typescript compiles to                | _Nope_                 |
+| [fields.d.ts](fields.d.ts)                                   | Various type definitions for our typescript / Kintone environment            |                        |
+| [tsconfig.json](tsconfig.json)                               | Various settings for how typescript behaves                                  |                        |
+| [vite.config.js](vite.config.js)                             | Various settings for how and where our typescript compiles to                |                        |
+|                                                              |                                                                              |                        |
 | [slides.pdf](slides.pdf)                                     | Workshop presentation's slide deck                                           |                        |
+| [docs/workshop-steps.md](docs/workshop-steps.md)             | Step-by-step guide that we do during the workshop                            |                        |
 
 ---
 
