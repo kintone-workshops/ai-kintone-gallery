@@ -2,15 +2,14 @@
 
 ## Outline <!-- omit in toc --> <!-- markdownlint-disable MD007 -->
 
-- [Write, Review, and Publish directly to Medium.com with Kintone Web Database](#write-review-and-publish-directly-to-mediumcom-with-kintone-web-database)
-  - [Get Started](#get-started)
-  - [Create a Kintone Web Database App](#create-a-kintone-web-database-app)
-  - [Create a Medium API Token](#create-a-medium-api-token)
-  - [Get Your Medium Author ID](#get-your-medium-author-id)
-  - [Create a `.env` file](#create-a-env-file)
-  - [Edit Your customize-manifest json](#edit-your-customize-manifest-json)
-  - [Edit main ts](#edit-main-ts)
-  - [Build & Upload the customization](#build--upload-the-customization)
+* [Get Started](#get-started)
+* [Create a Kintone Web Database App](#create-a-kintone-web-database-app)
+* [Create a Medium API Token](#create-a-medium-api-token)
+* [Get Your Medium Author ID](#get-your-medium-author-id)
+* [Create a `.env` file](#create-a-env-file)
+* [Edit Your customize-manifest json](#edit-your-customize-manifest-json)
+* [Edit main ts](#edit-main-ts)
+* [Build & Upload the customization](#build--upload-the-customization)
 <!-- markdownlint-enable MD007 -->
 
 ## Get Started
@@ -39,11 +38,11 @@ Let's create a Kintone App with some Shapes and Sizes to display!
 
 Here are the required fields & their configurations for our workshop:
 
-| Field Type | Field Name | Field Code        | Note                                    |
-| ---------- | ---------- | ----------------- | --------------------------------------- |
-| Blank Space|    ---     | `publishToMedium` | This is where our button will attach    |
-| Text       | Title      | `title`           | The title of our medium.com article     |
-| Text Area  | Body       | `body`            | The body text of our medium.com article |
+| Field Type  | Field Name | Field Code        | Note                                    |
+| ----------- | ---------- | ----------------- | --------------------------------------- |
+| Blank Space | ---        | `publishToMedium` | This is where our button will attach    |
+| Text        | Title      | `title`           | The title of our medium.com article     |
+| Text Area   | Body       | `body`            | The body text of our medium.com article |
 
 Be sure to click the **Save** and **Activate App** buttons! 💪
 
