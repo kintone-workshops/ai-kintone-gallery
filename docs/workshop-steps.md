@@ -169,7 +169,7 @@ First, let's look at our post body.
 
 For reference, the [Medium.com API docs](https://github.com/Medium/medium-api-docs#33-posts) on POST Requests are pretty simple!
 
-Our post title needs to come from our Kintone app. Remember that we set our `Title` field code to be lower-case `title` in our app. 
+Our post title needs to come from our Kintone app. Remember that we set our `Title` field code to be lower-case `title` in our app.
 
 ![images/1-2.png](images/1-2.png)
 
@@ -189,7 +189,14 @@ Just like above fill it in with the record variable:
 
 ![images/3-1.png](images/3-1.png)
 
-Continue to fill in the body parameters. `tags` are up to you, depending on the contents of your article.
+Continue to fill in the body parameters. `tags` are up to you, depending on the contents of your article. The POST API accepts an `array` of `strings`. Here is an example:
+
+```js
+
+tags: ['kintone', 'markdown', 'medium', 'low-code'],
+
+```
+
 `publishStatus` is the status of your article. We are going to publish immediately, but saving to your medium.com account's `drafts` is also possible!
 `notifyFollowers` will do exactly that, and takes a boolean, `true` or `false`. We're testing, so let's keep it as `false` for now.
 
