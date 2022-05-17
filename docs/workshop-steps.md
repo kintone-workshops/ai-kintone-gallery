@@ -7,7 +7,7 @@
 * [Create a Medium API Token](#create-a-medium-api-token)
 * [Get Your Medium Author ID](#get-your-medium-author-id)
 * [Create a `.env` file](#create-a-env-file)
-* [Edit Your customize-manifest json](#edit-your-customize-manifest-json)
+* [Edit Your customize-manifest.json](#edit-your-customize-manifestjson)
 * [Edit main ts](#edit-main-ts)
 * [Build & Upload the customization](#build--upload-the-customization)
 <!-- markdownlint-enable MD007 -->
@@ -54,7 +54,7 @@ First, open up your [settings page](https://medium.com/me/settings) on your medi
 
 ![images/medium-settings-screen.png](images/medium-settings-screen.png)
 
-Create a new API Token. Don't worry, we've already revoked the one in this screenshot. 😈
+Create a new API Token. Don't worry; we have already revoked the one in this screenshot. 😈
 
 ![images/medium-token-screen.png](images/medium-token-screen.png)
 
@@ -62,7 +62,7 @@ Create a new API Token. Don't worry, we've already revoked the one in this scree
 
 ## Get Your Medium Author ID
 
-We can easily get our Medium.com Author ID from our terminal, now that we have our API Token. In the root folder (publish-to-medium) copy and paste the following curl command, replacing MY_API_TOKEN with your token.
+With our API token, we can easily get our Medium.com Author ID from the terminal. In the root folder (publish-to-medium), copy and paste the following curl command, replacing MY_API_TOKEN with your token.
 
 ```shell
 
@@ -96,7 +96,7 @@ This will return your Author ID and other information in the terminal like so:
 }
 ```
 
-Copy and keep the "id" string, as we will be pasting into our .env file shortly.
+Copy and keep the "id" string, as we will be pasting it into our .env file shortly.
 
 ## Create a `.env` file
 
@@ -117,7 +117,7 @@ Paste your API Token from Medium into the `VITE_API_TOKEN` field, and your Autho
 ⚠️ DO NOT DELETE THE [.env.example](./../.env.example) FILE!  
 [.env.example](./../.env.example) is used by env-cmd to verify that `.env` file is correctly configured.
 
-## Edit Your customize-manifest json
+## Edit Your customize-manifest.json
 
 Next, we need to tell our uploading scripts which Kintone App we will be working on.
 
@@ -177,7 +177,7 @@ We can access the information on the show page easily in our code:
 
 ![images/1-3.png](images/1-3.png)
 
-Next, according to the documentation, Medium articles can be submitted in either markdown, or html formats! Pretty cool. Let's go with `markdown` this time:
+Next, according to the documentation, Medium articles can be submitted in either markdown or HTML formats! Pretty cool. Let's go with `markdown` this time:
 
 ![images/2.png](images/2.png)
 
@@ -185,7 +185,7 @@ The content field should be our `Body` field from our app, which we designated w
 
 ![images/3-1.png](images/3-1.png)
 
-Just like above fill it in with the record variable:
+Just like above, fill it in with the record variable:
 
 ![images/3-2.png](images/3-2.png)
 
@@ -198,7 +198,7 @@ tags: ['kintone', 'markdown', 'medium', 'low-code'],
 ```
 
 `publishStatus` is the status of your article. We are going to publish immediately, but saving to your medium.com account's `drafts` is also possible!
-`notifyFollowers` will do exactly that, and takes a boolean, `true` or `false`. We're testing, so let's keep it as `false` for now.
+`notifyFollowers` will do exactly that and takes a boolean, `true` or `false`. We're testing, so let's keep it as `false` for now.
 
 ![images/4.png](images/4.png)
 
@@ -215,9 +215,9 @@ Our finished post body should look similar to this:
     }
 ```
 
-And done! This should be good data to pass to our api call... but we'll need a button for our users to click in order to start the process.
+And done! This should be good data to pass to our API call... but we'll need a button for our users to click in order to start the process.
 
-Kintone allows you to append `HTML` elements to blank spaces in your Kintone App. When we setup our App, we added a `blank space`, and gave it the element id `publishToMedium`.
+Kintone allows you to append `HTML` elements to blank spaces in your Kintone App. When we set up our App, we added a `blank space`, and gave it the element id `publishToMedium`.
 
 ![images/5-1.png](images/5-1.png)
 
@@ -244,6 +244,6 @@ In the button's `onClick` function, call the `postToMedium` function we imported
 With this, we can save our work and run kintone-customize-uploader!
 (See the [slides.pdf](../slides.pdf) for more info!) Run `npm run start` in your terminal. Navigate to your app, create a record with some markdown in it, and click the publish button!
 
-Navigate to your publications on [medium.com](https://medium.com/me/stories/public) and bathe in your new found journalistic fame!
+Navigate to your publications on [medium.com](https://medium.com/me/stories/public) and bathe in your newfound journalistic fame!
 
 Good luck coding!
