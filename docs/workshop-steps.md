@@ -153,7 +153,7 @@ We have two goals for our coding:
 
 First, let's look at our post body.
 
-![images/1.png](images/1.png)
+![images/1-1.png](images/1-1.png)
 
 ``` js
     // The body of our API POST request
