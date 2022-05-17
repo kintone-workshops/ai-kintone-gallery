@@ -71,12 +71,13 @@ npm install -g @kintone/customize-uploader
 
 ### 🚀 Getting your FREE Kintone Database
 
-* [bit.ly/KDP_NEW](http://bit.ly/KDP_NEW)
-* ⚡ Only use lowercase, numbers, & hyphens in your subdomain
-* ⚠ Do not use uppercase nor special characters
+[bit.ly/KDP_NEW](http://bit.ly/KDP_NEW)
+  * ⚡ Only use lowercase, numbers, & hyphens in your subdomain
+  * ⚠ Do not use uppercase nor special characters
 
-![Banner Image](./docs/images/SignUp-1.png)
-![Banner Image](./docs/images/SignUp-2.png)
+|                                             |                                             |
+| ------------------------------------------- | ------------------------------------------- |
+| ![Banner Image](./docs/images/SignUp-1.png) | ![Banner Image](./docs/images/SignUp-2.png) |
 
 ---
 
@@ -146,10 +147,10 @@ So to ensure the file gets uploaded to the correct App, replace the `23` with yo
 
 **What is my App ID?** 🤔  
 
-* Go to your Kintone App & grab the URL
-* Kintone App's URL follows this template: `https://<SUBDOMAIN>.kintone.com/k/<App ID>/show#record=<RECORD ID>`
-* Grab the number between the `/k/`
-* Example: `https://example.kintone.com/k/1/` -> The App's ID is `1`
+  * Go to your Kintone App & grab the URL
+  * Kintone App's URL follows this template: `https://<SUBDOMAIN>.kintone.com/k/<App ID>/show#record=<RECORD ID>`
+  * Grab the number between the `/k/`
+  * Example: `https://example.kintone.com/k/1/` -> The App's ID is `1`
 
 ---
 
@@ -178,20 +179,20 @@ Here is a rundown of common problems that may occur & their solutions!
 
 If you get one of the following error messages, then please verify your `.env` file has been correctly configured, and you have not modified the `.env.example`.
 
-* `Failed to find .env file at default paths: [./.env,./.env.js,./.env.json]`
-* `[webpack-cli] Error: Missing environment variable: KINTONE_BASE_URL`
-* `[webpack-cli] Error: Missing environment variable: KINTONE_USERNAME`
-* `[webpack-cli] Error: Missing environment variable: KINTONE_PASSWORD`
-* `[webpack-cli] Error: Missing environment variable: VITE_AUTHOR_ID`
-* `[webpack-cli] Error: Missing environment variable: VITE_API_TOKEN`
+  * `Failed to find .env file at default paths: [./.env,./.env.js,./.env.json]`
+  * `[webpack-cli] Error: Missing environment variable: KINTONE_BASE_URL`
+  * `[webpack-cli] Error: Missing environment variable: KINTONE_USERNAME`
+  * `[webpack-cli] Error: Missing environment variable: KINTONE_PASSWORD`
+  * `[webpack-cli] Error: Missing environment variable: VITE_AUTHOR_ID`
+  * `[webpack-cli] Error: Missing environment variable: VITE_API_TOKEN`
 
 ### `npm install` command is not working
 
 1. Verify the Node.js & npm versions **inside** the `publish-to-medium` folder
 2. Just installed Node.js? Verify you configured Node.js versions **inside** the `publish-to-medium` folder
 
-* Mac: `nodenv local 14.5.0`
-* Windows: `nvm use 14.5.0`
+  * Mac: `nodenv local 14.5.0`
+  * Windows: `nvm use 14.5.0`
 
 ### "npm run upload" failed?
 
@@ -199,17 +200,17 @@ _@kintone/customize-uploader not working?_ Let's try the following:
 
 (1) Verify that customize uploader was installed globally
 
-* `npm install -g @kintone/customize-uploader`
+  * `npm install -g @kintone/customize-uploader`
 
 (2) Verify that the .env login info is correct (including the password)
 
-* ⚠️ Make sure your login info is inside `.env` file & **NOT** `.env.example` file!
-* ⚠️ Verify that KINTONE_BASE_URL input is correctly formatted:
-  * ✅ Correct Format: `https://example.kintone.com`
-  * ❌ Incorrect Format: `https://example.kintone.com/` or `example.kintone.com`
-* ⚠️ Re-run the npm commands after saving the .env file
-* ⚙️ Details: [Create a `.env` file](#create-a-env-file)
+  * ⚠️ Make sure your login info is inside `.env` file & **NOT** `.env.example` file!
+  * ⚠️ Verify that KINTONE_BASE_URL input is correctly formatted:
+    * ✅ Correct Format: `https://example.kintone.com`
+    * ❌ Incorrect Format: `https://example.kintone.com/` or `example.kintone.com`
+  * ⚠️ Re-run the npm commands after saving the .env file
+  * ⚙️ Details: [Create a `.env` file](#create-a-env-file)
 
 (3) Verify your customize-manifest.json was updated with the correct App ID
 
-* ⚙️ Details: [Input the App ID](#input-the-app-id)
+  * ⚙️ Details: [Input the App ID](#input-the-app-id)
