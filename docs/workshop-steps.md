@@ -60,9 +60,9 @@ Click on the **Integration tokens** section.
 Create a new API Token.  
 _Don't worry; we have already revoked the one in this screenshot._ 😈
 
-| Input token description | Grab your integration token / API token |
-|-|-|
-| ![images/medium-token-screen.png](images/medium-token-screen.png) | ![images/medium-token-complete.png](images/medium-token-complete.png)
+| Input token description                                           | Grab your integration token / API token                               |
+| ----------------------------------------------------------------- | --------------------------------------------------------------------- |
+| ![images/medium-token-screen.png](images/medium-token-screen.png) | ![images/medium-token-complete.png](images/medium-token-complete.png) |
 
 ## Get Your Medium Author ID
 
@@ -269,8 +269,10 @@ In the button's `onClick` function, call the `postToMedium` function we imported
 
 ## Build & Upload the customization
 
-With this, we can save our work and run kintone-customize-uploader!
-(See the [slides.pdf](../slides.pdf) for more info!) Run `npm run start` in your terminal. Navigate to your app, create a record with some Markdown in it, and click the publish button!
+Save your work and run kintone-customize-uploader by entering `npm run start` in your terminal!  
+Navigate to your app, create a record with some Markdown in it, and click the publish button!
+
+See the [slides.pdf](../slides.pdf) for more info!
 
 ## Check Your Work
 
