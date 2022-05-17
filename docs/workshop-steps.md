@@ -183,11 +183,11 @@ Next, according to the documentation, Medium articles can be submitted in either
 
 The content field should be our `Body` field from our app, which we designated with the `body` field code:
 
-![images/3-2.png](images/3-2.png)
+![images/3-1.png](images/3-1.png)
 
 Just like above fill it in with the record variable:
 
-![images/3-1.png](images/3-1.png)
+![images/3-2.png](images/3-2.png)
 
 Continue to fill in the body parameters. `tags` are up to you, depending on the contents of your article. The POST API accepts an `array` of `strings`. Here is an example:
 
@@ -200,38 +200,51 @@ tags: ['kintone', 'markdown', 'medium', 'low-code'],
 `publishStatus` is the status of your article. We are going to publish immediately, but saving to your medium.com account's `drafts` is also possible!
 `notifyFollowers` will do exactly that, and takes a boolean, `true` or `false`. We're testing, so let's keep it as `false` for now.
 
-![images/5.png](images/5.png)
+![images/4.png](images/4.png)
+
+Our finished post body should look similar to this:
+
+```js
+    const body = {
+      title: event.record.title.value, // The title of our article from our kintone record
+      contentFormat: "markdown", // String: The format we use: "markdown" or "html"
+      content: event.record.body.value, // String: The body of our article, from our kintone record.
+      tags: ["kintone", "medium", "low-code"], // Array: String "tags" for our article. Optional!
+      publishStatus: 'public', // String: The status of our article: "public", "draft", or "unlisted"
+      notifyFollowers: false // Boolean: Sends a notification after publishing.
+    }
+```
 
 And done! This should be good data to pass to our api call... but we'll need a button for our users to click in order to start the process.
 
-![images/6-1.png](images/6-1.png)
+![images/5-1.png](images/5-1.png)
 
 Kintone allows you to append `HTML` elements to blank spaces in your Kintone App. When we setup our App, we added a `blank space`, and gave it the field code `publishToMedium`.
 
-![images/6-2.png](images/6-2.png)
+![images/5-2.png](images/5-2.png)
 
-![images/6-3.png](images/6-3.png)
+![images/5-3.png](images/5-3.png)
 
 We tell our App where to append our button by matching the `HTML` IDs. Give your button an ID that matches the field code: `publishToMedium`.
 
-![images/7.png](images/7.png)
+![images/6.png](images/6.png)
 
 Our App's custom `CSS` is contained in [style.css](../src/style.css). We can style our button with a CSS class, `uploadButton`.
 
 Lastly, give our button a nice label, so our users can know what it does.
 
-![images/8.png](images/8.png)
+![images/6.png](images/6.png)
 
 Last, we need our button to fire a function when clicked. That function should pass our post `body` data to the API function `publishToMedium`.
 
 In the button's `onClick` function, call the `publishToMedium` function we imported from [post_api.ts](../src/requests/post_api.ts).
 
-![images/9.png](images/9.png)
+![images/7.png](images/7.png)
 
 ## Build & Upload the customization
 
 With this, we can save our work and run kintone-customize-uploader!
 (See the [slides.pdf](../slides.pdf) for more info!) Run `npm run start` in your terminal. Navigate to your app, create a record with some markdown in it, and click the publish button!
-Navigate to your publications on [medium.com](www.medium.com/me) and bathe in your new found journalistic fame!
+Navigate to your publications on [medium.com](https://medium.com/me/stories/public) and bathe in your new found journalistic fame!
 
 Good luck coding!
