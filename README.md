@@ -177,14 +177,16 @@ Here is a rundown of common problems that may occur & their solutions!
 
 ### Errors related to .env
 
-If you get one of the following error messages, then please verify your `.env` file has been correctly configured, and you have not modified the `.env.example`.
+If you get one of the following error messages:  
 
   * `Failed to find .env file at default paths: [./.env,./.env.js,./.env.json]`
-  * `[webpack-cli] Error: Missing environment variable: KINTONE_BASE_URL`
-  * `[webpack-cli] Error: Missing environment variable: KINTONE_USERNAME`
-  * `[webpack-cli] Error: Missing environment variable: KINTONE_PASSWORD`
-  * `[webpack-cli] Error: Missing environment variable: VITE_AUTHOR_ID`
-  * `[webpack-cli] Error: Missing environment variable: VITE_API_TOKEN`
+  * `Failed to upload JavaScript/CSS files`
+  * `KintoneRestAPIError: [520] [CB_WA01] Password authentication failed...`
+
+Then please verify that
+  * your `.env` file has been correctly configured
+  * your username and password for your Kintone account is correct
+  * you have not modified the `.env.example`
 
 ### `npm install` command is not working
 
