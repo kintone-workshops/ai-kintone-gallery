@@ -34,7 +34,7 @@ npm install -g @kintone/customize-uploader
 ## Create a Kintone Web Database App
 
 Let's create a **Publish to Medium** Kintone App!  
-This is where you will be writing up the Markdown that will be published to your Medium.com.
+This is where you will be writing up the Markdown that will be published on your Medium.com account.
 
 ![images/kintone-app-setup.gif](images/kintone-app-setup.gif)
 
@@ -53,7 +53,7 @@ Confused? 🤔 → Check out the [How to Create a Kintone Database App](https://
 ## Create a Medium API Token
 
 First, head to [medium.com/me/settings](https://medium.com/me/settings) to open up your Medium account setting page.  
-Click on **Integration tokens** section.
+Click on the **Integration tokens** section.
 
 ![images/medium-settings-screen.png](images/medium-settings-screen.png)
 
@@ -119,7 +119,7 @@ VITE_AUTHOR_ID="12345abcde67890"
 VITE_API_TOKEN="09876edcba54321"
 ```
 
-Paste your API Token from Medium into the `VITE_API_TOKEN` field, and your Author ID into the `VITE_AUTHOR_ID` field.
+Paste your API Token from Medium into the `VITE_API_TOKEN` field and your Author ID into the `VITE_AUTHOR_ID` field.
 
 ⚠️ DO NOT DELETE THE [.env.example](./../.env.example) FILE!  
 [.env.example](./../.env.example) is used by env-cmd to verify that `.env` file is correctly configured.
@@ -168,7 +168,7 @@ So then the `https://devevents.kintone.com/k/26/` URL tells us that this App's I
 For this workshop, we will only be coding in [main.ts](../src/main.ts).  
 However, our actual API POST request logic is contained in [post_api.ts](../src/requests/post_api.ts). You can check out that file to see how the POST request to the medium.com API is structured.
 
-Lastly, some TypeScript specific settings (type definitions!) are found in [fields.d.ts](../fields.d.ts).  
+Lastly, some TypeScript-specific settings (type definitions!) are found in [fields.d.ts](../fields.d.ts).  
 If you want to expand on this demo (adding an image stored in kintone to your article, for example), you will have to edit this file.
 
 We have two goals for our coding:
@@ -195,7 +195,8 @@ First, let's look at our post body.
 
 For reference, the [Medium.com API docs](https://github.com/Medium/medium-api-docs#33-posts) on POST Requests are pretty simple!
 
-Our post title needs to come from our Kintone App. Remember that we set our `Title` field code to be lower-case `title` in our app.
+Our post title needs to come from our Kintone App.  
+Remember that we set our `Title` field to have a lower-case `title` field code in our Kintone App.
 
 ![images/1-2.png](images/1-2.png)
 
@@ -225,7 +226,7 @@ tags: ['kintone', 'markdown', 'medium', 'low-code'],
 ```
 
 `publishStatus` is the status of your article. We are going to publish immediately, but saving to your medium.com account's `drafts` is also possible!
-`notifyFollowers` will do exactly that and takes a boolean, `true` or `false`. We're testing, so let's keep it as `false` for now.
+`notifyFollowers` will do exactly that and takes a boolean, `true` or `false`. We're testing, so let's set it as `false` for now.
 
 ![images/4.png](images/4.png)
 
@@ -244,7 +245,7 @@ Our finished post body should look similar to this:
 
 And done! This should be good data to pass to our API call... but we'll need a button for our users to click in order to start the process.
 
-Kintone allows you to append `HTML` elements to blank spaces in your Kintone App. When we set up our App, we added a `blank space`, and gave it the element id `publishToMedium`.
+Kintone allows you to append `HTML` elements to blank spaces in your Kintone App. When we built our App, we added a `blank space` and gave it the Element ID `publishToMedium`.
 
 ![images/5-1.png](images/5-1.png)
 
