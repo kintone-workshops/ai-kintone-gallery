@@ -2,14 +2,15 @@
 
 ## Outline <!-- omit in toc --> <!-- markdownlint-disable MD007 -->
 
-* [Get Started](#get-started)
-* [Create a Kintone Web Database App](#create-a-kintone-web-database-app)
-* [Create a Medium API Token](#create-a-medium-api-token)
-* [Get your Medium Author ID](#get-your-medium-author-id)
-* [Create a `.env` file](#create-a-env-file)
-* [Edit Your customize-manifest json](#edit-your-customize-manifest-json)
-* [Edit main ts](#edit-main-ts)
-* [Build & Upload the customization](#build--upload-the-customization)
+- [Write, Review, and Publish directly to Medium.com with Kintone Web Database](#write-review-and-publish-directly-to-mediumcom-with-kintone-web-database)
+  - [Get Started](#get-started)
+  - [Create a Kintone Web Database App](#create-a-kintone-web-database-app)
+  - [Create a Medium API Token](#create-a-medium-api-token)
+  - [Get Your Medium Author ID](#get-your-medium-author-id)
+  - [Create a `.env` file](#create-a-env-file)
+  - [Edit Your customize-manifest json](#edit-your-customize-manifest-json)
+  - [Edit main ts](#edit-main-ts)
+  - [Build & Upload the customization](#build--upload-the-customization)
 <!-- markdownlint-enable MD007 -->
 
 ## Get Started
@@ -50,11 +51,11 @@ Confused? 🤔 → Check out the [How to Create a Kintone Database App](https://
 
 ## Create a Medium API Token
 
-![images/medium-home.png](images/medium-home.png)
-
-![images/medium-click-on-settings.png](images/medium-click-on-settings.png)
+First, open up your [settings page](https://medium.com/me/settings) on your medium account, and click on integration tokens.
 
 ![images/medium-settings-screen.png](images/medium-settings-screen.png)
+
+Create a new API Token. Don't worry, we've already revoked the one in this screenshot. 😈
 
 ![images/medium-token-screen.png](images/medium-token-screen.png)
 
@@ -217,13 +218,11 @@ Our finished post body should look similar to this:
 
 And done! This should be good data to pass to our api call... but we'll need a button for our users to click in order to start the process.
 
+Kintone allows you to append `HTML` elements to blank spaces in your Kintone App. When we setup our App, we added a `blank space`, and gave it the element id `publishToMedium`.
+
 ![images/5-1.png](images/5-1.png)
 
-Kintone allows you to append `HTML` elements to blank spaces in your Kintone App. When we setup our App, we added a `blank space`, and gave it the field code `publishToMedium`.
-
 ![images/5-2.png](images/5-2.png)
-
-![images/5-3.png](images/5-3.png)
 
 We tell our App where to append our button by matching the `HTML` IDs. Give your button an ID that matches the field code: `publishToMedium`.
 
@@ -233,18 +232,19 @@ Our App's custom `CSS` is contained in [style.css](../src/style.css). We can sty
 
 Lastly, give our button a nice label, so our users can know what it does.
 
-![images/6.png](images/6.png)
-
-Last, we need our button to fire a function when clicked. That function should pass our post `body` data to the API function `publishToMedium`.
-
-In the button's `onClick` function, call the `publishToMedium` function we imported from [post_api.ts](../src/requests/post_api.ts).
-
 ![images/7.png](images/7.png)
+
+Last, we need our button to fire a function when clicked. That function should pass our post `body` data to the API function `postToMedium`.
+
+In the button's `onClick` function, call the `postToMedium` function we imported from [post_api.ts](../src/requests/post_api.ts).
+
+![images/8.png](images/8.png)
 
 ## Build & Upload the customization
 
 With this, we can save our work and run kintone-customize-uploader!
 (See the [slides.pdf](../slides.pdf) for more info!) Run `npm run start` in your terminal. Navigate to your app, create a record with some markdown in it, and click the publish button!
+
 Navigate to your publications on [medium.com](https://medium.com/me/stories/public) and bathe in your new found journalistic fame!
 
 Good luck coding!
