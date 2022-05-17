@@ -27,18 +27,16 @@ interface Event {
 
     // Create a button
     const mySpaceFieldButton = document.createElement('button');
-    // Give it an id, class (for CSS), and text on the button.
-
     //TODO
-    mySpaceFieldButton.id = 'null';
+    // Give it an id, class (for CSS), and text on the button.
+    mySpaceFieldButton.id = 'null'; // Our "element ID" from our blank space in the kintone app.
     mySpaceFieldButton.className = 'null';
     mySpaceFieldButton.innerHTML = 'null';
 
+    // TODO
     //Run a function when the button is clicked
     mySpaceFieldButton.onclick = function () {
-      // Our function, imported above from ./requests/post_api.ts
-      // We need to call the function, and give it our post body data... 🧐
-      // TODO
+      // We need to call our API POST function, and give it our post body data... 🧐
       null
     };
     //Set button on the Blank space field

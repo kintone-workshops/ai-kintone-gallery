@@ -34,6 +34,8 @@ npm install -g @kintone/customize-uploader
 
 Let's create a Kintone App with some Shapes and Sizes to display!
 
+![images/kintone-app-setup.gif](images/kintone-app-setup.gif)
+
 Here are the required fields & their configurations for our workshop:
 
 | Field Type | Field Name | Field Code        | Note                                    |

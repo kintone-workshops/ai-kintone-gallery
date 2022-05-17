@@ -83,6 +83,10 @@ npm install -g @kintone/customize-uploader
 
 Let's create a Kintone App with an article title, and text to send to Medium!
 
+![./docs/images/kintone-app-setup.gif](./docs/images/kintone-app-setup.gif)
+
+Kintone makes it easy to setup a web database with API routes for getting information. The .gif above is one minute in length!
+
 Here are the required fields & their configurations for our workshop:
 
 | Field Type | Field Name | Field Code        | Note                                    |
