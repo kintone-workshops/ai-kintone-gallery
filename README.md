@@ -44,25 +44,26 @@ npm install -g @kintone/customize-uploader
 
 | File                                                         | Purpose                                                                      | Need to Modify?        |
 | ------------------------------------------------------------ | ---------------------------------------------------------------------------- | ---------------------- |
-| [package.json](package.json)                                 | Project's metadata & scripts for building and uploading the customization    | _Nope_                 |
-| [webpack.config.js](webpack.config.js)                       | Holds the Webpack's configuration for the react project                      | _Nope_                 |
+| [package.json](package.json)                                 | Project's metadata & scripts for building and uploading the customization    |                        |
+| [.env.example](.env.example)                                 | The template for the .env file                                               |                        |
+| [.env](.env)                                                 | Holds the Kintone login credential and View ID                               | Yes! - Create it       |
 |                                                              |                                                                              |                        |
-| [.env.example](.env.example)                                 | The template for the .env file                                               | _Nope_                 |
-| [.env](.env)                                                 | Holds the Kintone login credential and View ID                               | Yes! - Code it         |
+| [authorID.txt](authorID.txt)                                 | Template for the Medium Author ID curl command                               | Yes! - Add token       |
 |                                                              |                                                                              |                        |
-| [scripts/npm-start.js](scripts/npm-start.js)                 | Script that uses `npm-run-all` to run `build` & `upload` scripts in parallel | _Nope_                 |
+| [scripts/npm-start.js](scripts/npm-start.js)                 | Script that uses `npm-run-all` to run `build` & `upload` scripts in parallel |                        |
 | [customize-manifest.json](customize-manifest.json)           | Kintone Customize Uploader's configuration file                              | Yes! - Add your App ID |
-| [dist/KintoneCustomization.js](dist/KintoneCustomization.js) | The bundled JS build that will be uploaded to Kintone                        | _Nope_                 |
+| [dist/KintoneCustomization.js](dist/KintoneCustomization.js) | The bundled JS build that will be uploaded to Kintone                        |                        |
 |                                                              |                                                                              |                        |
-| [src/main.ts](src/main.ts)                                   | Heart of the project handling `<App />` and Kintone Events                   | Yes! Code it           |
-| [src/index.html](src/index.html)                             | HTML from which our vite app gets called from.                               | _Nope_                 |
-| [src/index.css](src/index.css)                               | Styling for the project can go here                                            | _Nope_                 |
-| [src/requests/post_api.ts](src/requests/post_api.ts)         | The logic of the Medium.com POST API call                                    | _Nope_                 |
+| [src/main.ts](src/main.ts)                                   | Heart of the project handling the API request body & adding a button         | Yes! Complete the code |
+| [src/style.css](src/style.css)                               | Styling for the project can go here                                          |                        |
+| [src/requests/post_api.ts](src/requests/post_api.ts)         | The logic of the Medium.com POST API call                                    |                        |
 |                                                              |                                                                              |                        |
-| [fields.d.ts](fields.d.ts)                                     | Various type definitions for our typescript / Kintone environment                                           | _Nope_                 |
-| [tsconfig.json](tsconfig.json)                                     | Various settings for how typescript behaves                            | _Nope_                 |
-| [vite.config.js](vite.config.js)                                     | Various settings for how and where our typescript compiles to                 | _Nope_                |
+| [fields.d.ts](fields.d.ts)                                   | Various type definitions for our typescript / Kintone environment            |                        |
+| [tsconfig.json](tsconfig.json)                               | Various settings for how typescript behaves                                  |                        |
+| [vite.config.js](vite.config.js)                             | Various settings for how and where our typescript compiles to                |                        |
+|                                                              |                                                                              |                        |
 | [slides.pdf](slides.pdf)                                     | Workshop presentation's slide deck                                           |                        |
+| [docs/workshop-steps.md](docs/workshop-steps.md)             | Step-by-step guide that we do during the workshop                            |                        |
 
 ---
 
@@ -70,12 +71,13 @@ npm install -g @kintone/customize-uploader
 
 ### 🚀 Getting your FREE Kintone Database
 
-* [bit.ly/KDP_NEW](http://bit.ly/KDP_NEW)
-* ⚡ Only use lowercase, numbers, & hyphens in your subdomain
-* ⚠ Do not use uppercase nor special characters
+[bit.ly/KDP_NEW](http://bit.ly/KDP_NEW)
+  * ⚡ Only use lowercase, numbers, & hyphens in your subdomain
+  * ⚠ Do not use uppercase nor special characters
 
-![Banner Image](./docs/images/SignUp-1.png)
-![Banner Image](./docs/images/SignUp-2.png)
+|                                             |                                             |
+| ------------------------------------------- | ------------------------------------------- |
+| ![Banner Image](./docs/images/SignUp-1.png) | ![Banner Image](./docs/images/SignUp-2.png) |
 
 ---
 
@@ -89,11 +91,11 @@ Kintone makes it easy to setup a web database with API routes for getting inform
 
 Here are the required fields & their configurations for our workshop:
 
-| Field Type | Field Name | Field Code        | Note                                    |
-| ---------- | ---------- | ----------------- | --------------------------------------- |
-| Blank Space|    ---     | `publishToMedium` | This is where our button will attach    |
-| Text       | Title      | `title`           | The title of our medium.com article     |
-| Text Area  | Body       | `body`            | The body text of our medium.com article |
+| Field Type  | Field Name | Field Code        | Note                                    |
+| ----------- | ---------- | ----------------- | --------------------------------------- |
+| Blank Space | ---        | `publishToMedium` | This is where our button will attach    |
+| Text        | Title      | `title`           | The title of our medium.com article     |
+| Text Area   | Body       | `body`            | The body text of our medium.com article |
 
 Be sure to click the **Save** and **Activate App** buttons! 💪
 
@@ -145,10 +147,10 @@ So to ensure the file gets uploaded to the correct App, replace the `23` with yo
 
 **What is my App ID?** 🤔  
 
-* Go to your Kintone App & grab the URL
-* Kintone App's URL follows this template: `https://<SUBDOMAIN>.kintone.com/k/<App ID>/show#record=<RECORD ID>`
-* Grab the number between the `/k/`
-* Example: `https://example.kintone.com/k/1/` -> The App's ID is `1`
+  * Go to your Kintone App & grab the URL
+  * Kintone App's URL follows this template: `https://<SUBDOMAIN>.kintone.com/k/<App ID>/show#record=<RECORD ID>`
+  * Grab the number between the `/k/`
+  * Example: `https://example.kintone.com/k/1/` -> The App's ID is `1`
 
 ---
 
@@ -175,22 +177,24 @@ Here is a rundown of common problems that may occur & their solutions!
 
 ### Errors related to .env
 
-If you get one of the following error messages, then please verify your `.env` file has been correctly configured, and you have not modified the `.env.example`.
+If you get one of the following error messages:  
 
-* `Failed to find .env file at default paths: [./.env,./.env.js,./.env.json]`
-* `[webpack-cli] Error: Missing environment variable: KINTONE_BASE_URL`
-* `[webpack-cli] Error: Missing environment variable: KINTONE_USERNAME`
-* `[webpack-cli] Error: Missing environment variable: KINTONE_PASSWORD`
-* `[webpack-cli] Error: Missing environment variable: VITE_AUTHOR_ID`
-* `[webpack-cli] Error: Missing environment variable: VITE_API_TOKEN`
+  * `Failed to find .env file at default paths: [./.env,./.env.js,./.env.json]`
+  * `Failed to upload JavaScript/CSS files`
+  * `KintoneRestAPIError: [520] [CB_WA01] Password authentication failed...`
+
+Then please verify that
+  * your `.env` file has been correctly configured
+  * your username and password for your Kintone account is correct
+  * you have not modified the `.env.example`
 
 ### `npm install` command is not working
 
 1. Verify the Node.js & npm versions **inside** the `publish-to-medium` folder
 2. Just installed Node.js? Verify you configured Node.js versions **inside** the `publish-to-medium` folder
 
-* Mac: `nodenv local 14.5.0`
-* Windows: `nvm use 14.5.0`
+  * Mac: `nodenv local 14.5.0`
+  * Windows: `nvm use 14.5.0`
 
 ### "npm run upload" failed?
 
@@ -198,17 +202,17 @@ _@kintone/customize-uploader not working?_ Let's try the following:
 
 (1) Verify that customize uploader was installed globally
 
-* `npm install -g @kintone/customize-uploader`
+  * `npm install -g @kintone/customize-uploader`
 
 (2) Verify that the .env login info is correct (including the password)
 
-* ⚠️ Make sure your login info is inside `.env` file & **NOT** `.env.example` file!
-* ⚠️ Verify that KINTONE_BASE_URL input is correctly formatted:
-  * ✅ Correct Format: `https://example.kintone.com`
-  * ❌ Incorrect Format: `https://example.kintone.com/` or `example.kintone.com`
-* ⚠️ Re-run the npm commands after saving the .env file
-* ⚙️ Details: [Create a `.env` file](#create-a-env-file)
+  * ⚠️ Make sure your login info is inside `.env` file & **NOT** `.env.example` file!
+  * ⚠️ Verify that KINTONE_BASE_URL input is correctly formatted:
+    * ✅ Correct Format: `https://example.kintone.com`
+    * ❌ Incorrect Format: `https://example.kintone.com/` or `example.kintone.com`
+  * ⚠️ Re-run the npm commands after saving the .env file
+  * ⚙️ Details: [Create a `.env` file](#create-a-env-file)
 
 (3) Verify your customize-manifest.json was updated with the correct App ID
 
-* ⚙️ Details: [Input the App ID](#input-the-app-id)
+  * ⚙️ Details: [Input the App ID](#input-the-app-id)

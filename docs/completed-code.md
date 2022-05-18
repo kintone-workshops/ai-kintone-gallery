@@ -1,3 +1,6 @@
+# Completed Version of [main.ts](../src/main.ts)
+
+```js
 import './style.css';
 import postToMedium from './requests/post_api';
 
@@ -17,29 +20,30 @@ interface Event {
     const body = {
 
       //TODO
-      title: null, // String: Article's title (from our Kintone record)
-      contentFormat: null, // String: 'markdown' or 'html' (writing format)
-      content: null, // String: Article's body (from our Kintone record)
-      tags: null, // Array: String "tags" for our article. Optional!
-      publishStatus: null, // String: The status of our article: 'public', 'draft', or 'unlisted'
-      notifyFollowers: null // Boolean: Sends a notification after publishing.
+      title: event.record.title.value, // String: Article's title (from our Kintone record)
+      contentFormat: 'markdown', // String: 'markdown' or 'html' (writing format)
+      content: event.record.body.value, // String: Article's body (from our Kintone record)
+      tags: ['kintone', 'markdown', 'medium', 'low-code'], // Array: String "tags" for our article. Optional!
+      publishStatus: 'public', // String: The status of our article: 'public', 'draft', or 'unlisted'
+      notifyFollowers: false // Boolean: Sends a notification after publishing.
     }
 
     // Create a button
     const mySpaceFieldButton = document.createElement('button');
     //TODO
     // Give it an id & class (for CSS), and text on the button.
-    mySpaceFieldButton.id = 'null'; // Our "Element ID" from our Blank Space in the Kintone App.
-    mySpaceFieldButton.className = 'null';
-    mySpaceFieldButton.innerHTML = 'null';
+    mySpaceFieldButton.id = 'publishToMedium'; // Our "Element ID" from our Blank Space in the Kintone App.
+    mySpaceFieldButton.className = 'uploadButton';
+    mySpaceFieldButton.innerHTML = 'Publish to Medium!';
 
     // TODO
     // Run a function when the button is clicked
     mySpaceFieldButton.onclick = function () {
       // We need to call our API POST function with request's body... 🧐
-      null;
+      postToMedium(body);
     };
     // Set button on the Blank Space field
     kintone.app.record.getSpaceElement('publishToMedium')!.appendChild(mySpaceFieldButton);
   });
 })();
+```
