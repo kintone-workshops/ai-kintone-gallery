@@ -65,8 +65,8 @@ Click on the **Integration tokens** section.
 Create a new API Token.  
 _Don't worry; we have already revoked the one in this screenshot._ 😈
 
-| Input token description                                           | Grab your integration token / API token                               |
-| ----------------------------------------------------------------- | --------------------------------------------------------------------- |
+| Input token description                                                           | Grab your integration token / API token                                               |
+| --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
 | ![images/medium-token-screen-cropped.png](images/medium-token-screen-cropped.png) | ![images/medium-token-complete-cropped.png](images/medium-token-complete-cropped.png) |
 
 ## Get Your Medium Author ID
