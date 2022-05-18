@@ -15,7 +15,7 @@ Check out [meetup.com/Kintone-Developers](https://www.meetup.com/Kintone-Develop
 * [Create a `.env` file](#create-a-env-file)
 * [Input the App ID](#input-the-app-id)
 * [Build the customization](#build-the-customization)
-* [Debugging - Let's Fix Those Problems 💪](#debugging---lets-fix-those-problems-)
+* [Debugging - Let's Fix Those Problems!](#debugging---lets-fix-those-problems)
   * [Errors related to .env](#errors-related-to-env)
   * [`npm install` command is not working](#npm-install-command-is-not-working)
   * ["npm run upload" failed?](#npm-run-upload-failed)
@@ -171,7 +171,7 @@ Good luck coding!
 
 ---
 
-## Debugging - Let's Fix Those Problems 💪
+## Debugging - Let's Fix Those Problems!
 
 Here is a rundown of common problems that may occur & their solutions!
 
