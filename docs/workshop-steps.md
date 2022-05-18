@@ -167,15 +167,16 @@ So then the `https://devevents.kintone.com/k/26/` URL tells us that this App's I
 
 ## Edit main.ts
 
-For this workshop, we will only be coding in [main.ts](../src/main.ts).  
-However, our actual API POST request logic is contained in [post_api.ts](../src/requests/post_api.ts). You can check out that file to see how the POST request to the medium.com API is structured.
+For this workshop, we will only be coding in [./src/main.ts](../src/main.ts).
 
-Lastly, some TypeScript-specific settings (type definitions!) are found in [fields.d.ts](../fields.d.ts).  
+However, our actual API POST request logic is contained in [./src/requests/post_api.ts](../src/requests/post_api.ts). You can check out that file to see how the POST request to the medium.com API is structured.
+
+Lastly, some TypeScript-specific settings (type definitions!) are found in [./fields.d.ts](../fields.d.ts).  
 If you want to expand on this demo (adding an image stored in kintone to your article, for example), you will have to edit this file.
 
 We have two goals for our coding:
 
-1. Format our data (simply called `body` in [main.ts](../src/main.ts)) to send to the `postToMedium` function
+1. Format our data (simply called `body` in [./src/main.ts](../src/main.ts)) to send to the `postToMedium` function
 
 2. Create a button to click, and when clicked, fire the `postToMedium` function.
 
@@ -261,7 +262,7 @@ We tell our App where to append our button by matching the `HTML` IDs. Give your
 
 ![images/6.png](images/6.png)
 
-Our App's custom `CSS` is contained in [style.css](../src/style.css). We can style our button with a CSS class, `uploadButton`.
+Our App's custom `CSS` is contained in [./src/style.css](../src/style.css). We can style our button with a CSS class, `uploadButton`.
 
 Lastly, give our button a nice label, so our users can know what it does.
 
@@ -269,7 +270,7 @@ Lastly, give our button a nice label, so our users can know what it does.
 
 Last, we need our button to fire a function when clicked. That function should pass our post `body` data to the API function `postToMedium`.
 
-In the button's `onClick` function, call the `postToMedium` function we imported from [post_api.ts](../src/requests/post_api.ts).
+In the button's `onClick` function, call the `postToMedium` function we imported from [./src/requests/post_api.ts](../src/requests/post_api.ts).
 
 ![images/8.png](images/8.png)
 
