@@ -9,6 +9,8 @@
 * [Create a `.env` file](#create-a-env-file)
 * [Edit Your customize-manifest.json](#edit-your-customize-manifestjson)
 * [Edit main.ts](#edit-maints)
+  * [Format the Kintone Data for Medium API Call](#format-the-kintone-data-for-medium-api-call)
+  * [Append a Button in the Kintone App](#append-a-button-in-the-kintone-app)
 * [Build & Upload the customization](#build--upload-the-customization)
 * [Check Your Work](#check-your-work)
 <!-- markdownlint-enable MD007 -->
@@ -177,6 +179,8 @@ We have two goals for our coding:
 
 2. Create a button to click, and when clicked, fire the `postToMedium` function.
 
+### Format the Kintone Data for Medium API Call
+
 First, let's look at our post body.
 
 ![images/1-1.png](images/1-1.png)
@@ -244,6 +248,8 @@ Our finished post body should look similar to this:
 ```
 
 And done! This should be good data to pass to our API call... but we'll need a button for our users to click in order to start the process.
+
+### Append a Button in the Kintone App
 
 Kintone allows you to append `HTML` elements to blank spaces in your Kintone App. When we built our App, we added a `blank space` and gave it the Element ID `publishToMedium`.
 
