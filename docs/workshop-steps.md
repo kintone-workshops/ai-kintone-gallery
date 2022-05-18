@@ -15,6 +15,7 @@
     * [Publish Status & Notify Followers](#publish-status--notify-followers)
   * [Append a Button in the Kintone App](#append-a-button-in-the-kintone-app)
 * [Build & Upload the customization](#build--upload-the-customization)
+* [View Your Article](#view-your-article)
 * [Check Your Work](#check-your-work)
 <!-- markdownlint-enable MD007 -->
 
@@ -300,9 +301,22 @@ Navigate to your app, create a record with some Markdown in it, and click the pu
 
 See the [slides.pdf](../slides.pdf) for more info!
 
-## Check Your Work
+## View Your Article
 
 Navigate to your publications and bathe in your newfound journalistic fame!  
 Go to [medium.com/me/stories/public](https://medium.com/me/stories/public)
 
-Good luck coding!
+## Check Your Work
+
+Your code not working?
+
+Compare your [./src/main.ts](../src/main.ts) with the [completed-code.md](./completed-code.md) to see if it is all written correctly.
+
+Still got a problem?
+
+Checkout README's [Debugging](../README.md#debugging---lets-fix-those-problems) section!
+
+And finally, post your Kintone customization questions over at our community forum:  
+[forum.kintone.dev](https://forum.kintone.dev/)
+
+Good luck coding! 💪
