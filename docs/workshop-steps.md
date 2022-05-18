@@ -260,7 +260,8 @@ Our finished post body should look similar to this:
     }
 ```
 
-And done! This should be good data to pass to our API call... but we'll need a button for our users to click in order to start the process.
+And done! This should be good data to pass to our API call...  
+but we'll need a button for our users to click in order to start the process.
 
 ### Append a Button in the Kintone App
 
@@ -270,7 +271,8 @@ Kintone allows you to append `HTML` elements to blank spaces in your Kintone App
 
 ![images/5-2.png](images/5-2.png)
 
-We tell our App where to append our button by matching the `HTML` IDs. Give your button an ID that matches the field code: `publishToMedium`.
+We tell our App where to append our button by matching the `HTML` IDs.  
+Give your button an ID that matches the field code: `publishToMedium`.
 
 ![images/6.png](images/6.png)
 
