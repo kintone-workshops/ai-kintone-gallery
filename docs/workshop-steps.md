@@ -10,6 +10,9 @@
 * [Edit Your customize-manifest.json](#edit-your-customize-manifestjson)
 * [Edit main.ts](#edit-maints)
   * [Format the Kintone Data for Medium API Call](#format-the-kintone-data-for-medium-api-call)
+    * [Title, Content Format, & Content](#title-content-format--content)
+    * [Tags](#tags)
+    * [Publish Status & Notify Followers](#publish-status--notify-followers)
   * [Append a Button in the Kintone App](#append-a-button-in-the-kintone-app)
 * [Build & Upload the customization](#build--upload-the-customization)
 * [Check Your Work](#check-your-work)
@@ -200,6 +203,8 @@ First, let's look at our post body.
 
 For reference, the [Medium.com API docs](https://github.com/Medium/medium-api-docs#33-posts) on POST Requests are pretty simple!
 
+#### Title, Content Format, & Content
+
 Our post title needs to come from our Kintone App.  
 Remember that we set our `Title` field to have a lower-case `title` field code in our Kintone App.
 
@@ -222,7 +227,11 @@ Just like above, fill it in with the record variable:
 
 ![images/3-2.png](images/3-2.png)
 
-Continue to fill in the body parameters. `tags` are up to you, depending on the contents of your article. The POST API accepts an `array` of `strings`. Here is an example:
+Continue to fill in the body parameters.  
+
+#### Tags
+
+`tags` are up to you, depending on the contents of your article. The POST API accepts an `array` of `strings`. Here is an example:
 
 ```js
 
@@ -230,7 +239,10 @@ tags: ['kintone', 'markdown', 'medium', 'low-code'],
 
 ```
 
+#### Publish Status & Notify Followers
+
 `publishStatus` is the status of your article. We are going to publish immediately, but saving to your medium.com account's `drafts` is also possible!
+
 `notifyFollowers` will do exactly that and takes a boolean, `true` or `false`. We're testing, so let's set it as `false` for now.
 
 ![images/4.png](images/4.png)
