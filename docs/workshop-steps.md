@@ -280,6 +280,11 @@ Our App's custom `CSS` is contained in [./src/style.css](../src/style.css). We c
 
 Lastly, give our button a nice label, so our users can know what it does.
 
+⚡ You are free to set the button's `innerHTML` with any text you want ~  
+Try including an emoji 💪!
+
+⚡ Button's `className` is also up to you. If you set a different CSS class, be sure to update [./src/style.css](../src/style.css) ~
+
 ![images/7.png](images/7.png)
 
 Last, we need our button to fire a function when clicked. That function should pass our post `body` data to the API function `postToMedium`.
