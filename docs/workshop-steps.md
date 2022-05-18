@@ -267,9 +267,9 @@ but we'll need a button for our users to click in order to start the process.
 
 Kintone allows you to append `HTML` elements to blank spaces in your Kintone App. When we built our App, we added a `blank space` and gave it the Element ID `publishToMedium`.
 
-![images/5-1.png](images/5-1.png)
-
-![images/5-2.png](images/5-2.png)
+| Kintone App's Form Setting Page   | Blank Space Settings > Element ID |
+| --------------------------------- | --------------------------------- |
+| ![images/5-1.png](images/5-1.png) | ![images/5-2.png](images/5-2.png) |
 
 We tell our App where to append our button by matching the `HTML` IDs.  
 Give your button an ID that matches the field code: `publishToMedium`.
