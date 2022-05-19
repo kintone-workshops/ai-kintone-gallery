@@ -10,7 +10,7 @@
 * [Edit Your customize-manifest.json](#edit-your-customize-manifestjson)
 * [Edit main.ts](#edit-maints)
   * [Format the Kintone Data for Medium API Call](#format-the-kintone-data-for-medium-api-call)
-    * [Title, Content Format, & Content](#title-content-format--content)
+    * [Title, Content-Format, & Content](#title-content-format--content)
     * [Tags](#tags)
     * [Publish Status & Notify Followers](#publish-status--notify-followers)
   * [Append a Button in the Kintone App](#append-a-button-in-the-kintone-app)
@@ -153,7 +153,7 @@ This is what it will look like:
 }
 ```
 
-We can find our App ID number easily from the Kintone App's URL!
+We can easily find our App ID number  from the Kintone App's URL!
 
 Go to the Kintone App and grab the URL.  
 Example: `https://devevents.kintone.com/k/36/`
@@ -174,7 +174,7 @@ For this workshop, we will only be coding in [./src/main.ts](../src/main.ts).
 However, our actual API POST request logic is contained in [./src/requests/post_api.ts](../src/requests/post_api.ts). You can check out that file to see how the POST request to the medium.com API is structured.
 
 Lastly, some TypeScript-specific settings (type definitions!) are found in [./fields.d.ts](../fields.d.ts).  
-If you want to expand on this demo (adding an image stored in kintone to your article, for example), you will have to edit this file.
+If you want to expand on this demo (_like adding an image stored in Kintone to your article_), you will have to edit this file.
 
 We have two goals for our coding:
 
@@ -201,7 +201,7 @@ const body: PostBody = {
 
 For reference, the [Medium.com API docs](https://github.com/Medium/medium-api-docs#33-posts) on POST Requests are pretty simple!
 
-#### Title, Content Format, & Content
+#### Title, Content-Format, & Content
 
 Our post title needs to come from our Kintone App.  
 Remember that we set our `Title` field to have a lower-case `title` field code in our Kintone App.
@@ -264,7 +264,7 @@ tags: ['kintone', 'markdown', 'medium', 'low-code'],
 
 #### Publish Status & Notify Followers
 
-`publishStatus` is the status of your article. We are going to publish immediately, but saving to your medium.com account's `drafts` is also possible!
+`publishStatus` is the status of your article. We will be publishing immediately, but saving to your medium.com account's `drafts` is also possible!
 
 `notifyFollowers` will do exactly that and takes a boolean, `true` or `false`. We're testing, so let's set it as `false` for now.
 
@@ -282,7 +282,7 @@ const body: PostBody = {
 ```
 
 And done! This should be good data to pass to our API call...  
-but we'll need a button for our users to click in order to start the process.
+but we will need a button for our users to click to start the process.
 
 ### Append a Button in the Kintone App
 
@@ -338,7 +338,7 @@ mySpaceFieldButton.onclick = function () {
 ## Build & Upload the customization
 
 Save your work and run kintone-customize-uploader by entering `npm run start` in your terminal!  
-Navigate to your app, create a record with some Markdown in it, and click the publish button!
+Navigate to your app, create a record, write some Markdown, and click the publish button!
 
 See the [slides.pdf](../slides.pdf) for more info!
 
@@ -349,13 +349,13 @@ Go to [medium.com/me/stories/public](https://medium.com/me/stories/public)
 
 ## Check Your Work
 
-Your code not working?
+Is your code not working?
 
 Compare your [./src/main.ts](../src/main.ts) with the [completed-code.md](./completed-code.md) to see if it is all written correctly.
 
 Still got a problem?
 
-Checkout README's [Debugging](../README.md#debugging---lets-fix-those-problems) section!
+Check out README's [Debugging](../README.md#debugging---lets-fix-those-problems) section!
 
 And finally, post your Kintone customization questions over at our community forum:  
 [forum.kintone.dev](https://forum.kintone.dev/)
