@@ -3,7 +3,6 @@
 export default async function postToMedium(postBody: object){
 
   const authorID = import.meta.env.VITE_AUTHOR_ID; // Our medium.com author ID
-  // Remember you can get your author ID by -----
   const postUrl = `https://api.medium.com/v1/users/${authorID}/posts`; // The URL for our request
   const apiToken = import.meta.env.VITE_API_TOKEN; // Our medium.com "integration token"
   const headers = {

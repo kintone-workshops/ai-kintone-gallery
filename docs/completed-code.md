@@ -9,7 +9,17 @@ import postToMedium from './requests/post_api';
 interface Event {
   appId: number;
   recordId: number;
-  record: kintone.types.SavedFields;
+  record: kintone.fieldTypes.CustomFields;
+}
+
+// Type definitions for our medium POST API data
+interface PostBody {
+  title: string | null;
+  contentFormat: string | null;
+  content: string | null;
+  tags: Array<string> | null;
+  publishStatus: string | null;
+  notifyFollowers: boolean | null;
 }
 
 (function () {
@@ -17,24 +27,24 @@ interface Event {
   kintone.events.on('app.record.detail.show', function (event: Event) {
 
     // API POST request's body
-    const body = {
+    const body: PostBody = {
 
       //TODO
-      title: event.record.title.value, // String: Article's title (from our Kintone record)
-      contentFormat: 'markdown', // String: 'markdown' or 'html' (writing format)
-      content: event.record.body.value, // String: Article's body (from our Kintone record)
-      tags: ['kintone', 'markdown', 'medium', 'low-code'], // Array: String "tags" for our article. Optional!
-      publishStatus: 'public', // String: The status of our article: 'public', 'draft', or 'unlisted'
-      notifyFollowers: false // Boolean: Sends a notification after publishing.
+      title: event.record.title.value, // Article's title (from our Kintone record)
+      contentFormat: 'markdown', // 'markdown' or 'html' (writing format)
+      content: event.record.body.value, // Article's body (from our Kintone record)
+      tags: ['kintone', 'medium', 'low-code'], // String "tags" for our article. Optional!
+      publishStatus: 'public', // The status of our article: 'public', 'draft', or 'unlisted'
+      notifyFollowers: false // Sends a notification after publishing.
     }
 
     // Create a button
-    const mySpaceFieldButton = document.createElement('button');
+    const mySpaceFieldButton: HTMLElement = document.createElement('button');
     //TODO
-    // Give it an id & class (for CSS), and text on the button.
     mySpaceFieldButton.id = 'publishToMedium'; // Our "Element ID" from our Blank Space in the Kintone App.
+    // Give it an id & class (for CSS), and text on the button.
     mySpaceFieldButton.className = 'uploadButton';
-    mySpaceFieldButton.innerHTML = 'Publish to Medium!';
+    mySpaceFieldButton.innerHTML = 'Click me to Publish!';
 
     // TODO
     // Run a function when the button is clicked
