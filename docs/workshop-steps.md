@@ -2,22 +2,21 @@
 
 ## Outline <!-- omit in toc --> <!-- markdownlint-disable MD007 -->
 
-- [Write, Review, and Publish directly to Medium.com with Kintone Web Database](#write-review-and-publish-directly-to-mediumcom-with-kintone-web-database)
-  - [Get Started](#get-started)
-  - [Create a Kintone Web Database App](#create-a-kintone-web-database-app)
-  - [Create a Medium API Token](#create-a-medium-api-token)
-  - [Get Your Medium Author ID](#get-your-medium-author-id)
-  - [Create a `.env` file](#create-a-env-file)
-  - [Edit Your customize-manifest.json](#edit-your-customize-manifestjson)
-  - [Edit main.ts](#edit-maints)
-    - [Format the Kintone Data for Medium API Call](#format-the-kintone-data-for-medium-api-call)
-      - [Title, Content Format, & Content](#title-content-format--content)
-      - [Tags](#tags)
-      - [Publish Status & Notify Followers](#publish-status--notify-followers)
-    - [Append a Button in the Kintone App](#append-a-button-in-the-kintone-app)
-  - [Build & Upload the customization](#build--upload-the-customization)
-  - [View Your Article](#view-your-article)
-  - [Check Your Work](#check-your-work)
+* [Get Started](#get-started)
+* [Create a Kintone Web Database App](#create-a-kintone-web-database-app)
+* [Create a Medium API Token](#create-a-medium-api-token)
+* [Get Your Medium Author ID](#get-your-medium-author-id)
+* [Create a `.env` file](#create-a-env-file)
+* [Edit Your customize-manifest.json](#edit-your-customize-manifestjson)
+* [Edit main.ts](#edit-maints)
+  * [Format the Kintone Data for Medium API Call](#format-the-kintone-data-for-medium-api-call)
+    * [Title, Content Format, & Content](#title-content-format--content)
+    * [Tags](#tags)
+    * [Publish Status & Notify Followers](#publish-status--notify-followers)
+  * [Append a Button in the Kintone App](#append-a-button-in-the-kintone-app)
+* [Build & Upload the customization](#build--upload-the-customization)
+* [View Your Article](#view-your-article)
+* [Check Your Work](#check-your-work)
 <!-- markdownlint-enable MD007 -->
 
 ## Get Started
@@ -98,14 +97,14 @@ curl -H "Authorization: Bearer 2d6755756a12c743b4312f85fad0246a7953c68b78ef19c9e
 
 This will return your Author ID and other information in the terminal like so:
 
-``` shell
+```json
 {
    "data" : {
-      "id" : "1df66a8dd2779709d3ca3b3526a4a0190972b8fe95afc7412eebdc4d0030f0549",
-      "imageUrl" : "https://cdn-images-1.medium.com/fit/c/400/400/1*YfWnpcmJZnwmHpO-bSnzNA.png",
+      "id" : "1df66a8dd2779709d3ca3b3526a4a0190972b...",
+      "imageUrl" : "https://cdn-images-1.medium...",
       "name" : "Kintone Developer Relations",
-      "url" : "https://medium.com/@kintone_devrel_jp",
-      "username" : "kintone_devrel_jp"
+      "url" : "https://medium.com/@kin...",
+      "username" : "kintone_dev..."
    }
 }
 ```
@@ -154,8 +153,6 @@ This is what it will look like:
 }
 ```
 
-<!-- ![images/customize-manifest.json](images/customize-manifest.png) -->
-
 We can find our App ID number easily from the Kintone App's URL!
 
 Go to the Kintone App and grab the URL.  
@@ -192,14 +189,14 @@ First, let's look at our post body.
 ![images/1-1.png](images/1-1.png)
 
 ```js
-    const body: PostBody = {
-      title: null, // Article's title (from our Kintone record)
-      contentFormat: null, // 'markdown' or 'html' (writing format)
-      content: null, // Article's body (from our Kintone record)
-      tags: null, // String "tags" for our article. Optional!
-      publishStatus: null, // The status of our article: 'public', 'draft', or 'unlisted'
-      notifyFollowers: null // Sends a notification after publishing.
-    }
+const body: PostBody = {
+  title: null, // Article's title (from our Kintone record)
+  contentFormat: null, // 'markdown' or 'html' (writing format)
+  content: null, // Article's body (from our Kintone record)
+  tags: null, // String "tags" for our article. Optional!
+  publishStatus: null, // The status of our article: 'public', 'draft', or 'unlisted'
+  notifyFollowers: null // Sends a notification after publishing.
+}
 ```
 
 For reference, the [Medium.com API docs](https://github.com/Medium/medium-api-docs#33-posts) on POST Requests are pretty simple!
@@ -214,28 +211,28 @@ Remember that we set our `Title` field to have a lower-case `title` field code i
 We can access the information on the show page easily in our code:
 
 ```js
-    const body: PostBody = {
-      title: events.record.title.value, // Article's title (from our Kintone record)
-      contentFormat: null, // 'markdown' or 'html' (writing format)
-      content: null, // Article's body (from our Kintone record)
-      tags: null, // String "tags" for our article. Optional!
-      publishStatus: null, // The status of our article: 'public', 'draft', or 'unlisted'
-      notifyFollowers: null // Sends a notification after publishing.
-    }
+const body: PostBody = {
+  title: events.record.title.value, // Article's title (from our Kintone record)
+  contentFormat: null, // 'markdown' or 'html' (writing format)
+  content: null, // Article's body (from our Kintone record)
+  tags: null, // String "tags" for our article. Optional!
+  publishStatus: null, // The status of our article: 'public', 'draft', or 'unlisted'
+  notifyFollowers: null // Sends a notification after publishing.
+}
 ```
 
 Next, according to the documentation, Medium articles can be submitted in either Markdown or HTML formats! Pretty cool.  
 Let's go with `markdown` this time:
 
 ```js
-    const body: PostBody = {
-      title: events.record.title.value, // Article's title (from our Kintone record)
-      contentFormat: 'markdown', // 'markdown' or 'html' (writing format)
-      content: null, // Article's body (from our Kintone record)
-      tags: null, // String "tags" for our article. Optional!
-      publishStatus: null, // The status of our article: 'public', 'draft', or 'unlisted'
-      notifyFollowers: null // Sends a notification after publishing.
-    }
+const body: PostBody = {
+  title: events.record.title.value, // Article's title (from our Kintone record)
+  contentFormat: 'markdown', // 'markdown' or 'html' (writing format)
+  content: null, // Article's body (from our Kintone record)
+  tags: null, // String "tags" for our article. Optional!
+  publishStatus: null, // The status of our article: 'public', 'draft', or 'unlisted'
+  notifyFollowers: null // Sends a notification after publishing.
+}
 ```
 
 The `content` parameter should be our `Body` field from our app, which we designated with the `body` field code:
@@ -245,14 +242,14 @@ The `content` parameter should be our `Body` field from our app, which we design
 Just like above, fill it in with the record variable:
 
 ```js
-    const body: PostBody = {
-      title: events.record.title.value, // Article's title (from our Kintone record)
-      contentFormat: 'markdown', // 'markdown' or 'html' (writing format)
-      content: events.record.title.value, // Article's body (from our Kintone record)
-      tags: null, // String "tags" for our article. Optional!
-      publishStatus: null, // The status of our article: 'public', 'draft', or 'unlisted'
-      notifyFollowers: null // Sends a notification after publishing.
-    }
+const body: PostBody = {
+  title: events.record.title.value, // Article's title (from our Kintone record)
+  contentFormat: 'markdown', // 'markdown' or 'html' (writing format)
+  content: events.record.title.value, // Article's body (from our Kintone record)
+  tags: null, // String "tags" for our article. Optional!
+  publishStatus: null, // The status of our article: 'public', 'draft', or 'unlisted'
+  notifyFollowers: null // Sends a notification after publishing.
+}
 ```
 
 Continue to fill in the body parameters.  
@@ -262,9 +259,7 @@ Continue to fill in the body parameters.
 `tags` are up to you, depending on the contents of your article. The POST API accepts an `array` of `strings`. Here is an example:
 
 ```js
-
 tags: ['kintone', 'markdown', 'medium', 'low-code'],
-
 ```
 
 #### Publish Status & Notify Followers
@@ -276,13 +271,13 @@ tags: ['kintone', 'markdown', 'medium', 'low-code'],
 Our finished post body should look similar to this:
 
 ```js
-    const body: PostBody = {
-      title: event.record.title.value, // Article's title (from our Kintone record)
-      contentFormat: "markdown", // 'markdown' or 'html' (writing format)
-      content: event.record.body.value, // Article's body (from our Kintone record)
-      tags: ["kintone", "medium", "low-code"], // String "tags" for our article. Optional!
-      publishStatus: 'public', // The status of our article: 'public', 'draft', or 'unlisted'
-      notifyFollowers: false // Sends a notification after publishing.
+const body: PostBody = {
+  title: event.record.title.value, // Article's title (from our Kintone record)
+  contentFormat: "markdown", // 'markdown' or 'html' (writing format)
+  content: event.record.body.value, // Article's body (from our Kintone record)
+  tags: ['kintone', 'markdown', 'medium', 'low-code'], // String "tags" for our article. Optional!
+  publishStatus: 'public', // The status of our article: 'public', 'draft', or 'unlisted'
+  notifyFollowers: false // Sends a notification after publishing.
     }
 ```
 
@@ -301,13 +296,13 @@ We tell our App where to append our button by matching the `HTML` IDs.
 Give your button an ID that matches the field code: `publishToMedium`.
 
 ```js
-    // Create a button
-    const mySpaceFieldButton: HTMLElement = document.createElement('button');
-    //TODO
-    mySpaceFieldButton.id = 'publishToMedium'; // Our "Element ID" from our Blank Space in the Kintone App.
-    // Give it an id & class (for CSS), and text on the button.
-    mySpaceFieldButton.className = null;
-    mySpaceFieldButton.innerHTML = null;
+// Create a button
+const mySpaceFieldButton: HTMLElement = document.createElement('button');
+//TODO
+mySpaceFieldButton.id = 'publishToMedium'; // Our "Element ID" from our Blank Space in the Kintone App.
+// Give it an id & class (for CSS), and text on the button.
+mySpaceFieldButton.className = null;
+mySpaceFieldButton.innerHTML = null;
 ```
 
 Our App's custom `CSS` is contained in [./src/style.css](../src/style.css). We can style our button with a CSS class, `uploadButton`.
@@ -320,13 +315,13 @@ Try including an emoji 💪!
 ⚡ Button's `className` is also up to you. If you set a different CSS class, be sure to update [./src/style.css](../src/style.css) ~
 
 ```js
-    // Create a button
-    const mySpaceFieldButton: HTMLElement = document.createElement('button');
-    //TODO
-    mySpaceFieldButton.id = 'publishToMedium'; // Our "Element ID" from our Blank Space in the Kintone App.
-    // Give it an id & class (for CSS), and text on the button.
-    mySpaceFieldButton.className = 'uploadButton';
-    mySpaceFieldButton.innerHTML = 'Click me to Publish!';
+// Create a button
+const mySpaceFieldButton: HTMLElement = document.createElement('button');
+//TODO
+mySpaceFieldButton.id = 'publishToMedium'; // Our "Element ID" from our Blank Space in the Kintone App.
+// Give it an id & class (for CSS), and text on the button.
+mySpaceFieldButton.className = 'uploadButton';
+mySpaceFieldButton.innerHTML = 'Click me to Publish!';
 ```
 
 Last, we need our button to fire a function when clicked. That function should pass our post `body` data to the API function `postToMedium`.
@@ -334,10 +329,10 @@ Last, we need our button to fire a function when clicked. That function should p
 In the button's `onClick` function, call the `postToMedium` function we imported from [./src/requests/post_api.ts](../src/requests/post_api.ts).
 
 ```js
-    mySpaceFieldButton.onclick = function () {
-      // We need to call our API POST function with request's body... 🧐
-      postToMedium(body);
-    };
+mySpaceFieldButton.onclick = function () {
+  // We need to call our API POST function with request's body... 🧐
+  postToMedium(body);
+};
 ```
 
 ## Build & Upload the customization
