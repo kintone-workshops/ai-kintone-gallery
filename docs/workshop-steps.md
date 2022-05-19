@@ -9,7 +9,13 @@
 * [Create a `.env` file](#create-a-env-file)
 * [Edit Your customize-manifest.json](#edit-your-customize-manifestjson)
 * [Edit main.ts](#edit-maints)
+  * [Format the Kintone Data for Medium API Call](#format-the-kintone-data-for-medium-api-call)
+    * [Title, Content Format, & Content](#title-content-format--content)
+    * [Tags](#tags)
+    * [Publish Status & Notify Followers](#publish-status--notify-followers)
+  * [Append a Button in the Kintone App](#append-a-button-in-the-kintone-app)
 * [Build & Upload the customization](#build--upload-the-customization)
+* [View Your Article](#view-your-article)
 * [Check Your Work](#check-your-work)
 <!-- markdownlint-enable MD007 -->
 
@@ -60,9 +66,9 @@ Click on the **Integration tokens** section.
 Create a new API Token.  
 _Don't worry; we have already revoked the one in this screenshot._ 😈
 
-| Input token description                                           | Grab your integration token / API token                               |
-| ----------------------------------------------------------------- | --------------------------------------------------------------------- |
-| ![images/medium-token-screen.png](images/medium-token-screen.png) | ![images/medium-token-complete.png](images/medium-token-complete.png) |
+| Input token description                                                           | Grab your integration token / API token                                               |
+| --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| ![images/medium-token-screen-cropped.png](images/medium-token-screen-cropped.png) | ![images/medium-token-complete-cropped.png](images/medium-token-complete-cropped.png) |
 
 ## Get Your Medium Author ID
 
@@ -165,17 +171,20 @@ So then the `https://devevents.kintone.com/k/26/` URL tells us that this App's I
 
 ## Edit main.ts
 
-For this workshop, we will only be coding in [main.ts](../src/main.ts).  
-However, our actual API POST request logic is contained in [post_api.ts](../src/requests/post_api.ts). You can check out that file to see how the POST request to the medium.com API is structured.
+For this workshop, we will only be coding in [./src/main.ts](../src/main.ts).
 
-Lastly, some TypeScript-specific settings (type definitions!) are found in [fields.d.ts](../fields.d.ts).  
+However, our actual API POST request logic is contained in [./src/requests/post_api.ts](../src/requests/post_api.ts). You can check out that file to see how the POST request to the medium.com API is structured.
+
+Lastly, some TypeScript-specific settings (type definitions!) are found in [./fields.d.ts](../fields.d.ts).  
 If you want to expand on this demo (adding an image stored in kintone to your article, for example), you will have to edit this file.
 
 We have two goals for our coding:
 
-1. Format our data (simply called `body` in [main.ts](../src/main.ts)) to send to the `postToMedium` function
+1. Format our data (simply called `body` in [./src/main.ts](../src/main.ts)) to send to the `postToMedium` function
 
 2. Create a button to click, and when clicked, fire the `postToMedium` function.
+
+### Format the Kintone Data for Medium API Call
 
 First, let's look at our post body.
 
@@ -194,6 +203,8 @@ First, let's look at our post body.
 ```
 
 For reference, the [Medium.com API docs](https://github.com/Medium/medium-api-docs#33-posts) on POST Requests are pretty simple!
+
+#### Title, Content Format, & Content
 
 Our post title needs to come from our Kintone App.  
 Remember that we set our `Title` field to have a lower-case `title` field code in our Kintone App.
@@ -217,7 +228,11 @@ Just like above, fill it in with the record variable:
 
 ![images/3-2.png](images/3-2.png)
 
-Continue to fill in the body parameters. `tags` are up to you, depending on the contents of your article. The POST API accepts an `array` of `strings`. Here is an example:
+Continue to fill in the body parameters.  
+
+#### Tags
+
+`tags` are up to you, depending on the contents of your article. The POST API accepts an `array` of `strings`. Here is an example:
 
 ```js
 
@@ -225,7 +240,10 @@ tags: ['kintone', 'markdown', 'medium', 'low-code'],
 
 ```
 
+#### Publish Status & Notify Followers
+
 `publishStatus` is the status of your article. We are going to publish immediately, but saving to your medium.com account's `drafts` is also possible!
+
 `notifyFollowers` will do exactly that and takes a boolean, `true` or `false`. We're testing, so let's set it as `false` for now.
 
 ![images/4.png](images/4.png)
@@ -243,27 +261,36 @@ Our finished post body should look similar to this:
     }
 ```
 
-And done! This should be good data to pass to our API call... but we'll need a button for our users to click in order to start the process.
+And done! This should be good data to pass to our API call...  
+but we'll need a button for our users to click in order to start the process.
+
+### Append a Button in the Kintone App
 
 Kintone allows you to append `HTML` elements to blank spaces in your Kintone App. When we built our App, we added a `blank space` and gave it the Element ID `publishToMedium`.
 
-![images/5-1.png](images/5-1.png)
+| Kintone App's Form Setting Page   | Blank Space Settings > Element ID |
+| --------------------------------- | --------------------------------- |
+| ![images/5-1.png](images/5-1.png) | ![images/5-2.png](images/5-2.png) |
 
-![images/5-2.png](images/5-2.png)
-
-We tell our App where to append our button by matching the `HTML` IDs. Give your button an ID that matches the field code: `publishToMedium`.
+We tell our App where to append our button by matching the `HTML` IDs.  
+Give your button an ID that matches the field code: `publishToMedium`.
 
 ![images/6.png](images/6.png)
 
-Our App's custom `CSS` is contained in [style.css](../src/style.css). We can style our button with a CSS class, `uploadButton`.
+Our App's custom `CSS` is contained in [./src/style.css](../src/style.css). We can style our button with a CSS class, `uploadButton`.
 
 Lastly, give our button a nice label, so our users can know what it does.
+
+⚡ You are free to set the button's `innerHTML` with any text you want ~  
+Try including an emoji 💪!
+
+⚡ Button's `className` is also up to you. If you set a different CSS class, be sure to update [./src/style.css](../src/style.css) ~
 
 ![images/7.png](images/7.png)
 
 Last, we need our button to fire a function when clicked. That function should pass our post `body` data to the API function `postToMedium`.
 
-In the button's `onClick` function, call the `postToMedium` function we imported from [post_api.ts](../src/requests/post_api.ts).
+In the button's `onClick` function, call the `postToMedium` function we imported from [./src/requests/post_api.ts](../src/requests/post_api.ts).
 
 ![images/8.png](images/8.png)
 
@@ -274,9 +301,22 @@ Navigate to your app, create a record with some Markdown in it, and click the pu
 
 See the [slides.pdf](../slides.pdf) for more info!
 
-## Check Your Work
+## View Your Article
 
 Navigate to your publications and bathe in your newfound journalistic fame!  
 Go to [medium.com/me/stories/public](https://medium.com/me/stories/public)
 
-Good luck coding!
+## Check Your Work
+
+Your code not working?
+
+Compare your [./src/main.ts](../src/main.ts) with the [completed-code.md](./completed-code.md) to see if it is all written correctly.
+
+Still got a problem?
+
+Checkout README's [Debugging](../README.md#debugging---lets-fix-those-problems) section!
+
+And finally, post your Kintone customization questions over at our community forum:  
+[forum.kintone.dev](https://forum.kintone.dev/)
+
+Good luck coding! 💪
