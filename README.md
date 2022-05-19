@@ -5,7 +5,7 @@
 Thank you for attending our **Kintone x Medium** workshop!  
 Check out [meetup.com/Kintone-Developers](https://www.meetup.com/Kintone-Developers/) to check out all of our upcoming events!
 
-## Outline <!-- omit in toc --> <!-- markdownlint-disable MD007 -->
+## Outline <!-- omit in toc --> <!-- markdownlint-disable MD007 --><!-- markdownlint-disable MD026 -->
 
 * [Get Started](#get-started)
 * [Overview of the Repo](#overview-of-the-repo)
