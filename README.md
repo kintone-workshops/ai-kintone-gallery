@@ -5,7 +5,7 @@
 Thank you for attending our **Kintone x Medium** workshop!  
 Check out [meetup.com/Kintone-Developers](https://www.meetup.com/Kintone-Developers/) to check out all of our upcoming events!
 
-## Outline <!-- omit in toc --> <!-- markdownlint-disable MD007 -->
+## Outline <!-- omit in toc --> <!-- markdownlint-disable MD007 --><!-- markdownlint-disable MD026 -->
 
 * [Get Started](#get-started)
 * [Overview of the Repo](#overview-of-the-repo)
@@ -48,7 +48,7 @@ npm install -g @kintone/customize-uploader
 | [.env.example](.env.example)                                 | The template for the .env file                                               |                        |
 | [.env](.env)                                                 | Holds the Kintone login credential and View ID                               | Yes! - Create it       |
 |                                                              |                                                                              |                        |
-| [authorID.txt](authorID.txt)                                 | Template for the Medium Author ID curl command                               | Yes! - Add token       |
+| [curl_authorID.txt](curl_authorID.txt)                       | Template for the Medium Author ID curl command                               | Yes! - Add token       |
 |                                                              |                                                                              |                        |
 | [scripts/npm-start.js](scripts/npm-start.js)                 | Script that uses `npm-run-all` to run `build` & `upload` scripts in parallel |                        |
 | [customize-manifest.json](customize-manifest.json)           | Kintone Customize Uploader's configuration file                              | Yes! - Add your App ID |
