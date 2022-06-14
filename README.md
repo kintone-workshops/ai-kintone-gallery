@@ -196,7 +196,7 @@ Convert a TypeScript file to a JavaScript file by either:
 
 #### Main benefits of TypeScript
 * Type system forces programmers to be consistent -> Great when you have 1+ dev team
-* Avoids [TypeError](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError) {when a value is not of the expected type}
+* Avoids [TypeError](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError) (when a value is not of the expected type)
 * Compile TS code down to a JS version you want
 * Works well with IntelliSense -> Better auto-complete function
 
