@@ -191,8 +191,8 @@ TypeScript layers a **type system** on top of JavaScript
   | `interface User {  name: string;  id: number;  }`                                       | `let helloWorld = "Hello World";` |
 
 Convert a TypeScript file to a JavaScript file by either:
-* `tsc` command {e.g., `tsc index.ts`}
-* JS Bundlers {e.g. [Webpack](https://webpack.js.org/), [Vite](https://vitejs.dev/)}
+* `tsc` command (e.g., `tsc index.ts`)
+* JS Bundlers (e.g. [Webpack](https://webpack.js.org/), [Vite](https://vitejs.dev/))
 
 #### Main benefits of TypeScript
 * Type system forces programmers to be consistent -> Great when you have 1+ dev team
