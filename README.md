@@ -20,7 +20,7 @@ Check out [meetup.com/Kintone-Developers](https://www.meetup.com/Kintone-Develop
     * [Main benefits of TypeScript](#main-benefits-of-typescript)
   * [What is Vite?](#what-is-vite)
     * [Main benefits of Vite](#main-benefits-of-vite)
-  * [What to learn more?](#what-to-learn-more)
+  * [Want to learn more?](#want-to-learn-more)
 * [Debugging - Let's Fix Those Problems!](#debugging---lets-fix-those-problems)
   * [Errors related to .env](#errors-related-to-env)
   * [`npm install` command is not working](#npm-install-command-is-not-working)
@@ -218,7 +218,7 @@ Convert a TypeScript file to a JavaScript file by either:
   * Vite does not perform type checking making it 20x ~ 30x faster
 
 
-### What to learn more?
+### Want to learn more?
 * [Vite in 100 Seconds - YouTube](https://www.youtube.com/watch?v=KCrXgy8qtjM)
 * [Getting Started | Vite](https://vitejs.dev/guide/)
 * [Why Vite | Vite](https://vitejs.dev/guide/why.html)
