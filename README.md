@@ -178,19 +178,19 @@ Good luck coding!
 ## Quick Dive into TypeScript & Vite
 
 ### What is TypeScript?
-TypeScript (TS) is a "flavor" of JavaScript (JS)
+TypeScript (TS) is a _flavor_ of JavaScript (JS)
 * Existing JS code works inside a TS files
 
-TypeScript layers on a **type system** to JavaScript
+TypeScript layers a **type system** on top of JavaScript
 * Type system simply enforces the [JS types](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#javascript_types) set per variable to avoid bugs
-* Types can be set explicitly (using `:`) or implicitly (using initial value)
+* Set types explicitly (using `:`) or implicitly (using initial value)
 
   | Explicit                                          | Implicit                          |
   | ------------------------------------------------- | --------------------------------- |
   | `interface User {  name: string;  id: number;  }` | `let helloWorld = "Hello World";` |
 
 Convert a TypeScript file to a JavaScript file by either:
-* `tsc` command {e.g. `tsc index.ts`}
+* `tsc` command {e.g., `tsc index.ts`}
 * JS Bundlers {e.g. [Webpack](https://webpack.js.org/), [Vite](https://vitejs.dev/)}
 
 #### Main benefits of TypeScript
@@ -203,18 +203,25 @@ Convert a TypeScript file to a JavaScript file by either:
 
 * Vite is a fast JavaScript **build tool** for building frontend web apps
 * Vite is opinionated and comes with default settings
-  * Also highly extensible via Vite's Plugin API and JavaScript API
+  * Also, highly extensible via Vite's Plugin API and JavaScript API
 * Similar to Webpack but _faster_
   * Vite uses [native ES Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) in the browser to load the code faster
 
 #### Main benefits of Vite
-* Serve code to localhost during development
+* Better development experience
+  * Quickly serve code to localhost with native ESM
+  * Hot Module Replacement (HMR) that stays fast regardless of app size.
 * Bundle code for production using [Rollup](https://rollupjs.org/guide/en/)
+* JSX and TSX are supported by default
 * Works super fast with TypeScript
+  * Vite supports importing TS files out of the box
+  * Vite does not perform type checking making it 20x ~ 30x faster
+
 
 ### What to learn more?
 * [Vite in 100 Seconds - YouTube](https://www.youtube.com/watch?v=KCrXgy8qtjM)
 * [Getting Started | Vite](https://vitejs.dev/guide/)
+* [Why Vite | Vite](https://vitejs.dev/guide/why.html)
 * [Module Bundlers Explained... Webpack, Rollup, Parcel, and Snowpack - YouTube](https://www.youtube.com/watch?v=5IG4UmULyoA)
 * [TypeScript in 100 Seconds - YouTube](https://www.youtube.com/watch?v=zQnBQ4tB3ZA)
 * [TypeScript for the New Programmer](https://www.typescriptlang.org/docs/handbook/typescript-from-scratch.html)
