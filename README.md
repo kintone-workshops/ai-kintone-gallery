@@ -17,9 +17,7 @@ Check out [meetup.com/Kintone-Developers](https://www.meetup.com/Kintone-Develop
 * [Build the customization](#build-the-customization)
 * [Quick Dive into TypeScript & Vite](#quick-dive-into-typescript--vite)
   * [What is TypeScript?](#what-is-typescript)
-    * [Main benefits of TypeScript](#main-benefits-of-typescript)
   * [What is Vite?](#what-is-vite)
-    * [Main benefits of Vite](#main-benefits-of-vite)
   * [Want to learn more?](#want-to-learn-more)
 * [Debugging - Let's Fix Those Problems!](#debugging---lets-fix-those-problems)
   * [Errors related to .env](#errors-related-to-env)
@@ -194,7 +192,7 @@ Convert a TypeScript file to a JavaScript file by either:
 * `tsc` command (e.g., `tsc index.ts`)
 * JS Bundlers (e.g. [Webpack](https://webpack.js.org/), [Vite](https://vitejs.dev/))
 
-#### Main benefits of TypeScript
+#### Main benefits of TypeScript  <!-- omit in toc -->
 * Type system forces programmers to be consistent -> Great when you have 1+ dev team
 * Avoids [TypeErrors](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError) (when a value is not of the expected type)
 * Compile TS code down to a JS version you want
@@ -208,7 +206,7 @@ Convert a TypeScript file to a JavaScript file by either:
 * Similar to Webpack but _faster_
   * Vite uses [native ES Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) in the browser to load the code faster
 
-#### Main benefits of Vite
+#### Main benefits of Vite  <!-- omit in toc -->
 * Better development experience
   * Quickly serve code to localhost with native ESM
   * Hot Module Replacement (HMR) that stays fast regardless of app size.
@@ -217,7 +215,6 @@ Convert a TypeScript file to a JavaScript file by either:
 * Works super fast with TypeScript
   * Vite supports importing TS files out of the box
   * Vite does not perform type checking making it 20x ~ 30x faster
-
 
 ### Want to learn more?
 * [Vite in 100 Seconds - YouTube](https://www.youtube.com/watch?v=KCrXgy8qtjM)
