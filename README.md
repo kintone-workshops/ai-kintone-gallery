@@ -199,7 +199,6 @@ Convert a TypeScript file to a JavaScript file by either:
 * Works well with IntelliSense -> Better auto-complete function
 
 ### What is Vite?
-
 * Vite is a fast JavaScript **build tool** for building frontend web apps
 * Vite is opinionated and comes with default settings
   * Also, highly extensible via Vite's Plugin API and JavaScript API
@@ -224,7 +223,6 @@ Convert a TypeScript file to a JavaScript file by either:
 * [TypeScript in 100 Seconds - YouTube](https://www.youtube.com/watch?v=zQnBQ4tB3ZA)
 * [TypeScript for the New Programmer](https://www.typescriptlang.org/docs/handbook/typescript-from-scratch.html)
 * [TypeScript for JavaScript Programmers](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html)
-* [Interfaces vs. Type Aliases](https://www.typescriptlang.org/docs/handbook/advanced-types.html#interfaces-vs-type-aliases)
 * [TypeScript Playground - Types vs Interfaces](https://www.typescriptlang.org/play?#code/JYOwLgpgTgZghgYwgAgKoGdrIN4ChnIhwC2EAXMumFKAOYDc+ywAJhSAK7EBG0jAvkA)
 
 ---
