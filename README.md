@@ -179,15 +179,16 @@ Good luck coding!
 
 ### What is TypeScript?
 TypeScript (TS) is a _flavor_ of JavaScript (JS)
-* Existing JS code works inside a TS files
+* Existing JS code works inside TS files
 
 TypeScript layers a **type system** on top of JavaScript
-* Type system simply enforces the [JS types](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#javascript_types) set per variable to avoid bugs
-* Set types explicitly (using `:`) or implicitly (using initial value)
+* A type system simply enforces the [JS types](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#javascript_types) set per variable to avoid bugs
+* Set types explicitly or implicitly
 
-  | Explicit                                          | Implicit                          |
-  | ------------------------------------------------- | --------------------------------- |
-  | `interface User {  name: string;  id: number;  }` | `let helloWorld = "Hello World";` |
+  | Explicit                                                                                | Implicit                          |
+  | --------------------------------------------------------------------------------------- | --------------------------------- |
+  | using `:` or [interfaces](https://www.typescriptlang.org/docs/handbook/interfaces.html) | using initial value               |
+  | `interface User {  name: string;  id: number;  }`                                       | `let helloWorld = "Hello World";` |
 
 Convert a TypeScript file to a JavaScript file by either:
 * `tsc` command {e.g., `tsc index.ts`}
@@ -226,6 +227,7 @@ Convert a TypeScript file to a JavaScript file by either:
 * [TypeScript in 100 Seconds - YouTube](https://www.youtube.com/watch?v=zQnBQ4tB3ZA)
 * [TypeScript for the New Programmer](https://www.typescriptlang.org/docs/handbook/typescript-from-scratch.html)
 * [TypeScript for JavaScript Programmers](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html)
+* [Interfaces vs. Type Aliases](https://www.typescriptlang.org/docs/handbook/advanced-types.html#interfaces-vs-type-aliases)
 
 ---
 
