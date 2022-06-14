@@ -1,12 +1,12 @@
 # Publish Directly to Medium.com with [Kintone Web Database](https://kintone.dev)
+<!-- markdownlint-disable MD026-->
 
-![Banner Image](./docs/images/banner.gif)
+![banner.png](./docs/images/banner.png)
 
 Thank you for attending our **Kintone x Medium** workshop!  
 Check out [meetup.com/Kintone-Developers](https://www.meetup.com/Kintone-Developers/) to check out all of our upcoming events!
 
-## Outline <!-- omit in toc --> <!-- markdownlint-disable MD007 --><!-- markdownlint-disable MD026 -->
-
+## Outline <!-- omit in toc -->
 * [Get Started](#get-started)
 * [Overview of the Repo](#overview-of-the-repo)
 * [Kintone Web Database & Credentials](#kintone-web-database--credentials)
@@ -15,12 +15,14 @@ Check out [meetup.com/Kintone-Developers](https://www.meetup.com/Kintone-Develop
 * [Create a `.env` file](#create-a-env-file)
 * [Input the App ID](#input-the-app-id)
 * [Build the customization](#build-the-customization)
+* [Quick Dive into TypeScript & Vite](#quick-dive-into-typescript--vite)
+  * [What is TypeScript?](#what-is-typescript)
+  * [What is Vite?](#what-is-vite)
+  * [Want to learn more?](#want-to-learn-more)
 * [Debugging - Let's Fix Those Problems!](#debugging---lets-fix-those-problems)
   * [Errors related to .env](#errors-related-to-env)
   * [`npm install` command is not working](#npm-install-command-is-not-working)
   * ["npm run upload" failed?](#npm-run-upload-failed)
-
-<!-- markdownlint-enable MD007 -->
 
 ## Get Started
 
@@ -72,12 +74,12 @@ npm install -g @kintone/customize-uploader
 ### 🚀 Getting your FREE Kintone Database
 
 [bit.ly/KDP_NEW](http://bit.ly/KDP_NEW)
-  * ⚡ Only use lowercase, numbers, & hyphens in your subdomain
-  * ⚠ Do not use uppercase nor special characters
+* ⚡ Only use lowercase, numbers, & hyphens in your subdomain
+* ⚠ Do not use uppercase nor special characters
 
 |                                             |                                             |
 | ------------------------------------------- | ------------------------------------------- |
-| ![Banner Image](./docs/images/SignUp-1.png) | ![Banner Image](./docs/images/SignUp-2.png) |
+| ![SignUp-1.png](./docs/images/SignUp-1.png) | ![SignUp-2.png](./docs/images/SignUp-2.png) |
 
 ---
 
@@ -126,7 +128,7 @@ VITE_AUTHOR_ID="12345abcde67890"
 VITE_API_TOKEN="09876edcba54321"
 ```
 
-⚠️ DO NOT DELETE THE [.env.example](.env.example) FILE!  
+### ⚠️ DO NOT DELETE THE [.env.example](.env.example) FILE!  <!-- omit in toc -->
 [.env.example](.env.example) is used by env-cmd to verify that `.env` file is correctly configured.
 
 ---
@@ -147,10 +149,10 @@ So to ensure the file gets uploaded to the correct App, replace the `23` with yo
 
 **What is my App ID?** 🤔  
 
-  * Go to your Kintone App & grab the URL
-  * Kintone App's URL follows this template: `https://<SUBDOMAIN>.kintone.com/k/<App ID>/show#record=<RECORD ID>`
-  * Grab the number between the `/k/`
-  * Example: `https://example.kintone.com/k/1/` -> The App's ID is `1`
+* Go to your Kintone App & grab the URL
+* Kintone App's URL follows this template: `https://<SUBDOMAIN>.kintone.com/k/<App ID>/show#record=<RECORD ID>`
+* Grab the number between the `/k/`
+* Example: `https://example.kintone.com/k/1/` -> The App's ID is `1`
 
 ---
 
@@ -171,6 +173,61 @@ Good luck coding!
 
 ---
 
+## Quick Dive into TypeScript & Vite
+
+### What is TypeScript?
+TypeScript (TS) is a _flavor_ of JavaScript (JS)
+* Existing JS code works inside TS files
+
+TypeScript layers a **type system** on top of JavaScript
+* A type system simply enforces the [JS types](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#javascript_types) set per variable to avoid bugs
+* Set types explicitly or implicitly
+
+  | Explicit                                                                                | Implicit                          |
+  | --------------------------------------------------------------------------------------- | --------------------------------- |
+  | using `:` or [interfaces](https://www.typescriptlang.org/docs/handbook/interfaces.html) | using initial value               |
+  | `interface User {  name: string;  id: number;  }`                                       | `let helloWorld = "Hello World";` |
+
+Convert a TypeScript file to a JavaScript file by either:
+* `tsc` command (e.g., `tsc index.ts`)
+* JS Bundlers (e.g. [Webpack](https://webpack.js.org/), [Vite](https://vitejs.dev/))
+
+#### Main benefits of TypeScript  <!-- omit in toc -->
+* Type system forces programmers to be consistent -> Great when you have 1+ dev team
+* Avoids [TypeErrors](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError) (when a value is not of the expected type)
+* Compile TS code down to a JS version you want
+* Works well with IntelliSense -> Better auto-complete function
+
+### What is Vite?
+* Vite is a fast JavaScript **build tool** for building frontend web apps
+* Vite is opinionated and comes with default settings
+  * Also, highly extensible via Vite's Plugin API and JavaScript API
+* Similar to Webpack but _faster_
+  * Vite uses [native ES Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) in the browser to load the code faster
+
+#### Main benefits of Vite  <!-- omit in toc -->
+* Better development experience
+  * Quickly serve code to localhost with native ESM
+  * Hot Module Replacement (HMR) that stays fast regardless of app size.
+* Bundle code for production using [Rollup](https://rollupjs.org/guide/en/)
+* JSX and TSX are supported by default
+* Works super fast with TypeScript
+  * Vite supports importing TS files out of the box
+  * Vite does not perform type checking making it 20x ~ 30x faster
+
+### Want to learn more?
+* [Vite in 100 Seconds - YouTube](https://www.youtube.com/watch?v=KCrXgy8qtjM)
+* [Getting Started | Vite](https://vitejs.dev/guide/)
+* [Why Vite | Vite](https://vitejs.dev/guide/why.html)
+* [Module Bundlers Explained... Webpack, Rollup, Parcel, and Snowpack - YouTube](https://www.youtube.com/watch?v=5IG4UmULyoA)
+* [TypeScript in 100 Seconds - YouTube](https://www.youtube.com/watch?v=zQnBQ4tB3ZA)
+* [TypeScript for the New Programmer](https://www.typescriptlang.org/docs/handbook/typescript-from-scratch.html)
+* [TypeScript for JavaScript Programmers](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html)
+* [TypeScript Playground - Types vs Interfaces](https://www.typescriptlang.org/play?#code/JYOwLgpgTgZghgYwgAgKoGdrIN4ChnIhwC2EAXMumFKAOYDc+ywAJhSAK7EBG0jAvkA)
+* [Differences Between Type Aliases and Interfaces](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#differences-between-type-aliases-and-interfaces)
+
+---
+
 ## Debugging - Let's Fix Those Problems!
 
 Here is a rundown of common problems that may occur & their solutions!
@@ -179,22 +236,22 @@ Here is a rundown of common problems that may occur & their solutions!
 
 If you get one of the following error messages:  
 
-  * `Failed to find .env file at default paths: [./.env,./.env.js,./.env.json]`
-  * `Failed to upload JavaScript/CSS files`
-  * `KintoneRestAPIError: [520] [CB_WA01] Password authentication failed...`
+* `Failed to find .env file at default paths: [./.env,./.env.js,./.env.json]`
+* `Failed to upload JavaScript/CSS files`
+* `KintoneRestAPIError: [520] [CB_WA01] Password authentication failed...`
 
 Then please verify that
-  * your `.env` file has been correctly configured
-  * your username and password for your Kintone account is correct
-  * you have not modified the `.env.example`
+* your `.env` file has been correctly configured
+* your username and password for your Kintone account is correct
+* you have not modified the `.env.example`
 
 ### `npm install` command is not working
 
 1. Verify the Node.js & npm versions **inside** the `publish-to-medium` folder
 2. Just installed Node.js? Verify you configured Node.js versions **inside** the `publish-to-medium` folder
 
-  * Mac: `nodenv local 14.5.0`
-  * Windows: `nvm use 14.5.0`
+* Mac: `nodenv local 14.5.0`
+* Windows: `nvm use 14.5.0`
 
 ### "npm run upload" failed?
 
@@ -202,17 +259,17 @@ _@kintone/customize-uploader not working?_ Let's try the following:
 
 (1) Verify that customize uploader was installed globally
 
-  * `npm install -g @kintone/customize-uploader`
+* `npm install -g @kintone/customize-uploader`
 
 (2) Verify that the .env login info is correct (including the password)
 
-  * ⚠️ Make sure your login info is inside `.env` file & **NOT** `.env.example` file!
-  * ⚠️ Verify that KINTONE_BASE_URL input is correctly formatted:
-    * ✅ Correct Format: `https://example.kintone.com`
-    * ❌ Incorrect Format: `https://example.kintone.com/` or `example.kintone.com`
-  * ⚠️ Re-run the npm commands after saving the .env file
-  * ⚙️ Details: [Create a `.env` file](#create-a-env-file)
+* ⚠️ Make sure your login info is inside `.env` file & **NOT** `.env.example` file!
+* ⚠️ Verify that KINTONE_BASE_URL input is correctly formatted:
+  * ✅ Correct Format: `https://example.kintone.com`
+  * ❌ Incorrect Format: `https://example.kintone.com/` or `example.kintone.com`
+* ⚠️ Re-run the npm commands after saving the .env file
+* ⚙️ Details: [Create a `.env` file](#create-a-env-file)
 
 (3) Verify your customize-manifest.json was updated with the correct App ID
 
-  * ⚙️ Details: [Input the App ID](#input-the-app-id)
+* ⚙️ Details: [Input the App ID](#input-the-app-id)
