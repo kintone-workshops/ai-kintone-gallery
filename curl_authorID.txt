@@ -1,3 +1,9 @@
 ⚡ Replace VITE_API_TOKEN with your Medium API token!
 
 curl -H "Authorization: Bearer VITE_API_TOKEN" https://api.medium.com/v1/me | json_pp
+
+= = = = = = = =
+
+⚠️ If you get an error when running the command above, try without "| json_pp" like below:
+
+curl -H "Authorization: Bearer VITE_API_TOKEN" https://api.medium.com/v1/me
