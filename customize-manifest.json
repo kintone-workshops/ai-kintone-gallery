@@ -1,5 +1,5 @@
 {
-    "app": "2",
+    "app": "52",
     "scope": "ALL",
     "desktop": {
         "js": ["dist/KintoneCustomization.js"],
