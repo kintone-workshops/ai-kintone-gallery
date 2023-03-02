@@ -7,22 +7,23 @@ Thank you for attending our **Kintone x Medium** workshop!
 Check out [meetup.com/Kintone-Developers](https://www.meetup.com/Kintone-Developers/) to check out all of our upcoming events!
 
 ## Outline <!-- omit in toc -->
-* [Get Started](#get-started)
-* [Overview of the Repo](#overview-of-the-repo)
-* [Kintone Web Database & Credentials](#kintone-web-database--credentials)
-  * [🚀 Getting your FREE Kintone Database](#-getting-your-free-kintone-database)
-* [Create a Kintone Web Database App](#create-a-kintone-web-database-app)
-* [Create a `.env` file](#create-a-env-file)
-* [Input the App ID](#input-the-app-id)
-* [Build the customization](#build-the-customization)
-* [Quick Dive into TypeScript & Vite](#quick-dive-into-typescript--vite)
-  * [What is TypeScript?](#what-is-typescript)
-  * [What is Vite?](#what-is-vite)
-  * [Want to learn more?](#want-to-learn-more)
-* [Debugging - Let's Fix Those Problems!](#debugging---lets-fix-those-problems)
-  * [Errors related to .env](#errors-related-to-env)
-  * [`npm install` command is not working](#npm-install-command-is-not-working)
-  * ["npm run upload" failed?](#npm-run-upload-failed)
+- [Publish Directly to Medium.com with Kintone Web Database](#publish-directly-to-mediumcom-with-kintone-web-database)
+  - [Get Started](#get-started)
+  - [Overview of the Repo](#overview-of-the-repo)
+  - [Kintone Web Database \& Credentials](#kintone-web-database--credentials)
+    - [🚀 Getting your FREE Kintone Database](#-getting-your-free-kintone-database)
+  - [Create a Kintone Web Database App](#create-a-kintone-web-database-app)
+  - [Create a `.env` file](#create-a-env-file)
+  - [Input the App ID](#input-the-app-id)
+  - [Build the customization](#build-the-customization)
+  - [Quick Dive into Javascript \& Vite](#quick-dive-into-javascript--vite)
+    - [What is Javascript?](#what-is-javascript)
+    - [What is Vite?](#what-is-vite)
+    - [Want to learn more?](#want-to-learn-more)
+  - [Debugging - Let's Fix Those Problems!](#debugging---lets-fix-those-problems)
+    - [Errors related to .env](#errors-related-to-env)
+    - [`npm install` command is not working](#npm-install-command-is-not-working)
+    - ["npm run upload" failed?](#npm-run-upload-failed)
 
 ## Get Started
 
@@ -60,9 +61,9 @@ npm install -g @kintone/customize-uploader
 | [src/style.css](src/style.css)                               | Styling for the project can go here                                          |                        |
 | [src/requests/post_api.ts](src/requests/post_api.ts)         | The logic of the Medium.com POST API call                                    |                        |
 |                                                              |                                                                              |                        |
-| [fields.d.ts](fields.d.ts)                                   | Various type definitions for our typescript / Kintone environment            |                        |
-| [tsconfig.json](tsconfig.json)                               | Various settings for how typescript behaves                                  |                        |
-| [vite.config.js](vite.config.js)                             | Various settings for how and where our typescript compiles to                |                        |
+| [fields.d.ts](fields.d.ts)                                   | Various type definitions for our Javascript / Kintone environment            |                        |
+| [tsconfig.json](tsconfig.json)                               | Various settings for how Javascript behaves                                  |                        |
+| [vite.config.js](vite.config.js)                             | Various settings for how and where our Javascript compiles to                |                        |
 |                                                              |                                                                              |                        |
 | [slides.pdf](slides.pdf)                                     | Workshop presentation's slide deck                                           |                        |
 | [docs/workshop-steps.md](docs/workshop-steps.md)             | Step-by-step guide that we do during the workshop                            |                        |
@@ -160,7 +161,7 @@ So to ensure the file gets uploaded to the correct App, replace the `23` with yo
 
 1. Build the customization in the following files inside `./src/`
    * `main.ts`, `/requests/post_api.ts`, etc.
-2. Run `npm run build` to compile your Typescript into Javascript output in the `/dist` folder.
+2. Run `npm run build` to compile your Javascript into Javascript output in the `/dist` folder.
 3. Run `npm run upload` to upload the compiled files to your Kintone subdomain.
    * To directly upload the Kintone customization, use `./dist/KintoneCustomization.js`.
    * For more details, refer to [Customizing an App with JavaScript and CSS](https://get.kintone.help/k/en/user/app_settings/js_customize.html)
@@ -173,26 +174,26 @@ Good luck coding!
 
 ---
 
-## Quick Dive into TypeScript & Vite
+## Quick Dive into Javascript & Vite
 
-### What is TypeScript?
-TypeScript (TS) is a _flavor_ of JavaScript (JS)
+### What is Javascript?
+Javascript (TS) is a _flavor_ of JavaScript (JS)
 * Existing JS code works inside TS files
 
-TypeScript layers a **type system** on top of JavaScript
+Javascript layers a **type system** on top of JavaScript
 * A type system simply enforces the [JS types](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#javascript_types) set per variable to avoid bugs
 * Set types explicitly or implicitly
 
   | Explicit                                                                                | Implicit                          |
   | --------------------------------------------------------------------------------------- | --------------------------------- |
-  | using `:` or [interfaces](https://www.typescriptlang.org/docs/handbook/interfaces.html) | using initial value               |
+  | using `:` or [interfaces](https://www.Javascriptlang.org/docs/handbook/interfaces.html) | using initial value               |
   | `interface User {  name: string;  id: number;  }`                                       | `let helloWorld = "Hello World";` |
 
-Convert a TypeScript file to a JavaScript file by either:
+Convert a Javascript file to a JavaScript file by either:
 * `tsc` command (e.g., `tsc index.ts`)
 * JS Bundlers (e.g. [Webpack](https://webpack.js.org/), [Vite](https://vitejs.dev/))
 
-#### Main benefits of TypeScript  <!-- omit in toc -->
+#### Main benefits of Javascript  <!-- omit in toc -->
 * Type system forces programmers to be consistent -> Great when you have 1+ dev team
 * Avoids [TypeErrors](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError) (when a value is not of the expected type)
 * Compile TS code down to a JS version you want
@@ -211,7 +212,7 @@ Convert a TypeScript file to a JavaScript file by either:
   * Hot Module Replacement (HMR) that stays fast regardless of app size.
 * Bundle code for production using [Rollup](https://rollupjs.org/guide/en/)
 * JSX and TSX are supported by default
-* Works super fast with TypeScript
+* Works super fast with Javascript
   * Vite supports importing TS files out of the box
   * Vite does not perform type checking making it 20x ~ 30x faster
 
@@ -220,11 +221,11 @@ Convert a TypeScript file to a JavaScript file by either:
 * [Getting Started | Vite](https://vitejs.dev/guide/)
 * [Why Vite | Vite](https://vitejs.dev/guide/why.html)
 * [Module Bundlers Explained... Webpack, Rollup, Parcel, and Snowpack - YouTube](https://www.youtube.com/watch?v=5IG4UmULyoA)
-* [TypeScript in 100 Seconds - YouTube](https://www.youtube.com/watch?v=zQnBQ4tB3ZA)
-* [TypeScript for the New Programmer](https://www.typescriptlang.org/docs/handbook/typescript-from-scratch.html)
-* [TypeScript for JavaScript Programmers](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html)
-* [TypeScript Playground - Types vs Interfaces](https://www.typescriptlang.org/play?#code/JYOwLgpgTgZghgYwgAgKoGdrIN4ChnIhwC2EAXMumFKAOYDc+ywAJhSAK7EBG0jAvkA)
-* [Differences Between Type Aliases and Interfaces](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#differences-between-type-aliases-and-interfaces)
+* [Javascript in 100 Seconds - YouTube](https://www.youtube.com/watch?v=zQnBQ4tB3ZA)
+* [Javascript for the New Programmer](https://www.Javascriptlang.org/docs/handbook/Javascript-from-scratch.html)
+* [Javascript for JavaScript Programmers](https://www.Javascriptlang.org/docs/handbook/Javascript-in-5-minutes.html)
+* [Javascript Playground - Types vs Interfaces](https://www.Javascriptlang.org/play?#code/JYOwLgpgTgZghgYwgAgKoGdrIN4ChnIhwC2EAXMumFKAOYDc+ywAJhSAK7EBG0jAvkA)
+* [Differences Between Type Aliases and Interfaces](https://www.Javascriptlang.org/docs/handbook/2/everyday-types.html#differences-between-type-aliases-and-interfaces)
 
 ---
 

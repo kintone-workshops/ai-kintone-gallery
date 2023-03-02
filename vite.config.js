@@ -6,7 +6,7 @@ export default {
     outDir: path.resolve(__dirname, './dist'),
     rollupOptions: {
       input: {
-        main: path.resolve(__dirname, 'src/main.ts')
+        main: path.resolve(__dirname, 'src/main.js')
       },
       output: {
         entryFileNames: `KintoneCustomization.js`,
