@@ -2,6 +2,7 @@ import './style.css';
 
 (function () {
   'use strict';
+  console.log("test1")
   kintone.events.on('app.record.detail.show', function (event) {
 
     const postBody = {
@@ -13,21 +14,19 @@ import './style.css';
 
     const generateImages = async (postBody) => {
 
-      const postUrl = `https://api.openai.com/v1/images/generations`; // The URL for our request
       const apiToken = import.meta.env.VITE_OPEN_AI_TOKEN; // Our Open AI API token
+      console.log(apiToken)
+      const postUrl = `https://api.openai.com/v1/images/generations`; // The URL for our request
       const headers = {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
         'Authorization': 'Bearer ' + apiToken
       }
-
       // We use kintone.proxy in order to get around CORS errors.
       // This sends a POST request to the Open AI DALL-E API.
       // When we get a response we designate it as "response" and then log it to the console.
       kintone.proxy(postUrl, 'POST', headers, postBody).then(function (response) {
-        console.log(response[1]);
-        console.log(JSON.parse(response[0]));
-        console.log(response[2]);
+        console.log(response);
       })
     };
 

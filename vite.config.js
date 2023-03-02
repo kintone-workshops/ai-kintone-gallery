@@ -1,18 +1,25 @@
-import path from 'path'
+// vite.config.js
+import { resolve } from 'path'
+import { defineConfig } from 'vite'
 
-export default {
-  root: path.resolve(__dirname, 'src'),
+export default defineConfig({
   build: {
-    outDir: path.resolve(__dirname, './dist'),
+    lib: {
+      // Could also be a dictionary or array of multiple entry points
+      entry: resolve(__dirname, 'src/main.js'),
+      name: 'MyLib',
+      // the proper extensions will be added
+      fileName: 'KintoneCustomization',
+    },
     rollupOptions: {
-      input: {
-        main: path.resolve(__dirname, 'src/main.js')
-      },
+      // make sure to externalize deps that shouldn't be bundled
+      // into your library
       output: {
-        entryFileNames: `KintoneCustomization.js`,
-        assetFileNames: `[name].[ext]`,
-        dir: './dist',
+        // Provide global variables to use in the UMD build
+        // for externalized deps
+        globals: {
+        },
       },
-    }
-  }
-}
+    },
+  },
+})

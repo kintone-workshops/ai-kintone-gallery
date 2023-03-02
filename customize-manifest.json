@@ -2,8 +2,8 @@
     "app": "52",
     "scope": "ALL",
     "desktop": {
-        "js": ["dist/KintoneCustomization.js"],
-        "css": ["dist/main.css"]
+        "js": ["dist/KintoneCustomization.umd.js"],
+        "css": ["dist/style.css"]
     },
     "mobile": {
         "js": [],
