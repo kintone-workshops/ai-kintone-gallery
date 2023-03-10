@@ -3,7 +3,7 @@
     "scope": "ALL",
     "desktop": {
         "js": ["dist/KintoneCustomization.umd.js"],
-        "css": ["dist/style.css"]
+        "css": []
     },
     "mobile": {
         "js": [],
