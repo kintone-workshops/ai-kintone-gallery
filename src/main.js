@@ -8,7 +8,7 @@ import updateKintone from './requests/kintonePUTRequest';
   kintone.events.on('app.record.detail.show', function (event) {
 
     //b64→Blob形式変換用Func
-    const b64toBlob = (base64, type = 'data:image/png;base64') =>
+    const b64toBlob = (base64, type = 'image/png') =>
       fetch(`data:${type};base64,${base64}`).then(res => res.blob())
 
     //AI APIに投げるテキスト
@@ -46,9 +46,11 @@ import updateKintone from './requests/kintonePUTRequest';
     generateButton.onclick = () => {
       // We need to call our API POST function with request's body... 🧐
       generateImages(postBody).then(async (result) => {
-        let imageCreatedDateTime = new Date(result.created * 1000);
+        let test = new Date().getTimezoneOffset() * 60000;
+        console.log(test)
+        let imageCreatedDateTime = new Date(result.created * 1000).toISOString()
         let imageBlob = await b64toBlob(result.data[0].b64_json)
-        let file = new File([imageBlob], "test.png", {type: 'image/png', lastModified: imageCreatedDateTime})
+        let file = new File([imageBlob], "test.png", { type: 'image/png', lastModified: imageCreatedDateTime })
         console.log(imageCreatedDateTime);
         console.log(event.appId);
         console.log(file)
