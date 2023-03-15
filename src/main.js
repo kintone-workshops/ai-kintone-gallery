@@ -7,9 +7,40 @@ import updateKintone from './requests/kintonePUTRequest';
 
   kintone.events.on('app.record.detail.show', function (event) {
 
-    //b64→Blob形式変換用Func
-    const b64toBlob = (base64, type = 'image/png') =>
-      fetch(`data:${type};base64,${base64}`).then(res => res.blob())
+    const b64ToArrayBuffer = (base64) => {
+      var binary_string = window.atob(base64);
+      console.log("binary string");
+      console.log(binary_string)
+      var len = binary_string.length;
+      var bytes = new Uint8Array(len);
+      for (var i = 0; i < len; i++) {
+        bytes[i] = binary_string.charCodeAt(i);
+      }
+      return bytes.buffer;
+    }
+
+    const boundary = '---------------------------20111107kintone20111107cybozucom';
+
+    let metaData = `--${boundary}\r\n
+    Content-Disposition: form-data; name="file"; filename="image.png"\r\n
+    Content-Type: 'application/octet-stream\r\n\r\n`
+
+    const buildArrayBufferFromUnit8 = (str) => {
+      const length = str.length;
+      const buffer = new ArrayBuffer(length);
+      const bufView = new Uint8Array(buffer);
+      Array(length).fill(null).forEach((_, i) => {
+        bufView[i] = str.charCodeAt(i);
+      });
+      return buffer;
+    };
+
+    const appendBuffer = (buffer1, buffer2) => {
+      const uint8Array = new Uint8Array(buffer1.byteLength + buffer2.byteLength);
+      uint8Array.set(new Uint8Array(buffer1), 0);
+      uint8Array.set(new Uint8Array(buffer2), buffer1.byteLength);
+      return uint8Array.buffer;
+    };
 
     //AI APIに投げるテキスト
     const promptBuilder = () => {
@@ -46,11 +77,20 @@ import updateKintone from './requests/kintonePUTRequest';
     generateButton.onclick = () => {
       // We need to call our API POST function with request's body... 🧐
       generateImages(postBody).then(async (result) => {
-        let test = new Date().getTimezoneOffset() * 60000;
-        console.log(test)
         let imageCreatedDateTime = new Date(result.created * 1000).toISOString()
-        let imageBlob = await b64toBlob(result.data[0].b64_json)
-        let file = new File([imageBlob], "test.png", { type: 'image/png', lastModified: imageCreatedDateTime })
+        let arrayBufferBlob = await b64ToArrayBuffer(result.data[0].b64_json);
+        console.log("array buffer blob")
+        console.log(arrayBufferBlob);
+        let arrayBufferMeta = await buildArrayBufferFromUnit8(metaData)
+        console.log("array buffer meta")
+        console.log(arrayBufferMeta);
+        let rawBlob = await appendBuffer(arrayBufferBlob, arrayBufferMeta)
+        console.log(rawBlob)
+        let finalBuffer = appendBuffer(rawBlob, buildArrayBufferFromUnit8(
+          `\r\n--${boundary}--`
+        ));
+
+        let file = new File([finalBuffer], "test.png", { type: 'image/png' })
         console.log(imageCreatedDateTime);
         console.log(event.appId);
         console.log(file)
