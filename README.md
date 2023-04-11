@@ -1,47 +1,99 @@
-# Publish Directly to Medium.com with [Kintone Web Database](https://kintone.dev)
-<!-- markdownlint-disable MD026-->
+# Build an OpenAI Art Generator & Gallery - JavaScript Workshop
 
-![banner.png](./docs/images/banner.png)
+<!-- TODO: Delete once repo is ready -->
 
-Thank you for attending our **Kintone x Medium** workshop!  
-Check out [meetup.com/Kintone-Developers](https://www.meetup.com/Kintone-Developers/) to check out all of our upcoming events!
+## 🚧 This repo is a work in progress! 🚧 <!-- omit in toc -->
+* Thank you for visiting! This repo is a work in progress and will be updated soon!
+* Be sure to join our [Kintone Developer Meetup](https://www.meetup.com/kintone-developers/) to get notified for all future events!
+
+---
+
+![banner.png](./docs/img/banner.png)
+
+Let's create an AI Art Generator using [OpenAI's DALL·E 2](https://openai.com/product/dall-e-2) and a gallery using the [Kintone web database](https://kintone.dev/en/) together!
 
 ## Outline <!-- omit in toc -->
-- [Publish Directly to Medium.com with Kintone Web Database](#publish-directly-to-mediumcom-with-kintone-web-database)
-  - [Get Started](#get-started)
-  - [Overview of the Repo](#overview-of-the-repo)
-  - [Kintone Web Database \& Credentials](#kintone-web-database--credentials)
-    - [🚀 Getting your FREE Kintone Database](#-getting-your-free-kintone-database)
-  - [Create a Kintone Web Database App](#create-a-kintone-web-database-app)
-  - [Create a `.env` file](#create-a-env-file)
-  - [Input the App ID](#input-the-app-id)
-  - [Build the customization](#build-the-customization)
-  - [Quick Dive into Javascript \& Vite](#quick-dive-into-javascript--vite)
-    - [What is Javascript?](#what-is-javascript)
-    - [What is Vite?](#what-is-vite)
-    - [Want to learn more?](#want-to-learn-more)
-  - [Debugging - Let's Fix Those Problems!](#debugging---lets-fix-those-problems)
-    - [Errors related to .env](#errors-related-to-env)
-    - [`npm install` command is not working](#npm-install-command-is-not-working)
-    - ["npm run upload" failed?](#npm-run-upload-failed)
+* [Completed Project](#completed-project)
+* [Get Started](#get-started)
+* [Get Your Free Kintone Database](#get-your-free-kintone-database)
+* [Workshop Slides](#workshop-slides)
+* [Overview of the Repo](#overview-of-the-repo)
+* [Kintone Web Database \& Credentials](#kintone-web-database--credentials)
+  * [🚀 Getting your FREE Kintone Database](#-getting-your-free-kintone-database)
+* [Create a Kintone Web Database App](#create-a-kintone-web-database-app)
+* [Create a `.env` file](#create-a-env-file)
+* [Input the App ID](#input-the-app-id)
+* [Build the customization](#build-the-customization)
+* [Quick Dive into JavaScript \& Vite](#quick-dive-into-javascript--vite)
+  * [What is JavaScript?](#what-is-javascript)
+  * [What is Vite?](#what-is-vite)
+  * [Want to learn more?](#want-to-learn-more)
+* [Debugging](#debugging)
+  * [Errors related to .env](#errors-related-to-env)
+  * [Errors related to kintone-customize-uploader](#errors-related-to-kintone-customize-uploader)
+  * [`npm install` command is not working](#npm-install-command-is-not-working)
+  * [`npm run upload` failed?](#npm-run-upload-failed)
+  * [Uncaught Error: Target container is not a DOM element](#uncaught-error-target-container-is-not-a-dom-element)
+  * [Not seeing a highlighted `TODO:`?](#not-seeing-a-highlighted-todo)
+* [Completed Code](#completed-code)
+
+## Completed Project
+
+![Result.gif](docs/img/Result.gif)
 
 ## Get Started
 
-First, let's clone the [sean-kintone/publish-to-medium](https://github.com/sean-kintone/publish-to-medium) repo and go inside the folder.
-
-Once you are inside the folder, let's install the dependencies!
+First, clone the [kintone-workshops/ai-kintone-gallery](https://github.com/kintone-workshops/ai-kintone-gallery) repo!  🚀  
+Then go inside the folder.
 
 ```shell
 cd Downloads
 
-git clone https://github.com/sean-kintone/publish-to-medium
+git clone https://github.com/kintone-workshops/ai-kintone-gallery
 
-cd publish-to-medium
+cd ai-kintone-gallery
 
 npm install
 
 npm install -g @kintone/customize-uploader
 ```
+
+⚡ **Notes** ⚡  
+* React requires **Node >= 14.0.0** & **npm >= 5.6**  
+* Check the versions inside the `ai-kintone-gallery` folder:
+  * `node -v`
+  * `npm -v`
+* Not the correct versions or confused? 🤔 → Check out the [Guide on Installing Node.js & npm](docs/Install_NodeJS_npm.md) Doc
+
+⚡ Note: Please ignore the package deprecation warnings ⚡
+
+🔎 The `npm install` command installs the required dependencies defined in the package.json files and generates a node_modules folder with the installed modules.
+
+---
+
+Open the `ai-kintone-gallery` folder in [VS Code](https://code.visualstudio.com/docs/getstarted/tips-and-tricks#_command-line) as well:
+
+```shell
+code .
+```
+
+## Get Your Free Kintone Database
+
+[kintone.dev/new/](http://kintone.dev/new/)
+* ⚡ Only use lowercase, numbers, & hyphens in your subdomain
+* ⚠ Do not use uppercase or special characters
+
+|                                                                                         |                                                                                                                   |
+| --------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| ![Step 1: Fill out the Kintone Developer license sign-up form](./docs/img/SignUp-1.png) | ![Step 2: Email address will be the login name & the subdomain will be your unique link](./docs/img/SignUp-2.png) |
+
+---
+
+## Workshop Slides
+
+Check out the [slides.pdf](./slides.pdf) file for the workshop slides!
+
+---
 
 ## Overview of the Repo
 
@@ -61,9 +113,9 @@ npm install -g @kintone/customize-uploader
 | [src/style.css](src/style.css)                               | Styling for the project can go here                                          |                        |
 | [src/requests/post_api.ts](src/requests/post_api.ts)         | The logic of the Medium.com POST API call                                    |                        |
 |                                                              |                                                                              |                        |
-| [fields.d.ts](fields.d.ts)                                   | Various type definitions for our Javascript / Kintone environment            |                        |
-| [tsconfig.json](tsconfig.json)                               | Various settings for how Javascript behaves                                  |                        |
-| [vite.config.js](vite.config.js)                             | Various settings for how and where our Javascript compiles to                |                        |
+| [fields.d.ts](fields.d.ts)                                   | Various type definitions for our JavaScript / Kintone environment            |                        |
+| [tsconfig.json](tsconfig.json)                               | Various settings for how JavaScript behaves                                  |                        |
+| [vite.config.js](vite.config.js)                             | Various settings for how and where our JavaScript compiles to                |                        |
 |                                                              |                                                                              |                        |
 | [slides.pdf](slides.pdf)                                     | Workshop presentation's slide deck                                           |                        |
 | [docs/workshop-steps.md](docs/workshop-steps.md)             | Step-by-step guide that we do during the workshop                            |                        |
@@ -74,13 +126,13 @@ npm install -g @kintone/customize-uploader
 
 ### 🚀 Getting your FREE Kintone Database
 
-[bit.ly/KDP_NEW](http://bit.ly/KDP_NEW)
+[kintone.dev/new](http://kintone.dev/new/)
 * ⚡ Only use lowercase, numbers, & hyphens in your subdomain
 * ⚠ Do not use uppercase nor special characters
 
 |                                             |                                             |
 | ------------------------------------------- | ------------------------------------------- |
-| ![SignUp-1.png](./docs/images/SignUp-1.png) | ![SignUp-2.png](./docs/images/SignUp-2.png) |
+| ![SignUp-1.png](./docs/img/SignUp-1.png) | ![SignUp-2.png](./docs/img/SignUp-2.png) |
 
 ---
 
@@ -88,9 +140,9 @@ npm install -g @kintone/customize-uploader
 
 Let's create a Kintone App with an article title, and text to send to Medium!
 
-![./docs/images/kintone-app-setup.gif](./docs/images/kintone-app-setup.gif)
+![./docs/img/kintone-app-setup.gif](./docs/img/kintone-app-setup.gif)
 
-Kintone makes it easy to setup a web database with API routes for getting information. The .gif above is one minute in length!
+Kintone makes setting up a web database with API routes for getting information easy. The .gif above is one minute in length!
 
 Here are the required fields & their configurations for our workshop:
 
@@ -117,7 +169,7 @@ Confused? 🤔 → Check out the [How to Create a Kintone Database App](https://
 
 ## Create a `.env` file
 
-Using the [.env.example](.env.example) file as a temple, create a `.env` file that will contain your login credentials and the Kintone App's View ID.
+Using the [.env.example](.env.example) file as a temple, create a `.env` file containing your login credentials and the Kintone App's View ID.
 
 Here is what your `.env` might look like:
 
@@ -140,13 +192,13 @@ The Kintone Customize Uploader uses [customize-manifest.json](customize-manifest
 
 ```json
 {
-    "app": "23",
+    "app": "1",
     "scope": "ALL",
     ...
 }
 ```
 
-So to ensure the file gets uploaded to the correct App, replace the `23` with your App ID.
+So to ensure the file gets uploaded to the correct App, replace the `1` with your App ID.
 
 **What is my App ID?** 🤔  
 
@@ -161,12 +213,12 @@ So to ensure the file gets uploaded to the correct App, replace the `23` with yo
 
 1. Build the customization in the following files inside `./src/`
    * `main.ts`, `/requests/post_api.ts`, etc.
-2. Run `npm run build` to compile your Javascript into Javascript output in the `/dist` folder.
+2. Run `npm run build` to compile your JavaScript into JavaScript output in the `/dist` folder.
 3. Run `npm run upload` to upload the compiled files to your Kintone subdomain.
    * To directly upload the Kintone customization, use `./dist/KintoneCustomization.js`.
    * For more details, refer to [Customizing an App with JavaScript and CSS](https://get.kintone.help/k/en/user/app_settings/js_customize.html)
 4. Run `npm run start`
-   * This will trigger webpack & kintone-customize-uploader to run while watching `./src/main.ts` for changes
+   * This will trigger Webpack & kintone-customize-uploader to run while watching `./src/main.ts` for changes
    * Input Kintone credentials if asked
 5. Refresh the Kintone App to see the changes!
 
@@ -174,26 +226,26 @@ Good luck coding!
 
 ---
 
-## Quick Dive into Javascript & Vite
+## Quick Dive into JavaScript & Vite
 
-### What is Javascript?
-Javascript (TS) is a _flavor_ of JavaScript (JS)
+### What is JavaScript?
+JavaScript (TS) is a _flavor_ of JavaScript (JS)
 * Existing JS code works inside TS files
 
-Javascript layers a **type system** on top of JavaScript
-* A type system simply enforces the [JS types](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#javascript_types) set per variable to avoid bugs
+JavaScript layers a **type system** on top of JavaScript
+* A type system simply enforces the [JS types](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#JavaScript_types) set per variable to avoid bugs
 * Set types explicitly or implicitly
 
   | Explicit                                                                                | Implicit                          |
   | --------------------------------------------------------------------------------------- | --------------------------------- |
-  | using `:` or [interfaces](https://www.Javascriptlang.org/docs/handbook/interfaces.html) | using initial value               |
+  | using `:` or [interfaces](https://www.JavaScriptlang.org/docs/handbook/interfaces.html) | using initial value               |
   | `interface User {  name: string;  id: number;  }`                                       | `let helloWorld = "Hello World";` |
 
-Convert a Javascript file to a JavaScript file by either:
+Convert a JavaScript file to a JavaScript file by either:
 * `tsc` command (e.g., `tsc index.ts`)
 * JS Bundlers (e.g. [Webpack](https://webpack.js.org/), [Vite](https://vitejs.dev/))
 
-#### Main benefits of Javascript  <!-- omit in toc -->
+#### Main benefits of JavaScript  <!-- omit in toc -->
 * Type system forces programmers to be consistent -> Great when you have 1+ dev team
 * Avoids [TypeErrors](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError) (when a value is not of the expected type)
 * Compile TS code down to a JS version you want
@@ -212,7 +264,7 @@ Convert a Javascript file to a JavaScript file by either:
   * Hot Module Replacement (HMR) that stays fast regardless of app size.
 * Bundle code for production using [Rollup](https://rollupjs.org/guide/en/)
 * JSX and TSX are supported by default
-* Works super fast with Javascript
+* Works super fast with JavaScript
   * Vite supports importing TS files out of the box
   * Vite does not perform type checking making it 20x ~ 30x faster
 
@@ -221,15 +273,16 @@ Convert a Javascript file to a JavaScript file by either:
 * [Getting Started | Vite](https://vitejs.dev/guide/)
 * [Why Vite | Vite](https://vitejs.dev/guide/why.html)
 * [Module Bundlers Explained... Webpack, Rollup, Parcel, and Snowpack - YouTube](https://www.youtube.com/watch?v=5IG4UmULyoA)
-* [Javascript in 100 Seconds - YouTube](https://www.youtube.com/watch?v=zQnBQ4tB3ZA)
-* [Javascript for the New Programmer](https://www.Javascriptlang.org/docs/handbook/Javascript-from-scratch.html)
-* [Javascript for JavaScript Programmers](https://www.Javascriptlang.org/docs/handbook/Javascript-in-5-minutes.html)
-* [Javascript Playground - Types vs Interfaces](https://www.Javascriptlang.org/play?#code/JYOwLgpgTgZghgYwgAgKoGdrIN4ChnIhwC2EAXMumFKAOYDc+ywAJhSAK7EBG0jAvkA)
-* [Differences Between Type Aliases and Interfaces](https://www.Javascriptlang.org/docs/handbook/2/everyday-types.html#differences-between-type-aliases-and-interfaces)
+* [JavaScript in 100 Seconds - YouTube](https://www.youtube.com/watch?v=zQnBQ4tB3ZA)
+* [JavaScript for the New Programmer](https://www.JavaScriptlang.org/docs/handbook/JavaScript-from-scratch.html)
+* [JavaScript for JavaScript Programmers](https://www.JavaScriptlang.org/docs/handbook/JavaScript-in-5-minutes.html)
+* [JavaScript Playground - Types vs. Interfaces](https://www.JavaScriptlang.org/play?#code/JYOwLgpgTgZghgYwgAgKoGdrIN4ChnIhwC2EAXMumFKAOYDc+ywAJhSAK7EBG0jAvkA)
+* [Differences Between Type Aliases and Interfaces](https://www.JavaScriptlang.org/docs/handbook/2/everyday-types.html#differences-between-type-aliases-and-interfaces)
 
 ---
 
-## Debugging - Let's Fix Those Problems!
+## Debugging
+**Let's Fix Those Problems** 💪
 
 Here is a rundown of common problems that may occur & their solutions!
 
@@ -237,40 +290,84 @@ Here is a rundown of common problems that may occur & their solutions!
 
 If you get one of the following error messages:  
 
+* `[webpack-cli] Error: Missing environment variable: KINTONE_BASE_URL`
+* `[webpack-cli] Error: Missing environment variable: KINTONE_PASSWORD`
+* `[webpack-cli] Error: Missing environment variable: KINTONE_USERNAME`
+* `[webpack-cli] Error: Missing environment variable: VIEW_ID`
+* `[webpack-cli] TypeError: Cannot convert undefined or null to object`
+* `Failed to find .env file at default paths: [./.env,./.env.js,./.env.json]`
 * `Failed to find .env file at default paths: [./.env,./.env.js,./.env.json]`
 * `Failed to upload JavaScript/CSS files`
 * `KintoneRestAPIError: [520] [CB_WA01] Password authentication failed...`
 
 Then please verify that
 * your `.env` file has been correctly configured
-* your username and password for your Kintone account is correct
+* your username and password for your Kintone account are correct
 * you have not modified the `.env.example`
+
+### Errors related to kintone-customize-uploader
+
+If you get the following error message, please verify that you have installed the `kintone-customize-uploader` package.
+
+Error Message:  
+
+```shell
+Options: {"command":"kintone-customize-uploader","commandArgs":["customize-manifest.json"],"options":{"expandEnvs":false,"noOverride":false,"silent":false,"useShell":false,"verbose":true}}
+Found .env file at default path: ./.env
+spawn kintone-customize-uploader ENOENT
+Parent process exited with signal: 1. Terminating child process...
+```
+
+Solution:  
+
+```shell
+npm install -g kintone-customize-uploader
+```
 
 ### `npm install` command is not working
 
-1. Verify the Node.js & npm versions **inside** the `publish-to-medium` folder
-2. Just installed Node.js? Verify you configured Node.js versions **inside** the `publish-to-medium` folder
+1. Verify the Node.js & npm versions **inside** the `ai-kintone-gallery` folder
+2. Just installed Node.js? Verify you configured Node.js versions **inside** the `ai-kintone-gallery` folder
 
 * Mac: `nodenv local 14.5.0`
 * Windows: `nvm use 14.5.0`
 
-### "npm run upload" failed?
+Not the correct versions, or confused? 🤔 → Check out the [Guide on Installing Node.js & npm](docs/Install_NodeJS_npm.md) Doc
 
+### `npm run upload` failed?
 _@kintone/customize-uploader not working?_ Let's try the following:
 
 (1) Verify that customize uploader was installed globally
-
 * `npm install -g @kintone/customize-uploader`
 
 (2) Verify that the .env login info is correct (including the password)
-
-* ⚠️ Make sure your login info is inside `.env` file & **NOT** `.env.example` file!
+* ⚠️ Make sure your login info is inside the `.env` file & **NOT** the `.env.example` file!
 * ⚠️ Verify that KINTONE_BASE_URL input is correctly formatted:
   * ✅ Correct Format: `https://example.kintone.com`
   * ❌ Incorrect Format: `https://example.kintone.com/` or `example.kintone.com`
 * ⚠️ Re-run the npm commands after saving the .env file
-* ⚙️ Details: [Create a `.env` file](#create-a-env-file)
+* ⚙️ Details: [Step 4 - Create a `.env` File](#step-4---create-a-env-file-)
 
-(3) Verify your customize-manifest.json was updated with the correct App ID
+(3) Verify your [customize-manifest.json](customize-manifest.json) was updated with the correct App ID
+* ⚙️ Details: [Step 5 - Update customize-manifest.json with the App ID](#step-5---update-customize-manifestjson-with-the-app-id-)
 
-* ⚙️ Details: [Input the App ID](#input-the-app-id)
+(4) Verify that the `npm run build` command was run before the `npm run upload`
+
+### Uncaught Error: Target container is not a DOM element
+Verify that the Custom View (Gallery View) has the following HTML Code:
+
+```HTML
+<div id="root"></div>
+```
+
+### Not seeing a highlighted `TODO:`?
+Click the `Install` button on the VS Code pop-up message to install [TODO Highlight extension](https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight).
+* [![vscode-setting-extension.png](docs/img/vscode-setting-extension.png)](docs/img/vscode-setting-extension-HD.png)  
+
+---
+
+## Completed Code
+If you want the completed code for the index.js file, you can find it here:  
+[completed-index.js](/docs/completed-index.js)
+
+---
