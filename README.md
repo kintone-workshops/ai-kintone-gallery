@@ -33,7 +33,6 @@ Let's create an AI Art Generator using [OpenAI's DALL·E 2](https://openai.com/p
   * [Errors related to kintone-customize-uploader](#errors-related-to-kintone-customize-uploader)
   * [`npm install` command is not working](#npm-install-command-is-not-working)
   * [`npm run upload` failed?](#npm-run-upload-failed)
-  * [Uncaught Error: Target container is not a DOM element](#uncaught-error-target-container-is-not-a-dom-element)
   * [Not seeing a highlighted `TODO:`?](#not-seeing-a-highlighted-todo)
 * [Completed Code](#completed-code)
 
@@ -352,13 +351,6 @@ _@kintone/customize-uploader not working?_ Let's try the following:
 * ⚙️ Details: [Step 5 - Update customize-manifest.json with the App ID](#step-5---update-customize-manifestjson-with-the-app-id-)
 
 (4) Verify that the `npm run build` command was run before the `npm run upload`
-
-### Uncaught Error: Target container is not a DOM element
-Verify that the Custom View (Gallery View) has the following HTML Code:
-
-```HTML
-<div id="root"></div>
-```
 
 ### Not seeing a highlighted `TODO:`?
 Click the `Install` button on the VS Code pop-up message to install [TODO Highlight extension](https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight).
