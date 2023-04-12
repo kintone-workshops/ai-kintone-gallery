@@ -3,7 +3,7 @@
 ## Outline <!-- omit in toc -->
 * [Get Started](#get-started)
 * [Create a Kintone Web Database App](#create-a-kintone-web-database-app)
-* [Create a Medium API Token](#create-a-medium-api-token)
+* [Create an OpenAI API Token](#create-an-openai-api-token)
 * [Get Your Medium Author ID](#get-your-medium-author-id)
 * [Create a `.env` file](#create-a-env-file)
 * [Edit Your customize-manifest.json](#edit-your-customize-manifestjson)
@@ -40,13 +40,14 @@ npm install -g @kintone/customize-uploader
 Let's create a **AI Image Generator and Gallery** Kintone App!  
 This is where you will be generating and storing images generated using OpenAI's DALL·E 2.
 
+TODO: Finish this section
+
 ![img/kintone-app-setup.gif](img/kintone-app-setup.gif)
 
 Here are the required fields & their configurations for our workshop:
 
 | Field Type  | Field Name | Field Code        | Note                                    |
 | ----------- | ---------- | ----------------- | --------------------------------------- |
-| Blank Space | ---        | `publishToMedium` | This is where our button will attach    |
 | Text        | Title      | `title`           | The title of our medium.com article     |
 | Text Area   | Body       | `body`            | The body text of our medium.com article |
 
@@ -54,9 +55,9 @@ Be sure to click the **Save** and **Activate App** buttons! 💪
 
 Confused? 🤔 → Check out the [How to Create a Kintone Database App](https://youtu.be/pRtfn-8cf_I) video 📺
 
-## Create a Medium API Token
+## Create an OpenAI API Token
 
-First, head to [medium.com/me/settings](https://medium.com/me/settings) to open up your Medium account setting page.  
+First, head to [labs.openai.com](https://labs.openai.com/) to open up your Medium account setting page.  
 Click on the **Integration tokens** section.
 
 ![img/medium-settings-screen.png](img/medium-settings-screen.png)
