@@ -1,7 +1,6 @@
-# Write, Review, and Publish directly to Medium.com with [Kintone Web Database](https://kintone.dev/en/)
+# OpenAI Art Generator & Gallery Workshop Steps
 
-## Outline <!-- omit in toc --> <!-- markdownlint-disable MD007 -->
-
+## Outline <!-- omit in toc -->
 * [Get Started](#get-started)
 * [Create a Kintone Web Database App](#create-a-kintone-web-database-app)
 * [Create a Medium API Token](#create-a-medium-api-token)
@@ -10,27 +9,26 @@
 * [Edit Your customize-manifest.json](#edit-your-customize-manifestjson)
 * [Edit main.ts](#edit-maints)
   * [Format the Kintone Data for Medium API Call](#format-the-kintone-data-for-medium-api-call)
-    * [Title, Content-Format, & Content](#title-content-format--content)
+    * [Title, Content-Format, \& Content](#title-content-format--content)
     * [Tags](#tags)
-    * [Publish Status & Notify Followers](#publish-status--notify-followers)
+    * [Publish Status \& Notify Followers](#publish-status--notify-followers)
   * [Append a Button in the Kintone App](#append-a-button-in-the-kintone-app)
-* [Build & Upload the customization](#build--upload-the-customization)
+* [Build \& Upload the customization](#build--upload-the-customization)
 * [View Your Article](#view-your-article)
 * [Check Your Work](#check-your-work)
 <!-- markdownlint-enable MD007 -->
 
 ## Get Started
 
-First, let's download the [sean-kintone/publish-to-medium](https://github.com/sean-kintone/publish-to-medium) Repo and go inside the folder.
-
-Once you are inside the folder, let's install the dependencies!
+First, clone the [kintone-workshops/ai-kintone-gallery](https://github.com/kintone-workshops/ai-kintone-gallery) repo!  🚀  
+Then go inside the folder & install the dependencies!
 
 ```shell
 cd Downloads
 
-git clone https://github.com/sean-kintone/publish-to-medium
+git clone https://github.com/kintone-workshops/ai-kintone-gallery
 
-cd publish-to-medium
+cd ai-kintone-gallery
 
 npm install
 
@@ -39,10 +37,10 @@ npm install -g @kintone/customize-uploader
 
 ## Create a Kintone Web Database App
 
-Let's create a **Publish to Medium** Kintone App!  
-This is where you will be writing up the Markdown that will be published on your Medium.com account.
+Let's create a **AI Image Generator and Gallery** Kintone App!  
+This is where you will be generating and storing images generated using OpenAI's DALL·E 2.
 
-![images/kintone-app-setup.gif](images/kintone-app-setup.gif)
+![img/kintone-app-setup.gif](img/kintone-app-setup.gif)
 
 Here are the required fields & their configurations for our workshop:
 
@@ -61,14 +59,14 @@ Confused? 🤔 → Check out the [How to Create a Kintone Database App](https://
 First, head to [medium.com/me/settings](https://medium.com/me/settings) to open up your Medium account setting page.  
 Click on the **Integration tokens** section.
 
-![images/medium-settings-screen.png](images/medium-settings-screen.png)
+![img/medium-settings-screen.png](img/medium-settings-screen.png)
 
 Create a new API Token.  
 _Don't worry; we have already revoked the one in this screenshot._ 😈
 
 | Input token description                                                           | Grab your integration token / API token                                               |
 | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| ![images/medium-token-screen-cropped.png](images/medium-token-screen-cropped.png) | ![images/medium-token-complete-cropped.png](images/medium-token-complete-cropped.png) |
+| ![img/medium-token-screen-cropped.png](img/medium-token-screen-cropped.png) | ![img/medium-token-complete-cropped.png](img/medium-token-complete-cropped.png) |
 
 ## Get Your Medium Author ID
 
@@ -163,7 +161,7 @@ Kintone App's URL follows this template:
 
 So then the `https://devevents.kintone.com/k/26/` URL tells us that this App's ID is `26`
 
-![images/find-app-id.png](images/find-app-id.png)
+![img/find-app-id.png](img/find-app-id.png)
 
 ---
 
@@ -186,7 +184,7 @@ We have two goals for our coding:
 
 First, let's look at our post body.
 
-![images/1-1.png](images/1-1.png)
+![img/1-1.png](img/1-1.png)
 
 ```js
 const body: PostBody = {
@@ -206,7 +204,7 @@ For reference, the [Medium.com API docs](https://github.com/Medium/medium-api-do
 Our post title needs to come from our Kintone App.  
 Remember that we set our `Title` field to have a lower-case `title` field code in our Kintone App.
 
-![images/1-2.png](images/1-2.png)
+![img/1-2.png](img/1-2.png)
 
 We can access the information on the show page easily in our code:
 
@@ -237,7 +235,7 @@ const body: PostBody = {
 
 The `content` parameter should be our `Body` field from our app, which we designated with the `body` field code:
 
-![images/2.png](images/2.png)
+![img/2.png](img/2.png)
 
 Just like above, fill it in with the record variable:
 
@@ -290,7 +288,7 @@ Kintone allows you to append `HTML` elements to blank spaces in your Kintone App
 
 | Kintone App's Form Setting Page   | Blank Space Settings > Element ID |
 | --------------------------------- | --------------------------------- |
-| ![images/3-1.png](images/3-1.png) | ![images/3-2.png](images/3-2.png) |
+| ![img/3-1.png](img/3-1.png) | ![img/3-2.png](img/3-2.png) |
 
 We tell our App where to append our button by matching the `HTML` IDs.  
 Give your button an ID that matches the field code: `publishToMedium`.
