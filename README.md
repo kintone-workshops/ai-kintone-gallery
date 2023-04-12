@@ -16,7 +16,6 @@ Let's create an AI Art Generator using [OpenAI's DALL·E 2](https://openai.com/p
 * [Completed Project](#completed-project)
 * [Get Started](#get-started)
 * [Get Your Free Kintone Database](#get-your-free-kintone-database)
-* [Workshop Slides](#workshop-slides)
 * [Overview of the Repo](#overview-of-the-repo)
 * [Kintone Web Database \& Credentials](#kintone-web-database--credentials)
   * [🚀 Getting your FREE Kintone Database](#-getting-your-free-kintone-database)
@@ -43,7 +42,7 @@ Let's create an AI Art Generator using [OpenAI's DALL·E 2](https://openai.com/p
 ## Get Started
 
 First, clone the [kintone-workshops/ai-kintone-gallery](https://github.com/kintone-workshops/ai-kintone-gallery) repo!  🚀  
-Then go inside the folder.
+Then go inside the folder & install the dependencies!
 
 ```shell
 cd Downloads
@@ -85,12 +84,6 @@ code .
 |                                                                                         |                                                                                                                   |
 | --------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | ![Step 1: Fill out the Kintone Developer license sign-up form](./docs/img/SignUp-1.png) | ![Step 2: Email address will be the login name & the subdomain will be your unique link](./docs/img/SignUp-2.png) |
-
----
-
-## Workshop Slides
-
-Check out the [slides.pdf](./slides.pdf) file for the workshop slides!
 
 ---
 
@@ -137,8 +130,10 @@ Check out the [slides.pdf](./slides.pdf) file for the workshop slides!
 
 ## Create a Kintone Web Database App
 
-Let's create a Kintone App with an article title, and text to send to Medium!
+Let's create a **AI Image Generator and Gallery** Kintone App!  
+This is where you will be generating and storing images generated using OpenAI's DALL·E 2.
 
+<!-- TODO: Create a Kintone Create Gif -->
 ![./docs/img/kintone-app-setup.gif](./docs/img/kintone-app-setup.gif)
 
 Kintone makes setting up a web database with API routes for getting information easy. The .gif above is one minute in length!
