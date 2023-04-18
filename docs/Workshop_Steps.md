@@ -1,18 +1,19 @@
 # OpenAI Art Generator & Gallery Workshop Steps
 
 ## Outline <!-- omit in toc -->
-* [A. Get Started - Clone the Repo \& Install Dependencies](#a-get-started---clone-the-repo--install-dependencies)
-* [B. Get Your Free Kintone Database](#b-get-your-free-kintone-database)
-* [C. Create a `.env` file](#c-create-a-env-file)
-* [D. Create a Kintone Web Database App](#d-create-a-kintone-web-database-app)
-* [E. Generate an API Token for Kintone App](#e-generate-an-api-token-for-kintone-app)
-* [F. Edit Your customize-manifest.json](#f-edit-your-customize-manifestjson)
-* [G. Create an OpenAI API Key](#g-create-an-openai-api-key)
-* [H. Edit main.js](#h-edit-mainjs)
-* [I. Compile and upload the code to Kintone](#i-compile-and-upload-the-code-to-kintone)
-* [J. Add a record to the Kintone App to generate an image](#j-add-a-record-to-the-kintone-app-to-generate-an-image)
-* [Check Your Work](#check-your-work)
-* [Still got a problem?](#still-got-a-problem)
+- [OpenAI Art Generator \& Gallery Workshop Steps](#openai-art-generator--gallery-workshop-steps)
+  - [A. Get Started - Clone the Repo \& Install Dependencies](#a-get-started---clone-the-repo--install-dependencies)
+  - [B. Get Your Free Kintone Database](#b-get-your-free-kintone-database)
+  - [C. Create a `.env` file](#c-create-a-env-file)
+  - [D. Create a Kintone Web Database App](#d-create-a-kintone-web-database-app)
+  - [E. Generate an API Token for Kintone App](#e-generate-an-api-token-for-kintone-app)
+  - [F. Edit Your customize-manifest.json](#f-edit-your-customize-manifestjson)
+  - [G. Create an OpenAI API Key](#g-create-an-openai-api-key)
+  - [H. Edit main.js](#h-edit-mainjs)
+  - [I. Compile and upload the code to Kintone](#i-compile-and-upload-the-code-to-kintone)
+  - [J. Add a record to the Kintone App to generate an image](#j-add-a-record-to-the-kintone-app-to-generate-an-image)
+  - [Check Your Work](#check-your-work)
+  - [Still got a problem?](#still-got-a-problem)
 <!-- markdownlint-enable MD007 -->
 
 ## A. Get Started - Clone the Repo & Install Dependencies
@@ -137,7 +138,7 @@ Open your [customize-manifest.json](../customize-manifest.json). It will look li
     "scope": "ALL",
     "desktop": {
         "js": ["dist/KintoneCustomization.umd.js"],
-        "css": []
+        "css": ["dist/style.css"]
     },
     "mobile": {
         "js": [],
@@ -186,7 +187,6 @@ For this workshop, we will only be coding in [./src/main.js](../src/main.js).
 ## I. Compile and upload the code to Kintone
 
 Save your work and build your code by entering `npm run build` in your terminal!
-
 Then upload your code to Kintone by entering `npm run upload` in your terminal!
 
 ## J. Add a record to the Kintone App to generate an image
