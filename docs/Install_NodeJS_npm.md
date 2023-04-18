@@ -1,15 +1,16 @@
 # Guide on Installing Node.js & npm
 
 ## Outline <!-- omit in toc -->
-* [Check if you already have Node.js or npm](#check-if-you-already-have-nodejs-or-npm)
-* [macOS with nodenv](#macos-with-nodenv)
-* [Windows with nvm-windows](#windows-with-nvm-windows)
-* [Installing Node.js - Video](#installing-nodejs---video)
+- [Guide on Installing Node.js \& npm](#guide-on-installing-nodejs--npm)
+  - [Check if you already have Node.js or npm](#check-if-you-already-have-nodejs-or-npm)
+  - [macOS with nodenv](#macos-with-nodenv)
+  - [Windows with nvm-windows](#windows-with-nvm-windows)
+  - [Installing Node.js - Video](#installing-nodejs---video)
 
 ## Check if you already have Node.js or npm
 
-React requires **Node >= 14.0.0** & **npm >= 5.6**  
-Go **inside** the `timeline-generator-amcharts` folder.
+This project requires **Node >= 14.0.0** & **npm >= 5.6**  
+Go **inside** the `ai-kintone-gallery` folder.
 
 ```shell
 node -v
@@ -20,10 +21,11 @@ If Node & npm are missing, let's install them!
 
 **Options**:
 
-* [Check if you already have Node.js or npm](#check-if-you-already-have-nodejs-or-npm)
-* [macOS with nodenv](#macos-with-nodenv)
-* [Windows with nvm-windows](#windows-with-nvm-windows)
-* [Installing Node.js - Video](#installing-nodejs---video)
+- [Guide on Installing Node.js \& npm](#guide-on-installing-nodejs--npm)
+  - [Check if you already have Node.js or npm](#check-if-you-already-have-nodejs-or-npm)
+  - [macOS with nodenv](#macos-with-nodenv)
+  - [Windows with nvm-windows](#windows-with-nvm-windows)
+  - [Installing Node.js - Video](#installing-nodejs---video)
 
 ## macOS with nodenv
 
@@ -75,13 +77,13 @@ Optional: Verify that nodenv is properly set up using [nodenv-doctor](https://gi
     Auditing installed plugins: OK
     ```
 
-**Step 4**: Install Node.js inside the React Workshop folder (`timeline-generator-amcharts`)
+**Step 4**: Install Node.js inside the Workshop folder (`ai-kintone-gallery`)
 
 * Now you're ready to install specific Node.js versions!
-* **Inside** `timeline-generator-amcharts` folder, install Node.js version `14.5.0`:
+* **Inside** `ai-kintone-gallery` folder, install Node.js version `14.5.0`:
 
   ```shell
-  cd timeline-generator-amcharts/
+  cd ai-kintone-gallery/
 
   nodenv install 14.5.0
 
@@ -116,13 +118,13 @@ Having different Node.js installations can lead to conflict issues.
 * `nvm ls` lists out installed Node versions (should be none at this point)
 * ![windows-nvm-powershell-no-node.png](img/windows-nvm-powershell-no-node.png)
 
-**Step 6**: Install Node.js inside the React Workshop folder (`timeline-generator-amcharts`)
+**Step 6**: Install Node.js inside the Workshop folder (`ai-kintone-gallery`)
 
 * Now you're ready to install specific Node.js versions!
-* Inside `timeline-generator-amcharts` folder, install Node.js version `14.5.0`:
+* Inside `ai-kintone-gallery` folder, install Node.js version `14.5.0`:
 
   ```powershell
-  cd .\Documents\timeline-generator-amcharts
+  cd .\Documents\ai-kintone-gallery
 
   nvm install 14.5.0
 
