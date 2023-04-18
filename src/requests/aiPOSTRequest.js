@@ -10,7 +10,7 @@ export default async function generateImages(postBody) {
   let data;
   // We use kintone.proxy in order to get around CORS errors.
   // This sends a POST request to the Open AI DALL-E API.
-  // When we get a response we designate it as "response" and then log it to the console.
+  // When we get a response we designate it as "response" and then log it to the console, then return it.
   await kintone.proxy(postUrl, 'POST', headers, postBody).then(function (response) {
     data = JSON.parse(response[0])
   })

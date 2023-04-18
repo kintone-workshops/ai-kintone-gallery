@@ -8,8 +8,9 @@
     "upload": "env-cmd --verbose kintone-customize-uploader customize-manifest.json"
   },
   "devDependencies": {
+    "dotenv": "16.0.1",
     "env-cmd": "^10.1.0",
     "vite": "^4.1.4",
-    "dotenv": "16.0.1"
+    "spin.js": "^4.1.1"
   }
 }
