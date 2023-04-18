@@ -169,10 +169,12 @@ Here is what your `.env` might look like:
 
 ```txt
 KINTONE_BASE_URL="https://example.kintone.com"
-KINTONE_USERNAME="example@gmail.com"
+KINTONE_USERNAME="MyEmail@example.com"
 KINTONE_PASSWORD="ILoveKintone!"
-VITE_AUTHOR_ID="12345abcde67890"
-VITE_API_TOKEN="09876edcba54321"
+VITE_KINTONE_SUBDOMAIN="example"
+VITE_KINTONE_TOKEN="abcd2ef3g3hij2kl1"
+VITE_KINTONE_APPID="1"
+VITE_OPEN_AI_TOKEN="1234567890"
 ```
 
 ### ⚠️ DO NOT DELETE THE [.env.example](.env.example) FILE!  <!-- omit in toc -->
