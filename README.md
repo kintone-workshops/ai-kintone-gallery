@@ -17,12 +17,7 @@ Let's create an AI Art Generator using [OpenAI's DALL·E 2](https://openai.com/p
 * [Get Started](#get-started)
 * [Get Your Free Kintone Database](#get-your-free-kintone-database)
 * [Overview of the Repo](#overview-of-the-repo)
-* [Kintone Web Database \& Credentials](#kintone-web-database--credentials)
-  * [🚀 Getting your FREE Kintone Database](#-getting-your-free-kintone-database)
-* [Create a Kintone Web Database App](#create-a-kintone-web-database-app)
-* [Create a `.env` file](#create-a-env-file)
-* [Input the App ID](#input-the-app-id)
-* [Build the customization](#build-the-customization)
+* [Workshop Steps](#workshop-steps)
 * [Quick Dive into JavaScript \& Vite](#quick-dive-into-javascript--vite)
   * [What is JavaScript?](#what-is-javascript)
   * [What is Vite?](#what-is-vite)
@@ -35,11 +30,13 @@ Let's create an AI Art Generator using [OpenAI's DALL·E 2](https://openai.com/p
   * [Not seeing a highlighted `TODO:`?](#not-seeing-a-highlighted-todo)
 * [Completed Code](#completed-code)
 
+
 ## Completed Project
 
-![Result.gif](docs/img/Result.gif)
+![Kintone_OpenAI_ImageGenerator_Demo.gif](docs/img/Kintone_OpenAI_ImageGenerator_Demo.gif)
 
 ## Get Started
+_Clone the Repo & Install Dependencies_ 💪
 
 First, clone the [kintone-workshops/ai-kintone-gallery](https://github.com/kintone-workshops/ai-kintone-gallery) repo!  🚀  
 Then go inside the folder & install the dependencies!
@@ -56,19 +53,6 @@ npm install
 npm install -g @kintone/customize-uploader
 ```
 
-⚡ **Notes** ⚡  
-* React requires **Node >= 14.0.0** & **npm >= 5.6**  
-* Check the versions inside the `ai-kintone-gallery` folder:
-  * `node -v`
-  * `npm -v`
-* Not the correct versions or confused? 🤔 → Check out the [Guide on Installing Node.js & npm](docs/Install_NodeJS_npm.md) Doc
-
-⚡ Note: Please ignore the package deprecation warnings ⚡
-
-🔎 The `npm install` command installs the required dependencies defined in the package.json files and generates a node_modules folder with the installed modules.
-
----
-
 Open the `ai-kintone-gallery` folder in [VS Code](https://code.visualstudio.com/docs/getstarted/tips-and-tricks#_command-line) as well:
 
 ```shell
@@ -81,144 +65,48 @@ code .
 * ⚡ Only use lowercase, numbers, & hyphens in your subdomain
 * ⚠ Do not use uppercase or special characters
 
-|                                                                                         |                                                                                                                   |
-| --------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| ![Step 1: Fill out the Kintone Developer license sign-up form](./docs/img/SignUp-1.png) | ![Step 2: Email address will be the login name & the subdomain will be your unique link](./docs/img/SignUp-2.png) |
+|                                                                                                 |                                                                                                                   |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| ![Step 1: Fill out the Kintone Developer license sign-up form](./docs/img/SignUp-1.png)         | ![Step 2: Email address will be the login name & the subdomain will be your unique link](./docs/img/SignUp-2.png) |
+| ![Step 3: Check for a "Welcome to Kintone! One More Step To..." email](./docs/img/SignUp-3.png) | ![Step 4: Log into Kintone](./docs/img/SignUp-4.png)                                                              |
+
+For more information, check out the [Workshop_Steps.md > B. Get Your Free Kintone Database](docs/Workshop_Steps.md#b-get-your-free-kintone-database) section!
 
 ---
 
 ## Overview of the Repo
 
-| File                                                         | Purpose                                                                      | Need to Modify?        |
-| ------------------------------------------------------------ | ---------------------------------------------------------------------------- | ---------------------- |
-| [package.json](package.json)                                 | Project's metadata & scripts for building and uploading the customization    |                        |
-| [.env.example](.env.example)                                 | The template for the .env file                                               |                        |
-| [.env](.env)                                                 | Holds the Kintone login credential and View ID                               | Yes! - Create it       |
-|                                                              |                                                                              |                        |
-| [curl_authorID.txt](curl_authorID.txt)                       | Template for the Medium Author ID curl command                               | Yes! - Add token       |
-|                                                              |                                                                              |                        |
-| [scripts/npm-start.js](scripts/npm-start.js)                 | Script that uses `npm-run-all` to run `build` & `upload` scripts in parallel |                        |
-| [customize-manifest.json](customize-manifest.json)           | Kintone Customize Uploader's configuration file                              | Yes! - Add your App ID |
-| [dist/KintoneCustomization.js](dist/KintoneCustomization.js) | The bundled JS build that will be uploaded to Kintone                        |                        |
-|                                                              |                                                                              |                        |
-| [src/main.ts](src/main.ts)                                   | Heart of the project handling the API request body & adding a button         | Yes! Complete the code |
-| [src/style.css](src/style.css)                               | Styling for the project can go here                                          |                        |
-| [src/requests/post_api.ts](src/requests/post_api.ts)         | The logic of the Medium.com POST API call                                    |                        |
-|                                                              |                                                                              |                        |
-| [fields.d.ts](fields.d.ts)                                   | Various type definitions for our JavaScript / Kintone environment            |                        |
-| [tsconfig.json](tsconfig.json)                               | Various settings for how JavaScript behaves                                  |                        |
-| [vite.config.js](vite.config.js)                             | Various settings for how and where our JavaScript compiles to                |                        |
-|                                                              |                                                                              |                        |
-| [slides.pdf](slides.pdf)                                     | Workshop presentation's slide deck                                           |                        |
-| [docs/workshop-steps.md](docs/workshop-steps.md)             | Step-by-step guide that we do during the workshop                            |                        |
+| File                                                                   | Purpose                                                                   | Need to Modify?        |
+| ---------------------------------------------------------------------- | ------------------------------------------------------------------------- | ---------------------- |
+| [package.json](package.json)                                           | Project's metadata & scripts for building and uploading the customization |                        |
+| [.env.example](.env.example)                                           | The template for the .env file                                            |                        |
+| [.env](.env)                                                           | Holds the Kintone login credential and View ID                            | Yes! - Create it       |
+| [customize-manifest.json](customize-manifest.json)                     | Kintone Customize Uploader's configuration file                           | Yes! - Add your App ID |
+| [dist/KintoneCustomization.js](dist/KintoneCustomization.js)           | The bundled JS build that will be uploaded to Kintone                     |                        |
+|                                                                        |                                                                           |                        |
+| [src/main.js](src/main.js)                                             | Heart of the project handling the API request body & adding a button      | Yes! Complete the code |
+| [src/style.css](src/style.css)                                         | Styling for the project can go here                                       |                        |
+| [src/requests/aiPOSTRequest.js](src/requests/aiPOSTRequest.js)         | TODO:                                                                     |                        |
+| [src/requests/kintonePUTRequest.js](src/requests/kintonePUTRequest.js) | TODO: call                                                                |                        |
+|                                                                        |                                                                           |                        |
+| [vite.config.js](vite.config.js)                                       | Various settings for how and where our JavaScript compiles to             |                        |
+|                                                                        |                                                                           |                        |
+| [docs/Workshop_Steps.md](docs/Workshop_Steps.md)                       | Step-by-step guide that we do during the workshop                         |                        |
 
 ---
 
-## Kintone Web Database & Credentials
+## Workshop Steps
 
-### 🚀 Getting your FREE Kintone Database
-
-[kintone.dev/new](http://kintone.dev/new/)
-* ⚡ Only use lowercase, numbers, & hyphens in your subdomain
-* ⚠ Do not use uppercase nor special characters
-
-|                                             |                                             |
-| ------------------------------------------- | ------------------------------------------- |
-| ![SignUp-1.png](./docs/img/SignUp-1.png) | ![SignUp-2.png](./docs/img/SignUp-2.png) |
-
----
-
-## Create a Kintone Web Database App
-
-Let's create a **AI Image Generator and Gallery** Kintone App!  
-This is where you will be generating and storing images generated using OpenAI's DALL·E 2.
-
-<!-- TODO: Create a Kintone Create Gif -->
-![./docs/img/kintone-app-setup.gif](./docs/img/kintone-app-setup.gif)
-
-Kintone makes setting up a web database with API routes for getting information easy. The .gif above is one minute in length!
-
-Here are the required fields & their configurations for our workshop:
-
-| Field Type  | Field Name | Field Code        | Note                                    |
-| ----------- | ---------- | ----------------- | --------------------------------------- |
-| Blank Space | ---        | `publishToMedium` | This is where our button will attach    |
-| Text        | Title      | `title`           | The title of our medium.com article     |
-| Text Area   | Body       | `body`            | The body text of our medium.com article |
-
-Be sure to click the **Save** and **Activate App** buttons! 💪
-
-Confused? 🤔 → Check out the [How to Create a Kintone Database App](https://youtu.be/pRtfn-8cf_I) video 📺
-
-### 📺 How to Create a Kintone Database App | Video <!-- omit in toc -->
-
-<p align="center">
-  <a href="https://youtu.be/pRtfn-8cf_I">
-    <img height="200" alt="How to Create a Kintone Database App YouTube Thumbnail"
-      src="https://img.youtube.com/vi/pRtfn-8cf_I/hqdefault.jpg">
-  </a>
-</p>
-
----
-
-## Create a `.env` file
-
-Using the [.env.example](.env.example) file as a temple, create a `.env` file containing your login credentials and the Kintone App's View ID.
-
-Here is what your `.env` might look like:
-
-```txt
-KINTONE_BASE_URL="https://example.kintone.com"
-KINTONE_USERNAME="MyEmail@example.com"
-KINTONE_PASSWORD="ILoveKintone!"
-VITE_KINTONE_SUBDOMAIN="example"
-VITE_KINTONE_TOKEN="abcd2ef3g3hij2kl1"
-VITE_KINTONE_APPID="1"
-VITE_OPEN_AI_TOKEN="1234567890"
-```
-
-### ⚠️ DO NOT DELETE THE [.env.example](.env.example) FILE!  <!-- omit in toc -->
-[.env.example](.env.example) is used by env-cmd to verify that `.env` file is correctly configured.
-
----
-
-## Input the App ID
-
-The Kintone Customize Uploader uses [customize-manifest.json](customize-manifest.json) to determine where to upload the JavaScript file (_which Kintone App_).
-
-```json
-{
-    "app": "1",
-    "scope": "ALL",
-    ...
-}
-```
-
-So to ensure the file gets uploaded to the correct App, replace the `1` with your App ID.
-
-**What is my App ID?** 🤔  
-
-* Go to your Kintone App & grab the URL
-* Kintone App's URL follows this template: `https://<SUBDOMAIN>.kintone.com/k/<App ID>/show#record=<RECORD ID>`
-* Grab the number between the `/k/`
-* Example: `https://example.kintone.com/k/1/` -> The App's ID is `1`
-
----
-
-## Build the customization
-
-1. Build the customization in the following files inside `./src/`
-   * `main.ts`, `/requests/post_api.ts`, etc.
-2. Run `npm run build` to compile your JavaScript into JavaScript output in the `/dist` folder.
-3. Run `npm run upload` to upload the compiled files to your Kintone subdomain.
-   * To directly upload the Kintone customization, use `./dist/KintoneCustomization.js`.
-   * For more details, refer to [Customizing an App with JavaScript and CSS](https://get.kintone.help/k/en/user/app_settings/js_customize.html)
-4. Run `npm run start`
-   * This will trigger Webpack & kintone-customize-uploader to run while watching `./src/main.ts` for changes
-   * Input Kintone credentials if asked
-5. Refresh the Kintone App to see the changes!
-
-Good luck coding!
+* [A. Get Started - Clone the Repo \& Install Dependencies](docs/Workshop_Steps.md#a-get-started---clone-the-repo--install-dependencies)
+* [B. Get Your Free Kintone Database](docs/Workshop_Steps.md#b-get-your-free-kintone-database)
+* [C. Create a `.env` file](docs/Workshop_Steps.md#c-create-a-env-file)
+* [D. Create a Kintone Web Database App](docs/Workshop_Steps.md#d-create-a-kintone-web-database-app)
+* [E. Generate an API Token for Kintone App](docs/Workshop_Steps.md#e-generate-an-api-token-for-kintone-app)
+* [F. Edit Your customize-manifest.json](docs/Workshop_Steps.md#f-edit-your-customize-manifestjson)
+* [G. Create an OpenAI API Key](docs/Workshop_Steps.md#g-create-an-openai-api-key)
+* [H. Edit main.js](docs/Workshop_Steps.md#h-edit-mainjs)
+* [I. Compile and upload the code to Kintone](docs/Workshop_Steps.md#i-compile-and-upload-the-code-to-kintone)
+* [J. Add a record to the Kintone App to generate an image](docs/Workshop_Steps.md#j-add-a-record-to-the-kintone-app-to-generate-an-image)
 
 ---
 
@@ -272,8 +160,6 @@ Convert a JavaScript file to a JavaScript file by either:
 * [JavaScript in 100 Seconds - YouTube](https://www.youtube.com/watch?v=zQnBQ4tB3ZA)
 * [JavaScript for the New Programmer](https://www.JavaScriptlang.org/docs/handbook/JavaScript-from-scratch.html)
 * [JavaScript for JavaScript Programmers](https://www.JavaScriptlang.org/docs/handbook/JavaScript-in-5-minutes.html)
-* [JavaScript Playground - Types vs. Interfaces](https://www.JavaScriptlang.org/play?#code/JYOwLgpgTgZghgYwgAgKoGdrIN4ChnIhwC2EAXMumFKAOYDc+ywAJhSAK7EBG0jAvkA)
-* [Differences Between Type Aliases and Interfaces](https://www.JavaScriptlang.org/docs/handbook/2/everyday-types.html#differences-between-type-aliases-and-interfaces)
 
 ---
 
@@ -342,10 +228,10 @@ _@kintone/customize-uploader not working?_ Let's try the following:
   * ✅ Correct Format: `https://example.kintone.com`
   * ❌ Incorrect Format: `https://example.kintone.com/` or `example.kintone.com`
 * ⚠️ Re-run the npm commands after saving the .env file
-* ⚙️ Details: [Step 4 - Create a `.env` File](#step-4---create-a-env-file-)
+* ⚙️ Details: [Step 4 - Create a `.env` File](docs/Workshop_Steps.md#step-4---create-a-env-file-)
 
 (3) Verify your [customize-manifest.json](customize-manifest.json) was updated with the correct App ID
-* ⚙️ Details: [Step 5 - Update customize-manifest.json with the App ID](#step-5---update-customize-manifestjson-with-the-app-id-)
+* ⚙️ Details: [Step 5 - Update customize-manifest.json with the App ID](docs/Workshop_Steps.md#step-5---update-customize-manifestjson-with-the-app-id-)
 
 (4) Verify that the `npm run build` command was run before the `npm run upload`
 
@@ -357,6 +243,6 @@ Click the `Install` button on the VS Code pop-up message to install [TODO Highli
 
 ## Completed Code
 If you want the completed code for the index.js file, you can find it here:  
-[completed-index.js](/docs/completed-index.js)
+[Solution](/docs/Solution)
 
 ---
