@@ -18,10 +18,7 @@ Let's create an AI Art Generator using [OpenAI's DALL·E 2](https://openai.com/p
 * [Get Your Free Kintone Database](#get-your-free-kintone-database)
 * [Overview of the Repo](#overview-of-the-repo)
 * [Workshop Steps](#workshop-steps)
-* [Quick Dive into JavaScript \& Vite](#quick-dive-into-javascript--vite)
-  * [What is JavaScript?](#what-is-javascript)
-  * [What is Vite?](#what-is-vite)
-  * [Want to learn more?](#want-to-learn-more)
+* [Quick Dive into OpenAI's API](#quick-dive-into-openais-api)
 * [Debugging](#debugging)
   * [Errors related to .env](#errors-related-to-env)
   * [Errors related to kintone-customize-uploader](#errors-related-to-kintone-customize-uploader)
@@ -110,56 +107,9 @@ For more information, check out the [Workshop_Steps.md > B. Get Your Free Kinton
 
 ---
 
-## Quick Dive into JavaScript & Vite
+## Quick Dive into OpenAI's API
 
-### What is JavaScript?
-JavaScript (TS) is a _flavor_ of JavaScript (JS)
-* Existing JS code works inside TS files
-
-JavaScript layers a **type system** on top of JavaScript
-* A type system simply enforces the [JS types](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#JavaScript_types) set per variable to avoid bugs
-* Set types explicitly or implicitly
-
-  | Explicit                                                                                | Implicit                          |
-  | --------------------------------------------------------------------------------------- | --------------------------------- |
-  | using `:` or [interfaces](https://www.JavaScriptlang.org/docs/handbook/interfaces.html) | using initial value               |
-  | `interface User {  name: string;  id: number;  }`                                       | `let helloWorld = "Hello World";` |
-
-Convert a JavaScript file to a JavaScript file by either:
-* `tsc` command (e.g., `tsc index.ts`)
-* JS Bundlers (e.g. [Webpack](https://webpack.js.org/), [Vite](https://vitejs.dev/))
-
-#### Main benefits of JavaScript  <!-- omit in toc -->
-* Type system forces programmers to be consistent -> Great when you have 1+ dev team
-* Avoids [TypeErrors](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError) (when a value is not of the expected type)
-* Compile TS code down to a JS version you want
-* Works well with IntelliSense -> Better auto-complete function
-
-### What is Vite?
-* Vite is a fast JavaScript **build tool** for building frontend web apps
-* Vite is opinionated and comes with default settings
-  * Also, highly extensible via Vite's Plugin API and JavaScript API
-* Similar to Webpack but _faster_
-  * Vite uses [native ES Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) in the browser to load the code faster
-
-#### Main benefits of Vite  <!-- omit in toc -->
-* Better development experience
-  * Quickly serve code to localhost with native ESM
-  * Hot Module Replacement (HMR) that stays fast regardless of app size.
-* Bundle code for production using [Rollup](https://rollupjs.org/guide/en/)
-* JSX and TSX are supported by default
-* Works super fast with JavaScript
-  * Vite supports importing TS files out of the box
-  * Vite does not perform type checking making it 20x ~ 30x faster
-
-### Want to learn more?
-* [Vite in 100 Seconds - YouTube](https://www.youtube.com/watch?v=KCrXgy8qtjM)
-* [Getting Started | Vite](https://vitejs.dev/guide/)
-* [Why Vite | Vite](https://vitejs.dev/guide/why.html)
-* [Module Bundlers Explained... Webpack, Rollup, Parcel, and Snowpack - YouTube](https://www.youtube.com/watch?v=5IG4UmULyoA)
-* [JavaScript in 100 Seconds - YouTube](https://www.youtube.com/watch?v=zQnBQ4tB3ZA)
-* [JavaScript for the New Programmer](https://www.JavaScriptlang.org/docs/handbook/JavaScript-from-scratch.html)
-* [JavaScript for JavaScript Programmers](https://www.JavaScriptlang.org/docs/handbook/JavaScript-in-5-minutes.html)
+TODO: Add a quick dive into OpenAI's API
 
 ---
 
