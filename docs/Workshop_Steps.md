@@ -1,23 +1,20 @@
 # OpenAI Art Generator & Gallery Workshop Steps
 
 ## Outline <!-- omit in toc -->
-* [1. Get Started - Clone the Repo \& Install Dependencies](#1-get-started---clone-the-repo--install-dependencies)
-* [2. Create a Kintone Web Database App](#2-create-a-kintone-web-database-app)
-* [3. Edit Your customize-manifest.json](#3-edit-your-customize-manifestjson)
-* [4. Create a `.env` file](#4-create-a-env-file)
-* [5. Create an OpenAI API Key](#5-create-an-openai-api-key)
-* [Edit main.ts](#edit-maints)
-  * [Format the Kintone Data for Medium API Call](#format-the-kintone-data-for-medium-api-call)
-    * [Title, Content-Format, \& Content](#title-content-format--content)
-    * [Tags](#tags)
-    * [Publish Status \& Notify Followers](#publish-status--notify-followers)
-  * [Append a Button in the Kintone App](#append-a-button-in-the-kintone-app)
-* [Build \& Upload the customization](#build--upload-the-customization)
-* [View Your Article](#view-your-article)
+* [A. Get Started - Clone the Repo \& Install Dependencies](#a-get-started---clone-the-repo--install-dependencies)
+* [B. Get Your Free Kintone Database](#b-get-your-free-kintone-database)
+* [C. Create a `.env` file](#c-create-a-env-file)
+* [D. Create a Kintone Web Database App](#d-create-a-kintone-web-database-app)
+* [E. Generate an API Token for Kintone App](#e-generate-an-api-token-for-kintone-app)
+* [F. Edit Your customize-manifest.json](#f-edit-your-customize-manifestjson)
+* [G. Create an OpenAI API Key](#g-create-an-openai-api-key)
+* [H. Edit main.ts](#h-edit-maints)
+* [I. Compile and upload the code to Kintone](#i-compile-and-upload-the-code-to-kintone)
+* [J.](#j)
 * [Check Your Work](#check-your-work)
 <!-- markdownlint-enable MD007 -->
 
-## 1. Get Started - Clone the Repo & Install Dependencies
+## A. Get Started - Clone the Repo & Install Dependencies
 
 First, clone the [kintone-workshops/ai-kintone-gallery](https://github.com/kintone-workshops/ai-kintone-gallery) repo!  🚀  
 Then go inside the folder & install the dependencies!
@@ -34,27 +31,100 @@ npm install
 npm install -g @kintone/customize-uploader
 ```
 
-## 2. Create a Kintone Web Database App
+## B. Get Your Free Kintone Database
+
+1. Go to [kintone.dev/new/](http://kintone.dev/new/) and fill out the form.  
+   * ⚡ Only use lowercase, numbers, & hyphens in your subdomain
+   * ⚠ Do not use uppercase or special characters
+   * 🤖 Example subdomain: `example`
+   * ✅ Use Chrome or Firefox
+   * ❌ Do not use Safari
+2. Look for "**Welcome to Kintone! One More Step for Developer License**" email in your inbox and click the **Activate Now** button.
+   * Sent from `developer@kintone.com`
+   * If you don't see it, check your spam folder
+3. Set the **Initial Password**
+4. Log into your Kintone Subdomain
+   * URL: {your subdomain}.kintone.com (e.g. `example.kintone.com`)
+   * Login Name: Your email address
+   * Password: The password you set in Step 3
+   * ⚡ If you forget your password, you can reset it by clicking the **Having Trouble Logging In?** link on the login screen.
+
+|                                                                                              |                                                                                                                |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| ![Step 1: Fill out the Kintone Developer license sign-up form](././img/SignUp-1.png)         | ![Step 2: Email address will be the login name & the subdomain will be your unique link](././img/SignUp-2.png) |
+| ![Step 3: Check for a "Welcome to Kintone! One More Step To..." email](././img/SignUp-3.png) | ![Step 4: Log into Kintone](././img/SignUp-4.png)                                                              |
+
+## C. Create a `.env` file
+
+Duplicate the [.env.example](./../.env.example) file and save as `.env` file.  
+This is where we will be saving the login credentials and API Keys.
+
+Here is what your `.env` might look like:
+
+```txt
+KINTONE_BASE_URL="https://example.kintone.com"
+KINTONE_USERNAME="MyEmail@example.com"
+KINTONE_PASSWORD="ILoveKintone!"
+VITE_KINTONE_SUBDOMAIN="example"
+VITE_KINTONE_TOKEN="abcd2ef3g3hij2kl1"
+VITE_KINTONE_APPID="1"
+VITE_OPEN_AI_TOKEN="1234567890"
+```
+
+So far you can fill out the following variables:
+* `KINTONE_BASE_URL`
+* `KINTONE_USERNAME`
+* `KINTONE_PASSWORD`
+* `VITE_KINTONE_SUBDOMAIN`
+
+### ⚠️ WARNING ⚠️ <!-- omit in toc -->
+
+⚠️ DO NOT DELETE THE [.env.example](./../.env.example) FILE!  
+[.env.example](./../.env.example) is used by env-cmd to verify that the `.env` file is correctly configured.
+
+## D. Create a Kintone Web Database App
 
 Let's create an **AI Image Generator and Gallery** Kintone App!  
 This is where you will generate and store images generated using OpenAI's DALL·E 2.
 
-TODO: Finish this section
-
-![img/kintone-app-setup.gif](img/kintone-app-setup.gif)
-
 Here are the required fields & their configurations for our workshop:
 
-| Field Type  | Field Name | Field Code        | Note                                    |
-| ----------- | ---------- | ----------------- | --------------------------------------- |
-| Text        | Title      | `title`           | The title of our medium.com article     |
-| Text Area   | Body       | `body`            | The body text of our medium.com article |
+| Field Type      | Field Name                   | Field Code       | Note                                                             |
+| --------------- | ---------------------------- | ---------------- | ---------------------------------------------------------------- |
+| Space           |                              | `generateButton` | Where the **Generate Images** button will be displayed           |
+| Radio button #1 | **I want a...**              | `animal`         | Options: `dog` & `cat`                                           |
+| Radio button #2 | **who looks...?**            | `emotion`        | Options: `happy`, `sad`, `angry`, & `confused`                   |
+| Text            | **Holding a...**             | `random`         |                                                                  |
+| Check Box       | **wearing... ?**             | `clothes`        | Options: `a hat`, `a jacket`, `new shoes`                        |
+| Date and Time   | **Image Generated Datetime** | `dateTime`       | Check the `Default to the record creation date and time.` box    |
+| Attachment      | **Result**                   | `result`         | Where the image generated by OpenAI's DALL·E 2 will be displayed |
 
-Be sure to click the **Save** and **Activate App** buttons! 💪
+To create the Kintone App, click on the **➕** button on the upper right side of the Kintone Portal.
+* ![Screenshot: The "➕" button](img/CreateApp-1.png)
 
-Confused? 🤔 → Check out the [How to Create a Kintone Database App](https://youtu.be/pRtfn-8cf_I) video 📺
+Once you have configured the fields, the Kintone App should look like this:  
+![Screenshot of the completed Kintone App](img/KintoneApp_Complete.png)
 
-## 3. Edit Your customize-manifest.json
+Then, click the **Save** and **Activate App** buttons! 💪
+
+_Confused? 🤔 → Check out the [How to Create a Kintone Database App](https://youtu.be/pRtfn-8cf_I) video 📺_
+
+## E. Generate an API Token for Kintone App
+
+We need to generate an API Token for our Kintone App.
+
+1. From the Kintone App, click the **App Settings** button ⚙️ on the upper right side.
+   * ![Screenshot: The "App Settings" button](https://get.kintone.help/k/img/settings_new_icon.png)
+1. Select the **App Settings** tab
+1. Under **Customization and Integration**, click the **API Token** button.
+1. Click **Generate**. ![Screenshot: The "Generate" button](img/KintoneApp_API_1.png)
+1. Check the `Add records` and `Edit records` boxes.  
+   ![Screenshot: The "Add records" and "Edit records" boxes](img/KintoneApp_API_2.png)
+1. Copy the API Token and past it to the `VITE_KINTONE_TOKEN` variable in your `.env` file.
+1. Click the **Save** button on the bottom right side of the screen.
+1. Click the **Update App** button on the upper right side of the screen.
+
+## F. Edit Your customize-manifest.json
 
 Next, we need to tell our uploading scripts which Kintone App we will be working on.
 
@@ -89,28 +159,10 @@ So then the `https://devevents.kintone.com/k/52/` URL tells us that this App's I
 
 ![KintoneApp_URL.png](img/KintoneApp_URL.png)
 
-## 4. Create a `.env` file
+### Update the `.env` file with the App ID as well! <!-- omit in toc -->
+Input the App ID into the `VITE_KINTONE_APPID` variable in your `.env` file.
 
-Using the [.env.example](./../.env.example) file as a temple, create a `.env` file that will contain your login credentials and API Key.
-
-Here is what your `.env` might look like:
-
-```txt
-KINTONE_BASE_URL="https://example.kintone.com"
-KINTONE_USERNAME="MyEmail@example.com"
-KINTONE_PASSWORD="ILoveKintone!"
-VITE_KINTONE_SUBDOMAIN="example"
-VITE_KINTONE_TOKEN="abcd2ef3g3hij2kl1"
-VITE_KINTONE_APPID="1"
-VITE_OPEN_AI_TOKEN="1234567890"
-```
-
-### ⚠️ WARNING ⚠️ <!-- omit in toc -->
-
-⚠️ DO NOT DELETE THE [.env.example](./../.env.example) FILE!  
-[.env.example](./../.env.example) is used by env-cmd to verify that the `.env` file is correctly configured.
-
-## 5. Create an OpenAI API Key
+## G. Create an OpenAI API Key
 
 Head to [platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys) to access OpenAI's API Key settings page.
 
@@ -119,186 +171,24 @@ Then click the `Create new secret key` button to generate a new API Key.
 ![Create new secret key button highlighted on the Open AI API Key Settings page](img/openai_token_01.png)
 
 Copy the API Key and paste it into your `.env` file.  
-Paste your API Key from OpenAI into the `VITE_OPEN_AI_TOKEN` field.
+Paste your API Key from OpenAI into the `VITE_OPEN_AI_TOKEN` variable in your `.env` file.
 
 ---
 
-## Edit main.ts
+## H. Edit main.ts
 
 For this workshop, we will only be coding in [./src/main.ts](../src/main.ts).
 
-However, our actual API POST request logic is contained in [./src/requests/post_api.ts](../src/requests/post_api.ts). You can check out that file to see how the POST request to the medium.com API is structured.
 
-Lastly, some TypeScript-specific settings (type definitions!) are found in [./fields.d.ts](../fields.d.ts).  
-If you want to expand on this demo (_like adding an image stored in Kintone to your article_), you will have to edit this file.
+---
 
-We have two goals for our coding:
+## I. Compile and upload the code to Kintone
 
-1. Format our data (simply called `body` in [./src/main.ts](../src/main.ts)) to send to the `postToMedium` function
+Save your work and build your code by entering `npm run build` in your terminal!
 
-2. Create a button to click, and when clicked, fire the `postToMedium` function.
+Then upload your code to Kintone by entering `npm run upload` in your terminal!
 
-### Format the Kintone Data for Medium API Call
-
-First, let's look at our post body.
-
-![img/1-1.png](img/1-1.png)
-
-```js
-const body: PostBody = {
-  title: null, // Article's title (from our Kintone record)
-  contentFormat: null, // 'markdown' or 'html' (writing format)
-  content: null, // Article's body (from our Kintone record)
-  tags: null, // String "tags" for our article. Optional!
-  publishStatus: null, // The status of our article: 'public', 'draft', or 'unlisted'
-  notifyFollowers: null // Sends a notification after publishing.
-}
-```
-
-For reference, the [Medium.com API docs](https://github.com/Medium/medium-api-docs#33-posts) on POST Requests are pretty simple!
-
-#### Title, Content-Format, & Content
-
-Our post title needs to come from our Kintone App.  
-Remember that we set our `Title` field to have a lower-case `title` field code in our Kintone App.
-
-![img/1-2.png](img/1-2.png)
-
-We can access the information on the show page easily in our code:
-
-```js
-const body: PostBody = {
-  title: events.record.title.value, // Article's title (from our Kintone record)
-  contentFormat: null, // 'markdown' or 'html' (writing format)
-  content: null, // Article's body (from our Kintone record)
-  tags: null, // String "tags" for our article. Optional!
-  publishStatus: null, // The status of our article: 'public', 'draft', or 'unlisted'
-  notifyFollowers: null // Sends a notification after publishing.
-}
-```
-
-Next, according to the documentation, Medium articles can be submitted in either Markdown or HTML formats! Pretty cool.  
-Let's go with `markdown` this time:
-
-```js
-const body: PostBody = {
-  title: events.record.title.value, // Article's title (from our Kintone record)
-  contentFormat: 'markdown', // 'markdown' or 'html' (writing format)
-  content: null, // Article's body (from our Kintone record)
-  tags: null, // String "tags" for our article. Optional!
-  publishStatus: null, // The status of our article: 'public', 'draft', or 'unlisted'
-  notifyFollowers: null // Sends a notification after publishing.
-}
-```
-
-The `content` parameter should be our `Body` field from our app, which we designated with the `body` field code:
-
-![img/2.png](img/2.png)
-
-Just like above, fill it in with the record variable:
-
-```js
-const body: PostBody = {
-  title: events.record.title.value, // Article's title (from our Kintone record)
-  contentFormat: 'markdown', // 'markdown' or 'html' (writing format)
-  content: events.record.title.value, // Article's body (from our Kintone record)
-  tags: null, // String "tags" for our article. Optional!
-  publishStatus: null, // The status of our article: 'public', 'draft', or 'unlisted'
-  notifyFollowers: null // Sends a notification after publishing.
-}
-```
-
-Continue to fill in the body parameters.  
-
-#### Tags
-
-`tags` are up to you, depending on the contents of your article. The POST API accepts an `array` of `strings`. Here is an example:
-
-```js
-tags: ['kintone', 'markdown', 'medium', 'low-code'],
-```
-
-#### Publish Status & Notify Followers
-
-`publishStatus` is the status of your article. We will be publishing immediately, but saving to your medium.com account's `drafts` is also possible!
-
-`notifyFollowers` will do exactly that and takes a boolean, `true` or `false`. We're testing, so let's set it as `false` for now.
-
-Our finished post body should look similar to this:
-
-```js
-const body: PostBody = {
-  title: event.record.title.value, // Article's title (from our Kintone record)
-  contentFormat: "markdown", // 'markdown' or 'html' (writing format)
-  content: event.record.body.value, // Article's body (from our Kintone record)
-  tags: ['kintone', 'markdown', 'medium', 'low-code'], // String "tags" for our article. Optional!
-  publishStatus: 'public', // The status of our article: 'public', 'draft', or 'unlisted'
-  notifyFollowers: false // Sends a notification after publishing.
-    }
-```
-
-And done! This should be good data to pass to our API call...  
-but we will need a button for our users to click to start the process.
-
-### Append a Button in the Kintone App
-
-Kintone allows you to append `HTML` elements to blank spaces in your Kintone App. When we built our App, we added a `blank space` and gave it the Element ID `publishToMedium`.
-
-| Kintone App's Form Setting Page   | Blank Space Settings > Element ID |
-| --------------------------------- | --------------------------------- |
-| ![img/3-1.png](img/3-1.png) | ![img/3-2.png](img/3-2.png) |
-
-We tell our App where to append our button by matching the `HTML` IDs.  
-Give your button an ID that matches the field code: `publishToMedium`.
-
-```js
-// Create a button
-const mySpaceFieldButton: HTMLElement = document.createElement('button');
-//TODO
-mySpaceFieldButton.id = 'publishToMedium'; // Our "Element ID" from our Blank Space in the Kintone App.
-// Give it an id & class (for CSS), and text on the button.
-mySpaceFieldButton.className = null;
-mySpaceFieldButton.innerHTML = null;
-```
-
-Our App's custom `CSS` is contained in [./src/style.css](../src/style.css). We can style our button with a CSS class, `uploadButton`.
-
-Lastly, give our button a nice label, so our users can know what it does.
-
-⚡ You are free to set the button's `innerHTML` with any text you want ~  
-Try including an emoji 💪!
-
-⚡ Button's `className` is also up to you. If you set a different CSS class, be sure to update [./src/style.css](../src/style.css) ~
-
-```js
-// Create a button
-const mySpaceFieldButton: HTMLElement = document.createElement('button');
-//TODO
-mySpaceFieldButton.id = 'publishToMedium'; // Our "Element ID" from our Blank Space in the Kintone App.
-// Give it an id & class (for CSS), and text on the button.
-mySpaceFieldButton.className = 'uploadButton';
-mySpaceFieldButton.innerHTML = 'Click me to Publish!';
-```
-
-Last, we need our button to fire a function when clicked. That function should pass our post `body` data to the API function `postToMedium`.
-
-In the button's `onClick` function, call the `postToMedium` function we imported from [./src/requests/post_api.ts](../src/requests/post_api.ts).
-
-```js
-mySpaceFieldButton.onclick = function () {
-  // We need to call our API POST function with request's body... 🧐
-  postToMedium(body);
-};
-```
-
-## Build & Upload the customization
-
-Save your work and run kintone-customize-uploader by entering `npm run start` in your terminal!  
-Navigate to your app, create a record, write some Markdown, and click the publish button!
-
-See the [slides.pdf](../slides.pdf) for more info!
-
-## View Your Article
+## J. 
 
 Navigate to your publications and bathe in your newfound journalistic fame!  
 Go to [medium.com/me/stories/public](https://medium.com/me/stories/public)
