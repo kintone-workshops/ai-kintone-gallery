@@ -58,6 +58,7 @@ Confused? 🤔 → Check out the [How to Create a Kintone Database App](https://
 ## Create an OpenAI API Key
 
 First, head to [platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys) to access the OpenAI's API Key settings page.
+
  s up your Medium account setting page.  
 Click on the **Integration Keys** section.
 
