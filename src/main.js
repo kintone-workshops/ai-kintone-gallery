@@ -13,7 +13,7 @@ import updateKintone from './requests/kintonePUTRequest';
 
     //AI APIに投げるテキスト
     const promptBuilder = () => {
-      let promptString = `A ${event.record.animal.value} who looks ${event.record.emotion.value} holding a ${event.record.random.value} wearing `;
+      let promptString = `A cute ${event.record.animal.value} who looks ${event.record.emotion.value} holding a ${event.record.random.value} wearing `;
 
       let clothesArray = event.record.clothes.value;
       clothesArray.forEach((option, index) => {
@@ -46,15 +46,13 @@ import updateKintone from './requests/kintonePUTRequest';
     generateButton.onclick = () => {
       // We need to call our API POST function with request's body... 🧐
       generateImages(postBody).then(async (result) => {
-        let test = new Date().getTimezoneOffset() * 60000;
-        console.log(test)
-        let imageCreatedDateTime = new Date(result.created * 1000).toISOString()
+        const unixTimestamp = result.created; // replace with your Unix timestamp
+        const date = new Date(unixTimestamp * 1000); // multiply by 1000 to convert to milliseconds
+        const isoDateString = date.toISOString();
+        console.log(isoDateString); // output: "2021-04-18T06:10:22.000Z"        console.log(isoDateString); // output: "2021-04-18T05:10:22+00:00"
         let imageBlob = await b64toBlob(result.data[0].b64_json)
-        let file = new File([imageBlob], "test.png", { type: 'image/png', lastModified: imageCreatedDateTime })
-        console.log(imageCreatedDateTime);
-        console.log(event.appId);
-        console.log(file)
-        updateKintone(event.recordId, file, imageCreatedDateTime)
+        let file = new File([imageBlob], "test.png", { type: 'image/png', lastModified: isoDateString })
+        updateKintone(event.recordId, file, isoDateString)
       })
     };
     // Set button on the Blank Space field

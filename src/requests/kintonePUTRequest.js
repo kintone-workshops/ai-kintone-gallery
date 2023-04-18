@@ -11,13 +11,11 @@ const uploadFile = async (blob, name) => {
     },
     body: formData
   }).then(res => res.json()).then(({ fileKey }) => fileKey);
-  console.log(fileKey)
   return fileKey;
 };
 
 export default async function updateKintone(recordID, image, dateTime) {
   const fileKey = await uploadFile(image, 'image.png');
-  console.log(dateTime)
   const putBody = {
     app: import.meta.env.VITE_KINTONE_APPID,
     id: recordID,
