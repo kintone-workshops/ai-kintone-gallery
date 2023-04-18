@@ -3,7 +3,7 @@
 ## Outline <!-- omit in toc -->
 * [Get Started](#get-started)
 * [Create a Kintone Web Database App](#create-a-kintone-web-database-app)
-* [Create an OpenAI API Token](#create-an-openai-api-token)
+* [Create an OpenAI API Key](#create-an-openai-api-key)
 * [Get Your Medium Author ID](#get-your-medium-author-id)
 * [Create a `.env` file](#create-a-env-file)
 * [Edit Your customize-manifest.json](#edit-your-customize-manifestjson)
@@ -55,36 +55,37 @@ Be sure to click the **Save** and **Activate App** buttons! 💪
 
 Confused? 🤔 → Check out the [How to Create a Kintone Database App](https://youtu.be/pRtfn-8cf_I) video 📺
 
-## Create an OpenAI API Token
+## Create an OpenAI API Key
 
-First, head to [labs.openai.com](https://labs.openai.com/) to open up your Medium account setting page.  
-Click on the **Integration tokens** section.
+First, head to [platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys) to access the OpenAI's API Key settings page.
+ s up your Medium account setting page.  
+Click on the **Integration Keys** section.
 
 ![img/medium-settings-screen.png](img/medium-settings-screen.png)
 
-Create a new API Token.  
+Create a new API Key.  
 _Don't worry; we have already revoked the one in this screenshot._ 😈
 
-| Input token description                                                           | Grab your integration token / API token                                               |
+| Input Key description                                                           | Grab your integration Key / API Key                                               |
 | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| ![img/medium-token-screen-cropped.png](img/medium-token-screen-cropped.png) | ![img/medium-token-complete-cropped.png](img/medium-token-complete-cropped.png) |
+| ![img/medium-Key-screen-cropped.png](img/medium-Key-screen-cropped.png) | ![img/medium-Key-complete-cropped.png](img/medium-Key-complete-cropped.png) |
 
 ## Get Your Medium Author ID
 
-With the API token, we can easily get our Medium.com Author ID.
+With the API Key, we can easily get our Medium.com Author ID.
 
-Copy the curl command below and replace `MY_API_TOKEN` with your API token.  
+Copy the curl command below and replace `MY_API_Key` with your API Key.  
 Then paste the command into your terminal & hit enter!
 
 ```shell
 
 cd publish-to-medium
 
-curl -H "Authorization: Bearer MY_API_TOKEN" https://api.medium.com/v1/me | json_pp
+curl -H "Authorization: Bearer MY_API_Key" https://api.medium.com/v1/me | json_pp
 
 ```
 
-Here is the curl command with a dummy token:
+Here is the curl command with a dummy Key:
 
 ```shell
 
@@ -112,7 +113,7 @@ Copy and keep the `"id"` string, as we will be pasting it into our .env file sho
 
 ## Create a `.env` file
 
-Using the [.env.example](./../.env.example) file as a temple, create a `.env` file that will contain your login credentials and API Token.
+Using the [.env.example](./../.env.example) file as a temple, create a `.env` file that will contain your login credentials and API Key.
 
 Here is what your `.env` might look like:
 
@@ -121,10 +122,10 @@ KINTONE_BASE_URL="https://example.kintone.com"
 KINTONE_USERNAME="example@gmail.com"
 KINTONE_PASSWORD="ILoveKintone!"
 VITE_AUTHOR_ID="12345abcde67890"
-VITE_API_TOKEN="09876edcba54321"
+VITE_API_Key="09876edcba54321"
 ```
 
-Paste your API Token from Medium into the `VITE_API_TOKEN` field and your Author ID into the `VITE_AUTHOR_ID` field.
+Paste your API Key from Medium into the `VITE_API_Key` field and your Author ID into the `VITE_AUTHOR_ID` field.
 
 ⚠️ DO NOT DELETE THE [.env.example](./../.env.example) FILE!  
 [.env.example](./../.env.example) is used by env-cmd to verify that `.env` file is correctly configured.
