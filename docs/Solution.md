@@ -1,4 +1,4 @@
-# Completed Version of [main.ks](../src/main.js)
+# Completed Version of [main.js](../src/main.js)
 
 ```js
 import './style.css';
