@@ -1,15 +1,14 @@
 # Guide on Installing Node.js & npm
 
 ## Outline <!-- omit in toc -->
-- [Guide on Installing Node.js \& npm](#guide-on-installing-nodejs--npm)
-  - [Check if you already have Node.js or npm](#check-if-you-already-have-nodejs-or-npm)
-  - [macOS with nodenv](#macos-with-nodenv)
-  - [Windows with nvm-windows](#windows-with-nvm-windows)
-  - [Installing Node.js - Video](#installing-nodejs---video)
+* [Check if you already have Node.js or npm](#check-if-you-already-have-nodejs-or-npm)
+* [macOS with nodenv](#macos-with-nodenv)
+* [Windows with nvm-windows](#windows-with-nvm-windows)
+* [Installing Node.js - Video](#installing-nodejs---video)
 
 ## Check if you already have Node.js or npm
 
-This project requires **Node >= 14.0.0** & **npm >= 5.6**  
+Vite requires **Node >= 14.18.0**  
 Go **inside** the `ai-kintone-gallery` folder.
 
 ```shell
@@ -21,11 +20,10 @@ If Node & npm are missing, let's install them!
 
 **Options**:
 
-- [Guide on Installing Node.js \& npm](#guide-on-installing-nodejs--npm)
-  - [Check if you already have Node.js or npm](#check-if-you-already-have-nodejs-or-npm)
-  - [macOS with nodenv](#macos-with-nodenv)
-  - [Windows with nvm-windows](#windows-with-nvm-windows)
-  - [Installing Node.js - Video](#installing-nodejs---video)
+* [Check if you already have Node.js or npm](#check-if-you-already-have-nodejs-or-npm)
+* [macOS with nodenv](#macos-with-nodenv)
+* [Windows with nvm-windows](#windows-with-nvm-windows)
+* [Installing Node.js - Video](#installing-nodejs---video)
 
 ## macOS with nodenv
 
@@ -121,6 +119,7 @@ Having different Node.js installations can lead to conflict issues.
 **Step 6**: Install Node.js inside the Workshop folder (`ai-kintone-gallery`)
 
 * Now you're ready to install specific Node.js versions!
+* Inside `ai-kintone-gallery` folder, install Node.js version `14.5.0`:
 * Inside `ai-kintone-gallery` folder, install Node.js version `14.5.0`:
 
   ```powershell
