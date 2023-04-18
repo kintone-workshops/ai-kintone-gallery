@@ -1,12 +1,11 @@
 # OpenAI Art Generator & Gallery Workshop Steps
 
 ## Outline <!-- omit in toc -->
-* [Get Started](#get-started)
-* [Create a Kintone Web Database App](#create-a-kintone-web-database-app)
-* [Create an OpenAI API Key](#create-an-openai-api-key)
-* [Get Your Medium Author ID](#get-your-medium-author-id)
-* [Create a `.env` file](#create-a-env-file)
-* [Edit Your customize-manifest.json](#edit-your-customize-manifestjson)
+* [1. Get Started - Clone the Repo \& Install Dependencies](#1-get-started---clone-the-repo--install-dependencies)
+* [2. Create a Kintone Web Database App](#2-create-a-kintone-web-database-app)
+* [3. Edit Your customize-manifest.json](#3-edit-your-customize-manifestjson)
+* [4. Create a `.env` file](#4-create-a-env-file)
+* [5. Create an OpenAI API Key](#5-create-an-openai-api-key)
 * [Edit main.ts](#edit-maints)
   * [Format the Kintone Data for Medium API Call](#format-the-kintone-data-for-medium-api-call)
     * [Title, Content-Format, \& Content](#title-content-format--content)
@@ -18,7 +17,7 @@
 * [Check Your Work](#check-your-work)
 <!-- markdownlint-enable MD007 -->
 
-## Get Started
+## 1. Get Started - Clone the Repo & Install Dependencies
 
 First, clone the [kintone-workshops/ai-kintone-gallery](https://github.com/kintone-workshops/ai-kintone-gallery) repo!  🚀  
 Then go inside the folder & install the dependencies!
@@ -35,10 +34,10 @@ npm install
 npm install -g @kintone/customize-uploader
 ```
 
-## Create a Kintone Web Database App
+## 2. Create a Kintone Web Database App
 
-Let's create a **AI Image Generator and Gallery** Kintone App!  
-This is where you will be generating and storing images generated using OpenAI's DALL·E 2.
+Let's create an **AI Image Generator and Gallery** Kintone App!  
+This is where you will generate and store images generated using OpenAI's DALL·E 2.
 
 TODO: Finish this section
 
@@ -55,97 +54,19 @@ Be sure to click the **Save** and **Activate App** buttons! 💪
 
 Confused? 🤔 → Check out the [How to Create a Kintone Database App](https://youtu.be/pRtfn-8cf_I) video 📺
 
-## Create an OpenAI API Key
-
-First, head to [platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys) to access the OpenAI's API Key settings page.
-
- s up your Medium account setting page.  
-Click on the **Integration Keys** section.
-
-![img/medium-settings-screen.png](img/medium-settings-screen.png)
-
-Create a new API Key.  
-_Don't worry; we have already revoked the one in this screenshot._ 😈
-
-| Input Key description                                                           | Grab your integration Key / API Key                                               |
-| --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| ![img/medium-Key-screen-cropped.png](img/medium-Key-screen-cropped.png) | ![img/medium-Key-complete-cropped.png](img/medium-Key-complete-cropped.png) |
-
-## Get Your Medium Author ID
-
-With the API Key, we can easily get our Medium.com Author ID.
-
-Copy the curl command below and replace `MY_API_Key` with your API Key.  
-Then paste the command into your terminal & hit enter!
-
-```shell
-
-cd publish-to-medium
-
-curl -H "Authorization: Bearer MY_API_Key" https://api.medium.com/v1/me | json_pp
-
-```
-
-Here is the curl command with a dummy Key:
-
-```shell
-
-cd publish-to-medium
-
-curl -H "Authorization: Bearer 2d6755756a12c743b4312f85fad0246a7953c68b78ef19c9efef134ef6dd8a429" https://api.medium.com/v1/me | json_pp
-
-```
-
-This will return your Author ID and other information in the terminal like so:
-
-```json
-{
-   "data" : {
-      "id" : "1df66a8dd2779709d3ca3b3526a4a0190972b...",
-      "imageUrl" : "https://cdn-images-1.medium...",
-      "name" : "Kintone Developer Relations",
-      "url" : "https://medium.com/@kin...",
-      "username" : "kintone_dev..."
-   }
-}
-```
-
-Copy and keep the `"id"` string, as we will be pasting it into our .env file shortly.
-
-## Create a `.env` file
-
-Using the [.env.example](./../.env.example) file as a temple, create a `.env` file that will contain your login credentials and API Key.
-
-Here is what your `.env` might look like:
-
-```txt
-KINTONE_BASE_URL="https://example.kintone.com"
-KINTONE_USERNAME="example@gmail.com"
-KINTONE_PASSWORD="ILoveKintone!"
-VITE_AUTHOR_ID="12345abcde67890"
-VITE_API_Key="09876edcba54321"
-```
-
-Paste your API Key from Medium into the `VITE_API_Key` field and your Author ID into the `VITE_AUTHOR_ID` field.
-
-⚠️ DO NOT DELETE THE [.env.example](./../.env.example) FILE!  
-[.env.example](./../.env.example) is used by env-cmd to verify that `.env` file is correctly configured.
-
-## Edit Your customize-manifest.json
+## 3. Edit Your customize-manifest.json
 
 Next, we need to tell our uploading scripts which Kintone App we will be working on.
 
-Open your [customize-manifest.json](../customize-manifest.json) & update the `"app"` variable!
-
-This is what it will look like:
+Open your [customize-manifest.json](../customize-manifest.json). It will look like this:
 
 ```json
 {
-    "app": "26",
+    "app": "1",
     "scope": "ALL",
     "desktop": {
-        "js": ["dist/KintoneCustomization.js"],
-        "css": ["dist/main.css"]
+        "js": ["dist/KintoneCustomization.umd.js"],
+        "css": []
     },
     "mobile": {
         "js": [],
@@ -154,17 +75,51 @@ This is what it will look like:
 }
 ```
 
-We can easily find our App ID number  from the Kintone App's URL!
+If this is NOT your first Kintone App, then you need to update the `"app"` variable with your App ID!
+
+The App ID number can be easily found in the Kintone App's URL!
 
 Go to the Kintone App and grab the URL.  
-Example: `https://devevents.kintone.com/k/36/`
+* Example: `https://devevents.kintone.com/k/52/`
 
 Kintone App's URL follows this template:  
-`https://<SUBDOMAIN>.kintone.com/k/<App ID>/show#record=<RECORD ID>`
+* `https://<SUBDOMAIN>.kintone.com/k/<App ID>/show#record=<RECORD ID>`
 
-So then the `https://devevents.kintone.com/k/26/` URL tells us that this App's ID is `26`
+So then the `https://devevents.kintone.com/k/52/` URL tells us that this App's ID is `52`
 
-![img/find-app-id.png](img/find-app-id.png)
+![KintoneApp_URL.png](img/KintoneApp_URL.png)
+
+## 4. Create a `.env` file
+
+Using the [.env.example](./../.env.example) file as a temple, create a `.env` file that will contain your login credentials and API Key.
+
+Here is what your `.env` might look like:
+
+```txt
+KINTONE_BASE_URL="https://example.kintone.com"
+KINTONE_USERNAME="MyEmail@example.com"
+KINTONE_PASSWORD="ILoveKintone!"
+VITE_KINTONE_SUBDOMAIN="example"
+VITE_KINTONE_TOKEN="abcd2ef3g3hij2kl1"
+VITE_KINTONE_APPID="1"
+VITE_OPEN_AI_TOKEN="1234567890"
+```
+
+### ⚠️ WARNING ⚠️ <!-- omit in toc -->
+
+⚠️ DO NOT DELETE THE [.env.example](./../.env.example) FILE!  
+[.env.example](./../.env.example) is used by env-cmd to verify that the `.env` file is correctly configured.
+
+## 5. Create an OpenAI API Key
+
+Head to [platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys) to access OpenAI's API Key settings page.
+
+Then click the `Create new secret key` button to generate a new API Key.
+
+![Create new secret key button highlighted on the Open AI API Key Settings page](img/openai_token_01.png)
+
+Copy the API Key and paste it into your `.env` file.  
+Paste your API Key from OpenAI into the `VITE_OPEN_AI_TOKEN` field.
 
 ---
 
