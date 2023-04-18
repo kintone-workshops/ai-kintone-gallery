@@ -14,7 +14,6 @@
   - [J. Add a record to the Kintone App to generate an image](#j-add-a-record-to-the-kintone-app-to-generate-an-image)
   - [Check Your Work](#check-your-work)
   - [Still got a problem?](#still-got-a-problem)
-<!-- markdownlint-enable MD007 -->
 
 ## A. Get Started - Clone the Repo & Install Dependencies
 
