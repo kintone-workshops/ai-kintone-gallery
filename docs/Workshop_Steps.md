@@ -8,10 +8,11 @@
 * [E. Generate an API Token for Kintone App](#e-generate-an-api-token-for-kintone-app)
 * [F. Edit Your customize-manifest.json](#f-edit-your-customize-manifestjson)
 * [G. Create an OpenAI API Key](#g-create-an-openai-api-key)
-* [H. Edit main.ts](#h-edit-maints)
+* [H. Edit main.js](#h-edit-mainjs)
 * [I. Compile and upload the code to Kintone](#i-compile-and-upload-the-code-to-kintone)
-* [J.](#j)
+* [J. Add a record to the Kintone App to generate an image](#j-add-a-record-to-the-kintone-app-to-generate-an-image)
 * [Check Your Work](#check-your-work)
+* [Still got a problem?](#still-got-a-problem)
 <!-- markdownlint-enable MD007 -->
 
 ## A. Get Started - Clone the Repo & Install Dependencies
@@ -175,9 +176,9 @@ Paste your API Key from OpenAI into the `VITE_OPEN_AI_TOKEN` variable in your `.
 
 ---
 
-## H. Edit main.ts
+## H. Edit main.js
 
-For this workshop, we will only be coding in [./src/main.ts](../src/main.ts).
+For this workshop, we will only be coding in [./src/main.js](../src/main.js).
 
 
 ---
@@ -188,18 +189,17 @@ Save your work and build your code by entering `npm run build` in your terminal!
 
 Then upload your code to Kintone by entering `npm run upload` in your terminal!
 
-## J. 
+## J. Add a record to the Kintone App to generate an image
 
-Navigate to your publications and bathe in your newfound journalistic fame!  
-Go to [medium.com/me/stories/public](https://medium.com/me/stories/public)
+TODO: Add step stuff
 
 ## Check Your Work
 
 Is your code not working?
 
-Compare your [./src/main.ts](../src/main.ts) with the [completed-code.md](./completed-code.md) to see if it is all written correctly.
+Compare your [./src/main.js](../src/main.js) with the [Solution.md](./Solution.md) to see if it is all written correctly.
 
-Still got a problem?
+## Still got a problem?
 
 Check out README's [Debugging](../README.md#debugging---lets-fix-those-problems) section!
 
