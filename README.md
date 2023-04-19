@@ -19,6 +19,8 @@ Let's create an AI Art Generator using [OpenAI's DALL·E 2](https://openai.com/p
 * [Workshop Steps](#workshop-steps)
 * [Overview of the Repo](#overview-of-the-repo)
 * [Quick Dive into OpenAI's API](#quick-dive-into-openais-api)
+  * [What is DALL-E?](#what-is-dall-e)
+  * [What is DALL-E?](#what-is-dall-e-1)
 * [Debugging](#debugging)
   * [Errors related to .env](#errors-related-to-env)
   * [Errors related to kintone-customize-uploader](#errors-related-to-kintone-customize-uploader)
@@ -109,7 +111,29 @@ For more information, check out the [Workshop_Steps.md > B. Get Your Free Kinton
 
 ## Quick Dive into OpenAI's API
 
-TODO: Add a quick dive into OpenAI's API
+### What is DALL-E?
+OpenAI's AI system that generates images from textual descriptions
+
+Based on a Generative Pre-trained Transformer 3 (GPT-3) neural network architecture
+* Trained on massive amount of text data (i.e., the Internet)
+* Goal is to "comprehend" natural language
+
+DALL-E can generate a wide range of images
+* Everything from abstract art to photo-like scenes
+
+### What is DALL-E?
+
+[Image generation](https://platform.openai.com/docs/guides/images) APIs are currently released as a public beta
+
+3 methods for interacting with images:
+* Generating new images based on a text prompt
+* Editing an existing image based on a text prompt
+* Generating variations based on an existing image
+
+Pricing is per image and varies by resolution:
+* 1024×1024 = $0.020
+* 512×512 = $0.018
+* 256×256 = $0.016  
 
 ---
 
