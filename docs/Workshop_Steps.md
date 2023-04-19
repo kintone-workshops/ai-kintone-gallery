@@ -179,6 +179,7 @@ Paste your API Key from OpenAI into the `VITE_OPEN_AI_TOKEN` variable in your `.
 
 For this workshop, we will only be coding in [./src/main.js](../src/main.js).
 
+TODO: Add step stuff
 
 ---
 
@@ -189,7 +190,18 @@ Then upload your code to Kintone by entering `npm run upload` in your terminal!
 
 ## J. Add a record to the Kintone App to generate an image
 
-TODO: Add step stuff
+Go to your Kintone App and add a record by clicking the **➕** button on the upper right side of the screen.
+
+Fill out the fields and save the record by clicking the **Save** button on the bottom left side of the screen.
+
+Once the record is saved, the **Generate Images** button will be displayed (where the **Space** field was placed).
+
+Click the **Generate Images** button to generate an image!
+
+A snipper will appear and the page will refresh automatically when the image is generated.
+
+Congrats! You have successfully generated an image using OpenAI's DALL·E 2!  
+_Enjoy your new image of a dog/cat with a 5th paw ~_ 🐶🐱
 
 ## Check Your Work
 
