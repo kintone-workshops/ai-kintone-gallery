@@ -32,7 +32,7 @@ Let's create an AI Art Generator using [OpenAI's DALL·E 2](https://openai.com/p
 
 ## Completed Project
 
-![Kintone_OpenAI_ImageGenerator_Demo.gif](docs/img/Kintone_OpenAI_ImageGenerator_Demo.gif)
+![Kintone_OpenAI_ImageGenerator_Demo.gif](./docs/img/Kintone_OpenAI_ImageGenerator_Demo.gif)
 
 ## Get Started
 _Clone the Repo & Install Dependencies_ 💪
@@ -69,22 +69,22 @@ code .
 | ![Step 1: Fill out the Kintone Developer license sign-up form](./docs/img/SignUp-1.png)         | ![Step 2: Email address will be the login name & the subdomain will be your unique link](./docs/img/SignUp-2.png) |
 | ![Step 3: Check for a "Welcome to Kintone! One More Step To..." email](./docs/img/SignUp-3.png) | ![Step 4: Log into Kintone](./docs/img/SignUp-4.png)                                                              |
 
-For more information, check out the [Workshop_Steps.md > B. Get Your Free Kintone Database](docs/Workshop_Steps.md#b-get-your-free-kintone-database) section!
+For more information, check out the [Workshop_Steps.md > B. Get Your Free Kintone Database](./docs/Workshop_Steps.md#b-get-your-free-kintone-database) section!
 
 ---
 
 ## Workshop Steps
 
-* [A. Get Started - Clone the Repo \& Install Dependencies](docs/Workshop_Steps.md#a-get-started---clone-the-repo--install-dependencies)
-* [B. Get Your Free Kintone Database](docs/Workshop_Steps.md#b-get-your-free-kintone-database)
-* [C. Create a `.env` file](docs/Workshop_Steps.md#c-create-a-env-file)
-* [D. Create a Kintone Web Database App](docs/Workshop_Steps.md#d-create-a-kintone-web-database-app)
-* [E. Generate an API Token for Kintone App](docs/Workshop_Steps.md#e-generate-an-api-token-for-kintone-app)
-* [F. Edit Your customize-manifest.json](docs/Workshop_Steps.md#f-edit-your-customize-manifestjson)
-* [G. Create an OpenAI API Key](docs/Workshop_Steps.md#g-create-an-openai-api-key)
-* [H. Edit main.js](docs/Workshop_Steps.md#h-edit-mainjs)
-* [I. Compile and upload the code to Kintone](docs/Workshop_Steps.md#i-compile-and-upload-the-code-to-kintone)
-* [J. Add a record to the Kintone App to generate an image](docs/Workshop_Steps.md#j-add-a-record-to-the-kintone-app-to-generate-an-image)
+* [A. Get Started - Clone the Repo \& Install Dependencies](./docs/Workshop_Steps.md#a-get-started---clone-the-repo--install-dependencies)
+* [B. Get Your Free Kintone Database](./docs/Workshop_Steps.md#b-get-your-free-kintone-database)
+* [C. Create a `.env` file](./docs/Workshop_Steps.md#c-create-a-env-file)
+* [D. Create a Kintone Web Database App](./docs/Workshop_Steps.md#d-create-a-kintone-web-database-app)
+* [E. Generate an API Token for Kintone App](./docs/Workshop_Steps.md#e-generate-an-api-token-for-kintone-app)
+* [F. Edit Your customize-manifest.json](./docs/Workshop_Steps.md#f-edit-your-customize-manifestjson)
+* [G. Create an OpenAI API Key](./docs/Workshop_Steps.md#g-create-an-openai-api-key)
+* [H. Edit main.js](./docs/Workshop_Steps.md#h-edit-mainjs)
+* [I. Compile and upload the code to Kintone](./docs/Workshop_Steps.md#i-compile-and-upload-the-code-to-kintone)
+* [J. Add a record to the Kintone App to generate an image](./docs/Workshop_Steps.md#j-add-a-record-to-the-kintone-app-to-generate-an-image)
 
 ---
 
@@ -188,7 +188,7 @@ npm install -g kintone-customize-uploader
 * Mac: `nodenv local 14.5.0`
 * Windows: `nvm use 14.5.0`
 
-Not the correct versions, or confused? 🤔 → Check out the [Guide on Installing Node.js & npm](docs/Install_NodeJS_npm.md) Doc
+Not the correct versions, or confused? 🤔 → Check out the [Guide on Installing Node.js & npm](./docs/Install_NodeJS_npm.md) Doc
 
 ### `npm run upload` failed?
 _@kintone/customize-uploader not working?_ Let's try the following:
@@ -202,21 +202,21 @@ _@kintone/customize-uploader not working?_ Let's try the following:
   * ✅ Correct Format: `https://example.kintone.com`
   * ❌ Incorrect Format: `https://example.kintone.com/` or `example.kintone.com`
 * ⚠️ Re-run the npm commands after saving the .env file
-* ⚙️ Details: [Step 4 - Create a `.env` File](docs/Workshop_Steps.md#step-4---create-a-env-file-)
+* ⚙️ Details: [Step 4 - Create a `.env` File](./docs/Workshop_Steps.md#step-4---create-a-env-file-)
 
 (3) Verify your [customize-manifest.json](customize-manifest.json) was updated with the correct App ID
-* ⚙️ Details: [Step 5 - Update customize-manifest.json with the App ID](docs/Workshop_Steps.md#step-5---update-customize-manifestjson-with-the-app-id-)
+* ⚙️ Details: [Step 5 - Update customize-manifest.json with the App ID](./docs/Workshop_Steps.md#step-5---update-customize-manifestjson-with-the-app-id-)
 
 (4) Verify that the `npm run build` command was run before the `npm run upload`
 
 ### Not seeing a highlighted `TODO:`?
 Click the `Install` button on the VS Code pop-up message to install [TODO Highlight extension](https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight).
-* [![vscode-setting-extension.png](docs/img/vscode-setting-extension.png)](docs/img/vscode-setting-extension-HD.png)  
+* [![vscode-setting-extension.png](./docs/img/vscode-setting-extension.png)](./docs/img/vscode-setting-extension-HD.png)  
 
 ---
 
 ## Completed Code
 If you want the completed code for the index.js file, you can find it here:  
-[Solution](/docs/Solution)
+[Solution](./docs/Solution.md)
 
 ---
