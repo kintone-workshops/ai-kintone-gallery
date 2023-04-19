@@ -1,18 +1,22 @@
 # OpenAI Art Generator & Gallery Workshop Steps
 
 ## Outline <!-- omit in toc -->
-* [A. Get Started - Clone the Repo \& Install Dependencies](#a-get-started---clone-the-repo--install-dependencies)
-* [B. Get Your Free Kintone Database](#b-get-your-free-kintone-database)
-* [C. Create a `.env` file](#c-create-a-env-file)
-* [D. Create a Kintone Web Database App](#d-create-a-kintone-web-database-app)
-* [E. Generate an API Token for Kintone App](#e-generate-an-api-token-for-kintone-app)
-* [F. Edit Your customize-manifest.json](#f-edit-your-customize-manifestjson)
-* [G. Create an OpenAI API Key](#g-create-an-openai-api-key)
-* [H. Edit main.js](#h-edit-mainjs)
-* [I. Compile and upload the code to Kintone](#i-compile-and-upload-the-code-to-kintone)
-* [J. Add a record to the Kintone App to generate an image](#j-add-a-record-to-the-kintone-app-to-generate-an-image)
-* [Check Your Work](#check-your-work)
-* [Still got a problem?](#still-got-a-problem)
+- [OpenAI Art Generator \& Gallery Workshop Steps](#openai-art-generator--gallery-workshop-steps)
+  - [A. Get Started - Clone the Repo \& Install Dependencies](#a-get-started---clone-the-repo--install-dependencies)
+  - [B. Get Your Free Kintone Database](#b-get-your-free-kintone-database)
+  - [C. Create a `.env` file](#c-create-a-env-file)
+  - [D. Create a Kintone Web Database App](#d-create-a-kintone-web-database-app)
+  - [E. Generate an API Token for Kintone App](#e-generate-an-api-token-for-kintone-app)
+  - [F. Edit Your customize-manifest.json](#f-edit-your-customize-manifestjson)
+  - [G. Create an OpenAI API Key](#g-create-an-openai-api-key)
+  - [H. Edit main.js](#h-edit-mainjs)
+    - [Step 1: Make a prompt](#step-1-make-a-prompt)
+    - [Step 2: Call our APIs](#step-2-call-our-apis)
+  - [We pass our `postBody` we made above into the generateImages function. We want this function to *wait* for the response before trying to upload it to Kintone, we make an async function, then with the result of that function, we'll prepare to upload to Kintone. We want to upload the file, and also the date-time it was created.](#we-pass-our-postbody-we-made-above-into-the-generateimages-function-we-want-this-function-to-wait-for-the-response-before-trying-to-upload-it-to-kintone-we-make-an-async-function-then-with-the-result-of-that-function-well-prepare-to-upload-to-kintone-we-want-to-upload-the-file-and-also-the-date-time-it-was-created)
+  - [I. Compile and upload the code to Kintone](#i-compile-and-upload-the-code-to-kintone)
+  - [J. Add a record to the Kintone App to generate an image](#j-add-a-record-to-the-kintone-app-to-generate-an-image)
+  - [Check Your Work](#check-your-work)
+  - [Still got a problem?](#still-got-a-problem)
 
 ## A. Get Started - Clone the Repo & Install Dependencies
 
@@ -178,9 +182,68 @@ Paste your API Key from OpenAI into the `VITE_OPEN_AI_TOKEN` variable in your `.
 ## H. Edit main.js
 
 For this workshop, we will only be coding in [./src/main.js](../src/main.js).
+We have two steps: 
+1. Format our data into a nice string to send to DALL-E.
+2. Send that data to DALL-E, get an image back, then upload it to our Kintone gallery.
 
-TODO: Add step stuff
+We have set up the [Open AI POST request](../src/requests/aiPOSTRequest.js) and our [Kintone PUT request](../src/requests/kintonePUTRequest.js), but need to understand what those functions need in order to work.
 
+Looking at the [Open AI POST request](../src/requests/aiPOSTRequest.js), we can see it takes a `postBody` variable, to send to Open AI DALL-E. [Open AI's Image Generation](https://platform.openai.com/docs/api-reference/images/create) documentation says our `postBody` should look like this:
+``` json
+{
+  "prompt": "A cute baby sea otter", // prompt
+  "n": 2, // number of images to generate
+  "size": "1024x1024", // resolution
+  "response_format": "b64_json" // Either URL for a link, or b64_json for the raw image data
+}
+```
+For this workshop, the size and number of images can be hand typed. We'll just generate one image for now. We want the raw image data so we can process it into an uploadable file.
+
+### Step 1: Make a prompt
+Therefore, we need to create a prompt from our Kintone record data. On line 16 we'll fill in the prompt builder function. We have access to our Kintone variables like so: `event.record.FIELD_CODE.value`. We set up our field codes earlier with values like
+* animal
+* emotion
+* random
+* clothes
+  so let's build a string with them. We can use *template literals*, aka *string interpolation*. We need to use backticks, ``` ` ``` and inject our variables using `${VARIABLE}`in order to do this.
+```js
+    const promptBuilder = () => {
+      let promptString = `A cute ${event.record.animal.value} who looks ${event.record.emotion.value} holding a ${event.record.random.value} wearing `;
+...
+```
+This works for our simple values, but we tried to be fancy with our clothes selector, and allowed for multiple or no choices. Since we have multiple values, we'll need to loop through them and add them to our string as needed.
+
+```js
+    const promptBuilder = () => {
+      let promptString = `A cute ${event.record.animal.value} who looks ${event.record.emotion.value} holding a ${event.record.random.value} wearing `;
+
+      let clothesArray = event.record.clothes.value;
+      clothesArray.forEach((option, index) => {
+        if (index == 0) {
+          promptString += `${option}`;
+        } else {
+          promptString = promptString + ` and ${option}`;
+        }
+      });
+      return promptString
+    }
+```
+All this to create a fancy prompt for Open AI to process!
+
+### Step 2: Call our APIs
+
+Our code is setup to create a clickable button in our Kintone record. When we click the button, we want to send our prompt to DALL-E API, get the response, then upload that to Kintone. All in one click.
+On line 74, we have the onClick function:
+
+```js
+    generateButton.onclick = () => {
+      // Start the spinner.
+      var spinner = new Spinner(opts).spin();
+      spinnerTarget.appendChild(spinner.el);
+      // We need to call our API POST function with request's body... 🧐
+      generateImages(postBody).then(async (result) => {
+```
+We pass our `postBody` we made above into the generateImages function. We want this function to *wait* for the response before trying to upload it to Kintone, we make an async function, then with the result of that function, we'll prepare to upload to Kintone. We want to upload the file, and also the date-time it was created.
 ---
 
 ## I. Compile and upload the code to Kintone

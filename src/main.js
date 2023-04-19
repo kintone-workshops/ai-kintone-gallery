@@ -14,18 +14,10 @@ import { Spinner } from 'spin.js';
 
     //The text we will give to the Open AI API
     const promptBuilder = () => {
-      let promptString = `A cute ${event.record.animal.value} who looks ${event.record.emotion.value} holding a ${event.record.random.value} wearing `;
-
-      let clothesArray = event.record.clothes.value;
-      clothesArray.forEach((option, index) => {
-        if (index == 0) {
-          promptString += `${option}`;
-        } else {
-          promptString = promptString + ` and ${option}`;
-        }
-      });
+      // TODO
       return promptString
     }
+
     // Spinner Options. Not too important.
     var opts = {
       lines: 13, // The number of lines to draw
@@ -61,7 +53,7 @@ import { Spinner } from 'spin.js';
     spinnerTarget.id = "spinner"
     // Create a button for our AI API call
     const generateButton = document.createElement('button');
-    generateButton.id = 'generateButton'; 
+    generateButton.id = 'generateButton';
     // Our "Element ID" from our Blank Space in the Kintone App.
     // Give it an id & class (for CSS), and text on the button.
     generateButton.className = "uploadButton"
@@ -72,25 +64,18 @@ import { Spinner } from 'spin.js';
       // Start the spinner.
       var spinner = new Spinner(opts).spin();
       spinnerTarget.appendChild(spinner.el);
-      // We need to call our API POST function with request's body... 🧐
-      generateImages(postBody).then(async (result) => {
+      // We need to call our Open AI API POST function with request's body... 🧐
 
-        // The OpenAI API gives us a response with a timestamp, and an image in base64 format
-        const unixTimestamp = result.created;
-        // Let's format the timestamp from unix time to a local timezone string.
-        const date = new Date(unixTimestamp * 1000); // multiply by 1000 to convert to milliseconds
-        const isoDateString = date.toISOString();
+      // TODO: TIME STAMP
+      // The OpenAI API gives us a response with a timestamp, and an image in base64 format
+      // Let's format the timestamp from unix time to a local timezone string.
 
-        // We convert the base64 to a blob.
-        let imageBlob = await b64toBlob(result.data[0].b64_json)
-        // And designate it as a file.
-        let file = new File([imageBlob], "test.png", { type: 'image/png', lastModified: isoDateString })
-        // Then we want to update our record with our new picture!
-        await updateKintone(event.recordId, file, isoDateString)
-      }).finally(() => {
-        // When the async api call is finished, reload the page to see our new image.
-        window.location.reload();
-      })
+      // TODO:
+      // We convert the base64 to a blob.
+      // And designate it as a file.
+      // Then we want to update our record with our new picture!
+
+      // When the async api call is finished, reload the page to see our new image.
     };
     // Set button and Spinner on the Blank Space field
     kintone.app.record.getSpaceElement('generateButton').appendChild(generateButton);
