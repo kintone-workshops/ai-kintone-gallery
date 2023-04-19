@@ -16,8 +16,8 @@ Let's create an AI Art Generator using [OpenAI's DALL·E 2](https://openai.com/p
 * [Completed Project](#completed-project)
 * [Get Started](#get-started)
 * [Get Your Free Kintone Database](#get-your-free-kintone-database)
-* [Overview of the Repo](#overview-of-the-repo)
 * [Workshop Steps](#workshop-steps)
+* [Overview of the Repo](#overview-of-the-repo)
 * [Quick Dive into OpenAI's API](#quick-dive-into-openais-api)
 * [Debugging](#debugging)
   * [Errors related to .env](#errors-related-to-env)
@@ -71,6 +71,21 @@ For more information, check out the [Workshop_Steps.md > B. Get Your Free Kinton
 
 ---
 
+## Workshop Steps
+
+* [A. Get Started - Clone the Repo \& Install Dependencies](docs/Workshop_Steps.md#a-get-started---clone-the-repo--install-dependencies)
+* [B. Get Your Free Kintone Database](docs/Workshop_Steps.md#b-get-your-free-kintone-database)
+* [C. Create a `.env` file](docs/Workshop_Steps.md#c-create-a-env-file)
+* [D. Create a Kintone Web Database App](docs/Workshop_Steps.md#d-create-a-kintone-web-database-app)
+* [E. Generate an API Token for Kintone App](docs/Workshop_Steps.md#e-generate-an-api-token-for-kintone-app)
+* [F. Edit Your customize-manifest.json](docs/Workshop_Steps.md#f-edit-your-customize-manifestjson)
+* [G. Create an OpenAI API Key](docs/Workshop_Steps.md#g-create-an-openai-api-key)
+* [H. Edit main.js](docs/Workshop_Steps.md#h-edit-mainjs)
+* [I. Compile and upload the code to Kintone](docs/Workshop_Steps.md#i-compile-and-upload-the-code-to-kintone)
+* [J. Add a record to the Kintone App to generate an image](docs/Workshop_Steps.md#j-add-a-record-to-the-kintone-app-to-generate-an-image)
+
+---
+
 ## Overview of the Repo
 
 | File                                                                   | Purpose                                                                   | Need to Modify?        |
@@ -89,21 +104,6 @@ For more information, check out the [Workshop_Steps.md > B. Get Your Free Kinton
 | [vite.config.js](vite.config.js)                                       | Various settings for how and where our JavaScript compiles to             |                        |
 |                                                                        |                                                                           |                        |
 | [docs/Workshop_Steps.md](docs/Workshop_Steps.md)                       | Step-by-step guide that we do during the workshop                         |                        |
-
----
-
-## Workshop Steps
-
-* [A. Get Started - Clone the Repo \& Install Dependencies](docs/Workshop_Steps.md#a-get-started---clone-the-repo--install-dependencies)
-* [B. Get Your Free Kintone Database](docs/Workshop_Steps.md#b-get-your-free-kintone-database)
-* [C. Create a `.env` file](docs/Workshop_Steps.md#c-create-a-env-file)
-* [D. Create a Kintone Web Database App](docs/Workshop_Steps.md#d-create-a-kintone-web-database-app)
-* [E. Generate an API Token for Kintone App](docs/Workshop_Steps.md#e-generate-an-api-token-for-kintone-app)
-* [F. Edit Your customize-manifest.json](docs/Workshop_Steps.md#f-edit-your-customize-manifestjson)
-* [G. Create an OpenAI API Key](docs/Workshop_Steps.md#g-create-an-openai-api-key)
-* [H. Edit main.js](docs/Workshop_Steps.md#h-edit-mainjs)
-* [I. Compile and upload the code to Kintone](docs/Workshop_Steps.md#i-compile-and-upload-the-code-to-kintone)
-* [J. Add a record to the Kintone App to generate an image](docs/Workshop_Steps.md#j-add-a-record-to-the-kintone-app-to-generate-an-image)
 
 ---
 
