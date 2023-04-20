@@ -76,7 +76,7 @@ VITE_KINTONE_APPID="1"
 VITE_OPEN_AI_TOKEN="1234567890"
 ```
 
-So far you can fill out the following variables:
+So far, you can fill out the following variables:
 * `KINTONE_BASE_URL`
 * `KINTONE_USERNAME`
 * `KINTONE_PASSWORD`
@@ -110,11 +110,11 @@ Here are the required fields & their configurations for our workshop:
 | Field Type | Element ID       | Note                                                            |
 | ---------- | ---------------- | --------------------------------------------------------------- |
 | Space #1   | `generateButton` | Where the **Generate Images** button will be displayed          |
-| Space #2   | `spinner`        | Where the Spinner will be displayed as the image gets generated |
+| Space #2   | `spinner`        | Where the spinner will be displayed as the image gets generated |
 
 ### Steps to create the kintone app
 
-To create the Kintone App, click on the **➕** button on the upper right side of the Kintone Portal.
+To create the Kintone App, click the **➕** button on the upper right side of the Kintone Portal.
 * ![Screenshot: The "➕" button](img/CreateApp-1.png)
 
 Once you have configured the fields, the Kintone App should look like this:  
@@ -135,7 +135,7 @@ We need to generate an API Token for our Kintone App.
 1. Click **Generate**. ![Screenshot: The "Generate" button](img/KintoneApp_API_1.png)
 1. Check the `Add records` and `Edit records` boxes.  
    * ![Screenshot: The "Add records" and "Edit records" boxes](img/KintoneApp_API_2.png)
-1. Copy the API Token and past it to the `VITE_KINTONE_TOKEN` variable in your `.env` file.
+1. Copy the API Token and paste it to the `VITE_KINTONE_TOKEN` variable in your `.env` file.
 1. Click the **Save** button on the bottom right side of the screen.
 1. Click the **Update App** button on the upper right side of the screen.
 
@@ -291,7 +291,7 @@ Let's format that unix timestamp to a user locale based date time:
       // Start the spinner.
       var spinner = new Spinner(opts).spin();
       spinnerTarget.appendChild(spinner.el);
-      // We need to call our API POST function with request's body... 🧐
+      // We need to call our API POST function with the request's body... 🧐
       generateImages(postBody).then(async (result) => {
         const unixTimestamp = result.created;
         const date = new Date(unixTimestamp * 1000); // multiply by 1000 to convert to milliseconds
@@ -305,7 +305,7 @@ Next, we have to convert our raw base64 image data to an image file to upload to
       // Start the spinner.
       var spinner = new Spinner(opts).spin();
       spinnerTarget.appendChild(spinner.el);
-      // We need to call our API POST function with request's body... 🧐
+      // We need to call our API POST function with the request's body... 🧐
       generateImages(postBody).then(async (result) => {
         const unixTimestamp = result.created;
         const date = new Date(unixTimestamp * 1000); // multiply by 1000 to convert to milliseconds
@@ -334,13 +334,13 @@ Finally we have our dateTime and our image file, so let's save to our database f
         let file = new File([imageBlob], "test.png", { type: 'image/png', lastModified: isoDateString })
         await updateKintone(event.recordId, file, isoDateString)
       }).finally(() => {
-        // When the async api call is finished, reload the page to see our new image.
+        // When the async API call is finished, reload the page to see our new image.
         window.location.reload();
       })
     };
 ```
 
-At the end, we wait for the upload to finish, and reload the window, to immediately view our beautiful (maybe?) AI art.
+At the end, we wait for the upload to finish and reload the window to immediately view our beautiful (maybe?) AI art.
 
 ---
 
@@ -355,7 +355,7 @@ Then upload your code to Kintone by entering `npm run upload` in your terminal!
 1. Fill out the fields and save the record by clicking the **Save** button on the bottom left side of the screen.
 1. Once the record is saved, the **Generate Images** button will be displayed (where the **Space** field was placed).
 1. Click the **Generate Images** button to generate an image!
-1. A spinner will appear and the page will refresh automatically when the image is generated.
+1. A spinner will appear, and the page will refresh automatically when the image is generated.
 
 Congrats! You have successfully generated an image using OpenAI's DALL·E 2!  
 _Enjoy your new image of a dog/cat with a 5th paw ~_ 🐶🐱
