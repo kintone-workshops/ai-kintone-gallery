@@ -1,22 +1,22 @@
 # OpenAI Art Generator & Gallery Workshop Steps
 
 ## Outline <!-- omit in toc -->
-* [A. Get Started - Clone the Repo \& Install Dependencies](#a-get-started---clone-the-repo--install-dependencies)
-* [B. Get Your Free Kintone Database](#b-get-your-free-kintone-database)
+* [A. Get started - clone the repo \& install dependencies](#a-get-started---clone-the-repo--install-dependencies)
+* [B. Get your free Kintone database](#b-get-your-free-kintone-database)
 * [C. Create a `.env` file](#c-create-a-env-file)
-* [D. Create a Kintone Web Database App](#d-create-a-kintone-web-database-app)
+* [D. Create a Kintone web database app](#d-create-a-kintone-web-database-app)
   * [Input Fields](#input-fields)
-  * [Blank Space Fields](#blank-space-fields)
-  * [Steps to Create the Kintone App](#steps-to-create-the-kintone-app)
-* [E. Generate an API Token for Kintone App](#e-generate-an-api-token-for-kintone-app)
-* [F. Edit Your customize-manifest.json](#f-edit-your-customize-manifestjson)
-* [G. Create an OpenAI API Key](#g-create-an-openai-api-key)
+  * [Blank Space fields](#blank-space-fields)
+  * [Steps to create the kintone app](#steps-to-create-the-kintone-app)
+* [E. Generate an API token for Kintone app](#e-generate-an-api-token-for-kintone-app)
+* [F. Edit your customize-manifest.json](#f-edit-your-customize-manifestjson)
+* [G. Create an OpenAI API key](#g-create-an-openai-api-key)
 * [H. Edit main.js](#h-edit-mainjs)
   * [Step 1: Make a prompt](#step-1-make-a-prompt)
   * [Step 2: Call our APIs](#step-2-call-our-apis)
 * [I. Compile and upload the code to Kintone](#i-compile-and-upload-the-code-to-kintone)
-* [J. Add a record to the Kintone App to generate an image](#j-add-a-record-to-the-kintone-app-to-generate-an-image)
-* [Check Your Work](#check-your-work)
+* [J. Add a record to the Kintone app to generate an image](#j-add-a-record-to-the-kintone-app-to-generate-an-image)
+* [Check your work](#check-your-work)
 * [Still got a problem?](#still-got-a-problem)
 
 ## A. Get started - clone the repo & install dependencies
@@ -112,7 +112,7 @@ Here are the required fields & their configurations for our workshop:
 | Space #1   | `generateButton` | Where the **Generate Images** button will be displayed          |
 | Space #2   | `spinner`        | Where the Spinner will be displayed as the image gets generated |
 
-### Steps To create the Kintone app
+### Steps to create the kintone app
 
 To create the Kintone App, click on the **➕** button on the upper right side of the Kintone Portal.
 * ![Screenshot: The "➕" button](img/CreateApp-1.png)
