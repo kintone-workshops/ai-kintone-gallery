@@ -118,7 +118,7 @@ To create the Kintone App, click on the **➕** button on the upper right side o
 * ![Screenshot: The "➕" button](img/CreateApp-1.png)
 
 Once you have configured the fields, the Kintone App should look like this:  
-![Screenshot of the completed Kintone App](img/KintoneApp_Complete.png)
+![Screenshot of the completed Kintone App](img/KintoneApp_Complete_Arrows.png)
 
 Then, click the **Save** and **Activate App** buttons! 💪
 
