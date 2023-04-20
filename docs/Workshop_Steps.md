@@ -93,7 +93,8 @@ Here are the required fields & their configurations for our workshop:
 
 | Field Type      | Field Name                   | Field Code       | Note                                                             |
 | --------------- | ---------------------------- | ---------------- | ---------------------------------------------------------------- |
-| Space           |                              | `generateButton` | Where the **Generate Images** button will be displayed           |
+| Space #1        |                              | `generateButton` | Where the **Generate Images** button will be displayed           |
+| Space #2        |                              | `spinner`        | Where the Spinner will be displayed as the image gets generated  |
 | Radio button #1 | **I want a...**              | `animal`         | Options: `dog` & `cat`                                           |
 | Radio button #2 | **who looks...?**            | `emotion`        | Options: `happy`, `sad`, `angry`, & `confused`                   |
 | Text            | **Holding a...**             | `random`         |                                                                  |
