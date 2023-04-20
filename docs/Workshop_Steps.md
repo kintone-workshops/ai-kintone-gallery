@@ -198,9 +198,10 @@ We have two steps:
 1. Format our data into a nice string to send to DALL-E.
 2. Send that data to DALL-E, get an image back, then upload it to our Kintone gallery.
 
-We have set up the [Open AI POST request](../src/requests/aiPOSTRequest.js) and our [Kintone PUT request](../src/requests/kintonePUTRequest.js), but need to understand what those functions need in order to work.
+The [Open AI POST request](../src/requests/aiPOSTRequest.js) and the [Kintone PUT request](../src/requests/kintonePUTRequest.js) are already created, but we need to understand what those functions do in order to work on the `main.js`.
 
-Looking at the [Open AI POST request](../src/requests/aiPOSTRequest.js), we can see it takes a `postBody` variable, to send to Open AI DALL-E. [Open AI's Image Generation](https://platform.openai.com/docs/api-reference/images/create) documentation says our `postBody` should look like this:
+Looking at the [Open AI POST request](../src/requests/aiPOSTRequest.js), we can see it takes a `postBody` variable to send to Open AI DALL-E.  
+[Open AI's Image Generation](https://platform.openai.com/docs/api-reference/images/create) documentation says our `postBody` should look like this:
 
 ``` json
 {
@@ -211,7 +212,9 @@ Looking at the [Open AI POST request](../src/requests/aiPOSTRequest.js), we can 
 }
 ```
 
-For this workshop, the size and number of images can be hand typed. We'll just generate one image for now. We want the raw image data so we can process it into an uploadable file.
+The size and number of images can be hand typed for this workshop.  
+We will generate one image for now.  
+We want the raw image data to process it into an uploadable file.
 
 Next, our [Kintone PUT request](../src/requests/kintonePUTRequest.js), takes in three variables to upload to Kintone:
 
@@ -220,22 +223,30 @@ export default async function updateKintone(recordID, image, dateTime) {
    ...
 ```
 
-A `recordID`, an `image` file, and the `dateTime` it was created at. Let's get started.
+A `recordID`, an `image` file, and the `dateTime` (when the image was generated). Let's get started!
 
 ### Step 1: Make a prompt
-Therefore, we need to create a prompt from our Kintone record data. On line 16 we'll fill in the prompt builder function. We have access to our Kintone variables like so: `event.record.FIELD_CODE.value`. We set up our field codes earlier with values like
-* animal
-* emotion
-* random
-* clothes
-  so let's build a string with them. We can use *template literals*, aka *string interpolation*. We need to use backticks, ``` ` ``` and inject our variables using `${VARIABLE}`in order to do this.
+
+Therefore, we need to create a prompt from our Kintone record data.  
+On line 16, we will fill in the prompt builder function. We have access to our Kintone variables like so: `event.record.FIELD_CODE.value`.
+
+We configured the field codes earlier in the [Create a Kintone Web Database App](#d-create-a-kintone-web-database-app) section as the following:
+* `animal`
+* `emotion`
+* `random`
+* `clothes`
+
+Let's build a string with these fields.  
+We can use _template literals_, aka _string interpolation_. We need to use backticks, ``` ` ```, and inject our variables using `${VARIABLE}`in order to do this:
+
 ```js
     const promptBuilder = () => {
       let promptString = `A cute ${event.record.animal.value} who looks ${event.record.emotion.value} holding a ${event.record.random.value} wearing `;
 ...
 ```
 
-This works for our simple values, but we tried to be fancy with our clothes selector, and allowed for multiple or no choices. Since we have multiple values, we'll need to loop through them and add them to our string as needed.
+This works for our simple values, but we tried to be fancy with our clothes selector.  
+Using the check box field, we can expect multiple or no choices. Since we have multiple values, we must loop through them and add them to our string as needed.
 
 ```js
     const promptBuilder = () => {
@@ -257,25 +268,28 @@ All this to create a fancy prompt for Open AI to process!
 
 ### Step 2: Call our APIs
 
-Our code is setup to create a clickable button in our Kintone record. When we click the button, we want to send our prompt to DALL-E API, get the response, then upload that to Kintone. All in one click.
-On line 74, we have the onClick function:
+Our code is set up to create a clickable button in our Kintone record. When we click the button, we want to send our prompt to DALL-E API, get the response, then upload that to Kintone. All in one click.
+
+On line 74, we have the `onClick` function:
 
 ```js
     generateButton.onclick = () => {
       // Start the spinner.
       var spinner = new Spinner(opts).spin();
       spinnerTarget.appendChild(spinner.el);
-      // We need to call our API POST function with request's body... 🧐
+      // We need to call our API POST function with the request's body... 🧐
       generateImages(postBody).then(async (result) => {
 ```
 
-We pass our `postBody` we made above into the generateImages function. We want this function to _wait_ for the response before trying to upload it to Kintone, so we make an async function, then with the result of that function, we'll prepare to upload to Kintone. We want to upload the file, and also the date-time it was created.
+We pass the `postBody` we made above into the `generateImages` function.  
+We want this function to _wait_ for the response before uploading it to Kintone, so we make an async function.  
+Then with the result of that function, we will prepare to upload to Kintone. We want to upload the file and the date-time it was created.
 
 The Open AI API documentation shows the return values from our API call `result`:
 
 ```json
 {
-  "created": 1589478378, // a unix timestamp
+  "created": 1589478378, // a Unix timestamp
   "data": [
     {
       "b64_json": "YWJjMT..." //our image in base64 format
@@ -284,7 +298,7 @@ The Open AI API documentation shows the return values from our API call `result`
 }
 ```
 
-Let's format that unix timestamp to a user locale based date time:
+Let's format that Unix timestamp to the user's preferences:
 
 ```js
     generateButton.onclick = () => {
@@ -298,7 +312,9 @@ Let's format that unix timestamp to a user locale based date time:
         const isoDateString = date.toISOString(); // Automatically manages timezone and daylight savings time!
 ```
 
-Next, we have to convert our raw base64 image data to an image file to upload to Kintone. We provided a handy function on line 15, `b64toBlob(base64, type)` which will do the heavy lifting for us. Let's pass our base64 data into it, and convert that blob to a file object:
+Next, we must convert our raw base64 image data to an image file to upload to Kintone.  
+We provided a handy function on line 15, `b64toBlob(base64, type)`, which will do the heavy lifting for us.  
+Let's pass our base64 data into it, and convert that blob to a file object:
 
 ```js
     generateButton.onclick = () => {
@@ -316,7 +332,8 @@ Next, we have to convert our raw base64 image data to an image file to upload to
         let file = new File([imageBlob], "test.png", { type: 'image/png', lastModified: isoDateString })
 ```
 
-Finally we have our dateTime and our image file, so let's save to our database for viewing later. We'll be calling the [Kintone PUT request](../src/requests/kintonePUTRequest.js) function, and like we explained in the beginning, giving it our `recordID` to update, the `isoDateString`, and our image `file`.
+Finally, we have our `dateTime` and our image file, so let's save them to our database for viewing later.  
+We will call the [Kintone PUT request](../src/requests/kintonePUTRequest.js) function, and as we explained in the beginning, give it our `recordID` to update the `isoDateString` and our image `file`.
 
 ```js
     generateButton.onclick = () => {
