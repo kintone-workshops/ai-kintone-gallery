@@ -12,7 +12,6 @@
   - [H. Edit main.js](#h-edit-mainjs)
     - [Step 1: Make a prompt](#step-1-make-a-prompt)
     - [Step 2: Call our APIs](#step-2-call-our-apis)
-  - [We pass our `postBody` we made above into the generateImages function. We want this function to *wait* for the response before trying to upload it to Kintone, we make an async function, then with the result of that function, we'll prepare to upload to Kintone. We want to upload the file, and also the date-time it was created.](#we-pass-our-postbody-we-made-above-into-the-generateimages-function-we-want-this-function-to-wait-for-the-response-before-trying-to-upload-it-to-kintone-we-make-an-async-function-then-with-the-result-of-that-function-well-prepare-to-upload-to-kintone-we-want-to-upload-the-file-and-also-the-date-time-it-was-created)
   - [I. Compile and upload the code to Kintone](#i-compile-and-upload-the-code-to-kintone)
   - [J. Add a record to the Kintone App to generate an image](#j-add-a-record-to-the-kintone-app-to-generate-an-image)
   - [Check Your Work](#check-your-work)
@@ -199,6 +198,13 @@ Looking at the [Open AI POST request](../src/requests/aiPOSTRequest.js), we can 
 ```
 For this workshop, the size and number of images can be hand typed. We'll just generate one image for now. We want the raw image data so we can process it into an uploadable file.
 
+Next, our [Kintone PUT request](../src/requests/kintonePUTRequest.js), takes in three variables to upload to Kintone:
+```js
+export default async function updateKintone(recordID, image, dateTime) {
+   ...
+```
+A `recordID`, an `image` file, and the `dateTime` it was created at. Let's get started.
+
 ### Step 1: Make a prompt
 Therefore, we need to create a prompt from our Kintone record data. On line 16 we'll fill in the prompt builder function. We have access to our Kintone variables like so: `event.record.FIELD_CODE.value`. We set up our field codes earlier with values like
 * animal
@@ -243,7 +249,78 @@ On line 74, we have the onClick function:
       // We need to call our API POST function with request's body... 🧐
       generateImages(postBody).then(async (result) => {
 ```
-We pass our `postBody` we made above into the generateImages function. We want this function to *wait* for the response before trying to upload it to Kintone, we make an async function, then with the result of that function, we'll prepare to upload to Kintone. We want to upload the file, and also the date-time it was created.
+We pass our `postBody` we made above into the generateImages function. We want this function to *wait* for the response before trying to upload it to Kintone, so we make an async function, then with the result of that function, we'll prepare to upload to Kintone. We want to upload the file, and also the date-time it was created.
+
+The Open AI API documentation shows the return values from our API call `result`:
+
+```json
+{
+  "created": 1589478378, // a unix timestamp
+  "data": [
+    {
+      "b64_json": "YWJjMT..." //our image in base64 format
+    }
+  ]
+}
+```
+
+Let's format that unix timestamp to a user locale based date time:
+
+```js
+    generateButton.onclick = () => {
+      // Start the spinner.
+      var spinner = new Spinner(opts).spin();
+      spinnerTarget.appendChild(spinner.el);
+      // We need to call our API POST function with request's body... 🧐
+      generateImages(postBody).then(async (result) => {
+        const unixTimestamp = result.created;
+        const date = new Date(unixTimestamp * 1000); // multiply by 1000 to convert to milliseconds
+        const isoDateString = date.toISOString(); // Automatically manages timezone and daylight savings time!
+```
+
+Next, we have to convert our raw base64 image data to an image file to upload to Kintone. We provided a handy function on line 15, `b64toBlob(base64, type)` which will do the heavy lifting for us. Let's pass our base64 data into it, and convert that blob to a file object:
+
+```js
+    generateButton.onclick = () => {
+      // Start the spinner.
+      var spinner = new Spinner(opts).spin();
+      spinnerTarget.appendChild(spinner.el);
+      // We need to call our API POST function with request's body... 🧐
+      generateImages(postBody).then(async (result) => {
+        const unixTimestamp = result.created;
+        const date = new Date(unixTimestamp * 1000); // multiply by 1000 to convert to milliseconds
+        const isoDateString = date.toISOString(); // Automatically manages timezone and daylight savings time!
+        // We convert the base64 to a blob.
+        let imageBlob = await b64toBlob(result.data[0].b64_json)
+        // And designate it as a file.
+        let file = new File([imageBlob], "test.png", { type: 'image/png', lastModified: isoDateString })
+```
+
+Finally we have our dateTime and our image file, so let's save to our database for viewing later. We'll be calling the [Kintone PUT request](../src/requests/kintonePUTRequest.js) function, and like we explained in the beginning, giving it our `recordID` to update, the `isoDateString`, and our image `file`.
+
+```js
+    generateButton.onclick = () => {
+      // Start the spinner.
+      var spinner = new Spinner(opts).spin();
+      spinnerTarget.appendChild(spinner.el);
+      // We need to call our API POST function with request's body... 🧐
+      generateImages(postBody).then(async (result) => {
+        const unixTimestamp = result.created;
+        const date = new Date(unixTimestamp * 1000); // multiply by 1000 to convert to milliseconds
+        const isoDateString = date.toISOString(); // Automatically manages timezone and daylight savings time!
+        // We convert the base64 to a blob.
+        let imageBlob = await b64toBlob(result.data[0].b64_json)
+        // And designate it as a file.
+        let file = new File([imageBlob], "test.png", { type: 'image/png', lastModified: isoDateString })
+        await updateKintone(event.recordId, file, isoDateString)
+      }).finally(() => {
+        // When the async api call is finished, reload the page to see our new image.
+        window.location.reload();
+      })
+    };
+```
+At the end, we wait for the upload to finish, and reload the window, to immediately view our beautiful (maybe?) AI art.
+
 ---
 
 ## I. Compile and upload the code to Kintone
