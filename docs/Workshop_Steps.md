@@ -1,21 +1,20 @@
 # OpenAI Art Generator & Gallery Workshop Steps
 
 ## Outline <!-- omit in toc -->
-- [OpenAI Art Generator \& Gallery Workshop Steps](#openai-art-generator--gallery-workshop-steps)
-  - [A. Get Started - Clone the Repo \& Install Dependencies](#a-get-started---clone-the-repo--install-dependencies)
-  - [B. Get Your Free Kintone Database](#b-get-your-free-kintone-database)
-  - [C. Create a `.env` file](#c-create-a-env-file)
-  - [D. Create a Kintone Web Database App](#d-create-a-kintone-web-database-app)
-  - [E. Generate an API Token for Kintone App](#e-generate-an-api-token-for-kintone-app)
-  - [F. Edit Your customize-manifest.json](#f-edit-your-customize-manifestjson)
-  - [G. Create an OpenAI API Key](#g-create-an-openai-api-key)
-  - [H. Edit main.js](#h-edit-mainjs)
-    - [Step 1: Make a prompt](#step-1-make-a-prompt)
-    - [Step 2: Call our APIs](#step-2-call-our-apis)
-  - [I. Compile and upload the code to Kintone](#i-compile-and-upload-the-code-to-kintone)
-  - [J. Add a record to the Kintone App to generate an image](#j-add-a-record-to-the-kintone-app-to-generate-an-image)
-  - [Check Your Work](#check-your-work)
-  - [Still got a problem?](#still-got-a-problem)
+* [A. Get Started - Clone the Repo \& Install Dependencies](#a-get-started---clone-the-repo--install-dependencies)
+* [B. Get Your Free Kintone Database](#b-get-your-free-kintone-database)
+* [C. Create a `.env` file](#c-create-a-env-file)
+* [D. Create a Kintone Web Database App](#d-create-a-kintone-web-database-app)
+* [E. Generate an API Token for Kintone App](#e-generate-an-api-token-for-kintone-app)
+* [F. Edit Your customize-manifest.json](#f-edit-your-customize-manifestjson)
+* [G. Create an OpenAI API Key](#g-create-an-openai-api-key)
+* [H. Edit main.js](#h-edit-mainjs)
+  * [Step 1: Make a prompt](#step-1-make-a-prompt)
+  * [Step 2: Call our APIs](#step-2-call-our-apis)
+* [I. Compile and upload the code to Kintone](#i-compile-and-upload-the-code-to-kintone)
+* [J. Add a record to the Kintone App to generate an image](#j-add-a-record-to-the-kintone-app-to-generate-an-image)
+* [Check Your Work](#check-your-work)
+* [Still got a problem?](#still-got-a-problem)
 
 ## A. Get Started - Clone the Repo & Install Dependencies
 
