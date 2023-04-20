@@ -134,7 +134,7 @@ We need to generate an API Token for our Kintone App.
 1. Under **Customization and Integration**, click the **API Token** button.
 1. Click **Generate**. ![Screenshot: The "Generate" button](img/KintoneApp_API_1.png)
 1. Check the `Add records` and `Edit records` boxes.  
-   ![Screenshot: The "Add records" and "Edit records" boxes](img/KintoneApp_API_2.png)
+   * ![Screenshot: The "Add records" and "Edit records" boxes](img/KintoneApp_API_2.png)
 1. Copy the API Token and past it to the `VITE_KINTONE_TOKEN` variable in your `.env` file.
 1. Click the **Save** button on the bottom right side of the screen.
 1. Click the **Update App** button on the upper right side of the screen.
@@ -193,13 +193,15 @@ Paste your API Key from OpenAI into the `VITE_OPEN_AI_TOKEN` variable in your `.
 ## H. Edit main.js
 
 For this workshop, we will only be coding in [./src/main.js](../src/main.js).
-We have two steps: 
+
+We have two steps:  
 1. Format our data into a nice string to send to DALL-E.
 2. Send that data to DALL-E, get an image back, then upload it to our Kintone gallery.
 
 We have set up the [Open AI POST request](../src/requests/aiPOSTRequest.js) and our [Kintone PUT request](../src/requests/kintonePUTRequest.js), but need to understand what those functions need in order to work.
 
 Looking at the [Open AI POST request](../src/requests/aiPOSTRequest.js), we can see it takes a `postBody` variable, to send to Open AI DALL-E. [Open AI's Image Generation](https://platform.openai.com/docs/api-reference/images/create) documentation says our `postBody` should look like this:
+
 ``` json
 {
   "prompt": "A cute baby sea otter", // prompt
@@ -208,13 +210,16 @@ Looking at the [Open AI POST request](../src/requests/aiPOSTRequest.js), we can 
   "response_format": "b64_json" // Either URL for a link, or b64_json for the raw image data
 }
 ```
+
 For this workshop, the size and number of images can be hand typed. We'll just generate one image for now. We want the raw image data so we can process it into an uploadable file.
 
 Next, our [Kintone PUT request](../src/requests/kintonePUTRequest.js), takes in three variables to upload to Kintone:
+
 ```js
 export default async function updateKintone(recordID, image, dateTime) {
    ...
 ```
+
 A `recordID`, an `image` file, and the `dateTime` it was created at. Let's get started.
 
 ### Step 1: Make a prompt
@@ -229,6 +234,7 @@ Therefore, we need to create a prompt from our Kintone record data. On line 16 w
       let promptString = `A cute ${event.record.animal.value} who looks ${event.record.emotion.value} holding a ${event.record.random.value} wearing `;
 ...
 ```
+
 This works for our simple values, but we tried to be fancy with our clothes selector, and allowed for multiple or no choices. Since we have multiple values, we'll need to loop through them and add them to our string as needed.
 
 ```js
@@ -246,6 +252,7 @@ This works for our simple values, but we tried to be fancy with our clothes sele
       return promptString
     }
 ```
+
 All this to create a fancy prompt for Open AI to process!
 
 ### Step 2: Call our APIs
@@ -261,7 +268,8 @@ On line 74, we have the onClick function:
       // We need to call our API POST function with request's body... 🧐
       generateImages(postBody).then(async (result) => {
 ```
-We pass our `postBody` we made above into the generateImages function. We want this function to *wait* for the response before trying to upload it to Kintone, so we make an async function, then with the result of that function, we'll prepare to upload to Kintone. We want to upload the file, and also the date-time it was created.
+
+We pass our `postBody` we made above into the generateImages function. We want this function to _wait_ for the response before trying to upload it to Kintone, so we make an async function, then with the result of that function, we'll prepare to upload to Kintone. We want to upload the file, and also the date-time it was created.
 
 The Open AI API documentation shows the return values from our API call `result`:
 
@@ -331,6 +339,7 @@ Finally we have our dateTime and our image file, so let's save to our database f
       })
     };
 ```
+
 At the end, we wait for the upload to finish, and reload the window, to immediately view our beautiful (maybe?) AI art.
 
 ---
@@ -342,15 +351,11 @@ Then upload your code to Kintone by entering `npm run upload` in your terminal!
 
 ## J. Add a record to the Kintone App to generate an image
 
-Go to your Kintone App and add a record by clicking the **➕** button on the upper right side of the screen.
-
-Fill out the fields and save the record by clicking the **Save** button on the bottom left side of the screen.
-
-Once the record is saved, the **Generate Images** button will be displayed (where the **Space** field was placed).
-
-Click the **Generate Images** button to generate an image!
-
-A snipper will appear and the page will refresh automatically when the image is generated.
+1. Go to your Kintone App and add a record by clicking the **➕** button on the upper right side of the screen.
+1. Fill out the fields and save the record by clicking the **Save** button on the bottom left side of the screen.
+1. Once the record is saved, the **Generate Images** button will be displayed (where the **Space** field was placed).
+1. Click the **Generate Images** button to generate an image!
+1. A spinner will appear and the page will refresh automatically when the image is generated.
 
 Congrats! You have successfully generated an image using OpenAI's DALL·E 2!  
 _Enjoy your new image of a dog/cat with a 5th paw ~_ 🐶🐱
