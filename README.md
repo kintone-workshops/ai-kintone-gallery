@@ -1,11 +1,5 @@
 # Build an OpenAI Art Generator & Gallery - JavaScript Workshop
 
-<!-- TODO: Delete once repo is ready -->
-
-## 🚧 This repo is a work in progress! 🚧 <!-- omit in toc -->
-* Thank you for visiting! This repo is a work in progress and will be updated soon!
-* Be sure to join our [Kintone Developer Meetup](https://www.meetup.com/kintone-developers/) to get notified for all future events!
-
 ---
 
 ![banner.png](./docs/img/banner.png)
