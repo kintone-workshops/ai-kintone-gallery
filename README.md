@@ -18,6 +18,7 @@ Let's create an AI Art Generator using [OpenAI's DALL·E 2](https://openai.com/p
   * [Errors related to OpenAI API Keys](#errors-related-to-openai-api-keys)
   * [Errors related to .env](#errors-related-to-env)
   * [Errors related to kintone-customize-uploader](#errors-related-to-kintone-customize-uploader)
+  * [Error when trying to install kintone-customize-uploader](#error-when-trying-to-install-kintone-customize-uploader)
   * [Errors related to Node.js \& npm](#errors-related-to-nodejs--npm)
   * [`npm install` command is not working](#npm-install-command-is-not-working)
   * [`npm run upload` failed?](#npm-run-upload-failed)
@@ -167,6 +168,21 @@ Solution:
 
 ```shell
 npm install -g kintone-customize-uploader
+```
+
+### Error when trying to install kintone-customize-uploader
+
+Error:  
+* `npm ERR! code EACCES`
+* `npm ERR! syscall mkdir`
+* `npm ERR! path /usr/local/lib/node_modules/@kintone`
+* `npm ERR! errno -13`
+* `npm ERR! Error: EACCES: permission denied, mkdir '/usr/local/lib/node_modules/@kintone'`
+
+Solution:
+
+```shell
+sudo npm install -g kintone-customize-uploader
 ```
 
 ### Errors related to Node.js & npm
