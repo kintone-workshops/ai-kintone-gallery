@@ -14,5 +14,6 @@ export default async function generateImages(postBody) {
   await kintone.proxy(postUrl, 'POST', headers, postBody).then(function (response) {
     data = JSON.parse(response[0])
   })
+  console.log(data); // Check response from OpenAI API call
   return data;
 };
