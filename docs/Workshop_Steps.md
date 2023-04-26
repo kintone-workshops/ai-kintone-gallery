@@ -7,8 +7,8 @@
 * [D. Create a Kintone web database app](#d-create-a-kintone-web-database-app)
   * [Input Fields](#input-fields)
   * [Blank Space fields](#blank-space-fields)
-  * [Steps to create the kintone app](#steps-to-create-the-kintone-app)
-* [E. Generate an API token for Kintone app](#e-generate-an-api-token-for-kintone-app)
+  * [Steps to create the Kintone App](#steps-to-create-the-kintone-app)
+* [E. Generate an API token for the Kintone app](#e-generate-an-api-token-for-the-kintone-app)
 * [F. Edit your customize-manifest.json](#f-edit-your-customize-manifestjson)
 * [G. Create an OpenAI API key](#g-create-an-openai-api-key)
 * [H. Edit main.js](#h-edit-mainjs)
@@ -112,7 +112,7 @@ Here are the required fields & their configurations for our workshop:
 | Space #1   | `generateButton` | Where the **Generate Images** button will be displayed          |
 | Space #2   | `spinner`        | Where the spinner will be displayed as the image gets generated |
 
-### Steps to create the kintone app
+### Steps to create the Kintone App
 
 To create the Kintone App, click the **➕** button on the upper right side of the Kintone Portal.
 * ![Screenshot: The "➕" button](img/CreateApp-1.png)
@@ -124,7 +124,7 @@ Then, click the **Save** and **Activate App** buttons! 💪
 
 _Confused? 🤔 → Check out the [How to Create a Kintone Database App](https://youtu.be/pRtfn-8cf_I) video 📺_
 
-## E. Generate an API token for Kintone app
+## E. Generate an API token for the Kintone app
 
 We need to generate an API Token for our Kintone App.
 
@@ -198,9 +198,9 @@ We have two steps:
 1. Format our data into a nice string to send to DALL-E.
 2. Send that data to DALL-E, get an image back, then upload it to our Kintone gallery.
 
-The [Open AI POST request](../src/requests/aiPOSTRequest.js) and the [Kintone PUT request](../src/requests/kintonePUTRequest.js) are already created, but we need to understand what those functions do in order to work on the `main.js`.
+The [Open AI POST](../src/requests/aiPOSTRequest.js) and the [Kintone PUT](../src/requests/kintonePUTRequest.js) requests are already created, but we need to understand what those functions do to work on the `main.js`.
 
-Looking at the [Open AI POST request](../src/requests/aiPOSTRequest.js), we can see it takes a `postBody` variable to send to Open AI DALL-E.  
+Looking at the [Open AI POST request](../src/requests/aiPOSTRequest.js), we see it takes a `postBody` variable to send to Open AI DALL-E.  
 [Open AI's Image Generation](https://platform.openai.com/docs/api-reference/images/create) documentation says our `postBody` should look like this:
 
 ``` json
@@ -214,7 +214,7 @@ Looking at the [Open AI POST request](../src/requests/aiPOSTRequest.js), we can 
 
 The size and number of images can be hand typed for this workshop.  
 We will generate one image for now.  
-We want the raw image data to process it into an uploadable file.
+We want the raw image data to process into an uploadable file.
 
 Next, our [Kintone PUT request](../src/requests/kintonePUTRequest.js), takes in three variables to upload to Kintone:
 
