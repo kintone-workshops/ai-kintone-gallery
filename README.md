@@ -18,6 +18,7 @@ Let's create an AI Art Generator using [OpenAI's DALL·E 2](https://openai.com/p
   * [Errors related to OpenAI API Keys](#errors-related-to-openai-api-keys)
   * [Errors related to .env](#errors-related-to-env)
   * [Errors related to kintone-customize-uploader](#errors-related-to-kintone-customize-uploader)
+  * [Errors related to Node.js \& npm](#errors-related-to-nodejs--npm)
   * [`npm install` command is not working](#npm-install-command-is-not-working)
   * [`npm run upload` failed?](#npm-run-upload-failed)
   * [Not seeing a highlighted `TODO:`?](#not-seeing-a-highlighted-todo)
@@ -166,6 +167,34 @@ Solution:
 
 ```shell
 npm install -g kintone-customize-uploader
+```
+
+### Errors related to Node.js & npm
+
+Error Message:
+
+```shell
+vite build --emptyOutDir
+
+internal/process/esm_loader.js:74
+    internalBinding('errors').triggerUncaughtException(
+                              ^
+
+Error [ERR_UNSUPPORTED_ESM_URL_SCHEME]: Only file and data URLs are supported by the default ESM loader. Received protocol 'node:'
+    at Loader.defaultResolve [as _resolve] (internal/modules/esm/resolve.js:782:11)
+    at Loader.resolve (internal/modules/esm/loader.js:85:40)
+    at Loader.getModuleJob (internal/modules/esm/loader.js:229:28)
+    at ModuleWrap.<anonymous> (internal/modules/esm/module_job.js:51:40)
+    at link (internal/modules/esm/module_job.js:50:36) {
+  code: 'ERR_UNSUPPORTED_ESM_URL_SCHEME'
+}
+```
+
+Solution:
+
+```shell
+cd ai-kintone-gallery
+npm install
 ```
 
 ### `npm install` command is not working
