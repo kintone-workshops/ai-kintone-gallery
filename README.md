@@ -15,6 +15,7 @@ Let's create an AI Art Generator using [OpenAI's DALL·E 2](https://openai.com/p
   * [What is DALL-E?](#what-is-dall-e)
   * [What is DALL-E?](#what-is-dall-e-1)
 * [Debugging](#debugging)
+  * [Errors related to OpenAI API Keys](#errors-related-to-openai-api-keys)
   * [Errors related to .env](#errors-related-to-env)
   * [Errors related to kintone-customize-uploader](#errors-related-to-kintone-customize-uploader)
   * [`npm install` command is not working](#npm-install-command-is-not-working)
@@ -115,6 +116,19 @@ Pricing is per image and varies by resolution:
 **Let's Fix Those Problems** 💪
 
 Here is a rundown of common problems that may occur & their solutions!
+
+### Errors related to OpenAI API Keys
+
+Are you not getting any images even though you have a `.env` file with your OpenAI API Key?
+
+Open console and check for the following error message:
+`openai.error.RateLimitError: you exceeded your current quota, please check your plan and billing details`
+
+If you get this error message, then you have exceeded your free trial credits.  
+You will need to upgrade to a paid plan to continue using the API.
+
+Check your OpenAI API usage here:  
+<https://platform.openai.com/account/usage>
 
 ### Errors related to .env
 
