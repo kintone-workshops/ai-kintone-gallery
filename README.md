@@ -132,6 +132,9 @@ You will need to upgrade to a paid plan to continue using the API.
 Check your OpenAI API usage here:  
 <https://platform.openai.com/account/usage>
 
+⚠️ Note: OpenAI only gives you free credits for the first account associated with your phone number.  
+Subsequent accounts are not granted free credits.
+
 ### Errors related to .env
 
 If you get one of the following error messages:  
