@@ -419,6 +419,9 @@ https://youtube.com/live/x8eWciMouIU
 ⚙️ OpenAI API Token
 https://platform.openai.com/account/api-keys
 
+⚙️ OpenAI Usage
+https://platform.openai.com/account/usage
+
 =   =   =   =   =   =   =   =   =   =
 
 ## Live on YouTube
