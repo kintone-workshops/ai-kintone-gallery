@@ -375,7 +375,7 @@ Then upload your code to Kintone by entering `npm run upload` in your terminal!
 1. A spinner will appear, and the page will refresh automatically when the image is generated.
 
 Congrats! You have successfully generated an image using OpenAI's DALL·E 2!  
-_Enjoy your new image of a dog/cat with a 5th paw ~_ 🐶🐱
+_Enjoy your new image of a dog/cat with a 5th paw_ ~ 🐶🐱
 
 ## Check your work
 
