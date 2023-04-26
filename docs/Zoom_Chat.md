@@ -30,6 +30,8 @@
 * [Why use Kintone?](#why-use-kintone)
 * [Compile and upload the code to Kintone](#compile-and-upload-the-code-to-kintone)
 * [Where to get the Subdomain, View ID, and App ID?](#where-to-get-the-subdomain-view-id-and-app-id)
+* [Quick Links](#quick-links)
+* [Live on YouTube](#live-on-youtube-1)
 
 ---
 
@@ -201,10 +203,6 @@ https://forum.kintone.dev/
 
 ## Create a Kintone Web Database App
 
-Create the Kintone App using the presidents.csv file
-
-https://github.com/kintone-workshops/ai-kintone-gallery/blob/main/docs/Workshop_Steps.md#d-create-a-kintone-web-database-app
-
 How to set the Field Codes for the Kintone App?
 1. Hover over the field
 2. Click the top right gear icon ⚙️
@@ -216,15 +214,20 @@ How to set the Field Codes for the Kintone App?
 ⚠️ Field Codes are case-sensitive ⚠️
 
 Set the following Field Codes
-* Radio button #1 → I want a...
-* Radio button #2 → who looks...?
-* Text            → Holding a...
-* Check Box       → wearing... ?
-* Date and Time   → Image Generated Datetime
-* Attachment      → Result
+* Radio button #1  → animal
+* Radio button #2  → emotion
+* Text             → random
+* Check Box        → clothes
+* Date and Time    → dateTime
+* Attachment     → result
+* Space #1    → generateButton
+* Space #2    → spinner
 
 - Save!
 - Be sure to click Save and Activate App buttons! 💪
+
+Ref:  
+https://github.com/kintone-workshops/ai-kintone-gallery/blob/main/docs/Workshop_Steps.md#d-create-a-kintone-web-database-app
 
 =   =   =   =   =   =   =   =   =   =
 
@@ -395,10 +398,44 @@ Kintone App's URL follows this template:
 https://<SUBDOMAIN>.kintone.com/k/<App ID>/?view=<View ID>
 Example:
 
-https://example.kintone.com/k/1/?view=1234
+https://example.kintone.com/k/1/
 Subdomain = example
 KINTONE_BASE_URL = https://example.kintone.com
 App ID = 1
-View ID = 1234
+
+=   =   =   =   =   =   =   =   =   =
+
+## Quick Links
+
+🤖 Clone the Workshop Repository!
+https://bit.ly/kdp-ai-art
+
+🚀 Have your Kintone Subdomain ready!
+https://kintone.dev/new
+
+📺 YouTube live stream
+https://youtube.com/live/x8eWciMouIU
+
+⚙️ OpenAI API Token
+https://platform.openai.com/account/api-keys
+
+=   =   =   =   =   =   =   =   =   =
+
+## Live on YouTube
+
+If you get lost, you can "rewind" on our lives stream on YouTube:
+https://youtube.com/live/x8eWciMouIU
+
+=   =   =   =   =   =   =   =   =   =
+
+Direct Message with your email address if you forgot your Kintone Subdomain
+
+=   =   =   =   =   =   =   =   =   =
+
+The KINTONE_BASE_URL variable is based on your subdomain.
+
+For example:
+Subdomain = example
+KINTONE_BASE_URL = https://example.kintone.com
 
 =   =   =   =   =   =   =   =   =   =
