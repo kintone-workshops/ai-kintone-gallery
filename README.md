@@ -110,7 +110,7 @@ DALL-E can generate a wide range of images
 Pricing is per image and varies by resolution:
 * 1024×1024 = $0.020
 * 512×512 = $0.018
-* 256×256 = $0.016  
+* 256×256 = $0.016
 
 ---
 
