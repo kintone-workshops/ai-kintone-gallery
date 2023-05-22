@@ -62,8 +62,8 @@ code .
 
 |                                                                                                 |                                                                                                                   |
 | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| ![Step 1: Fill out the Kintone Developer license sign-up form](./docs/img/SignUp-1.png)         | ![Step 2: Email address will be the login name & the subdomain will be your unique link](./docs/img/SignUp-2.png) |
-| ![Step 3: Check for a "Welcome to Kintone! One More Step To..." email](./docs/img/SignUp-3.png) | ![Step 4: Log into Kintone](./docs/img/SignUp-4.png)                                                              |
+| ![Step 1: Fill out the Kintone Developer license sign-up form](./docs/img/common_signup/SignUp-1.png)         | ![Step 2: Email address will be the login name & the subdomain will be your unique link](./docs/img/common_signup/SignUp-2.png) |
+| ![Step 3: Check for a "Welcome to Kintone! One More Step To..." email](./docs/img/common_signup/SignUp-3.png) | ![Step 4: Log into Kintone](./docs/img/common_signup/SignUp-4.png)                                                              |
 
 For more information, check out the [Workshop_Steps.md > B. Get Your Free Kintone Database](./docs/Workshop_Steps.md#b-get-your-free-kintone-database) section!
 
@@ -254,7 +254,7 @@ _@kintone/customize-uploader not working?_ Let's try the following:
 
 ### Not seeing a highlighted `TODO:`?
 Click the `Install` button on the VS Code pop-up message to install [TODO Highlight extension](https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight).
-* [![vscode-setting-extension.png](./docs/img/vscode-setting-extension.png)](./docs/img/vscode-setting-extension-HD.png)  
+* [![vscode-setting-extension.png](./docs/img/common_vscode/vscode-setting-extension.png)](./docs/img/common_vscode/vscode-setting-extension-HD.png)  
 
 ---
 

@@ -54,10 +54,10 @@ npm install -g @kintone/customize-uploader
    * Password: The password you set in Step 3
    * ⚡ If you forget your password, you can reset it by clicking the **Having Trouble Logging In?** link on the login screen.
 
-|                                                                                              |                                                                                                                |
-| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| ![Step 1: Fill out the Kintone Developer license sign-up form](././img/SignUp-1.png)         | ![Step 2: Email address will be the login name & the subdomain will be your unique link](././img/SignUp-2.png) |
-| ![Step 3: Check for a "Welcome to Kintone! One More Step To..." email](././img/SignUp-3.png) | ![Step 4: Log into Kintone](././img/SignUp-4.png)                                                              |
+|                                                                                                            |                                                                                                                              |
+| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| ![Step 1: Fill out the Kintone Developer license sign-up form](././img/common_signup/SignUp-1.png)         | ![Step 2: Email address will be the login name & the subdomain will be your unique link](././img/common_signup/SignUp-2.png) |
+| ![Step 3: Check for a "Welcome to Kintone! One More Step To..." email](././img/common_signup/SignUp-3.png) | ![Step 4: Log into Kintone](././img/common_signup/SignUp-4.png)                                                              |
 
 ## C. Create a `.env` file
 
@@ -115,7 +115,7 @@ Here are the required fields & their configurations for our workshop:
 ### Steps to create the Kintone App
 
 To create the Kintone App, click the **➕** button on the upper right side of the Kintone Portal.
-* ![Screenshot: The "➕" button](img/CreateApp-1.png)
+* ![Screenshot: The "➕" button](img/common_kintone/CreateApp-1.png)
 
 Once you have configured the fields, the Kintone App should look like this:  
 ![Screenshot of the completed Kintone App](img/KintoneApp_Complete_Arrows.png)
