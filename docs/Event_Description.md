@@ -43,7 +43,7 @@ Also, check out our most popular workshops with this playlist:
 
 OpenAI is an AI research organization that gained notoriety recently for its text-generating and image-generating AI services.
 * ChatGPT 4 is a language model that can generate coherent and realistic text in response to user input.
-* DALL-E 2 (used in this workshop) is an image generation model capable of creating unique images from textual descriptions. 
+* DALL-E 2 (used in this workshop) is an image generation model capable of creating unique images from textual descriptions.
 
 ## ⚙️ WHAT IS KINTONE?
 
