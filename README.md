@@ -13,23 +13,21 @@ Let's create an AI Art Generator using [OpenAI's DALL·E 2](https://openai.com/p
 * [Workshop Steps](#workshop-steps)
 * [Quick Dive into OpenAI's API](#quick-dive-into-openais-api)
   * [What is DALL-E?](#what-is-dall-e)
-  * [What is DALL-E?](#what-is-dall-e-1)
 * [Debugging](#debugging)
   * [Errors related to OpenAI API Keys](#errors-related-to-openai-api-keys)
   * [Errors related to .env](#errors-related-to-env)
   * [Errors related to kintone-customize-uploader](#errors-related-to-kintone-customize-uploader)
+    * [kintone-customize-uploader Error 1](#kintone-customize-uploader-error-1)
+    * [kintone-customize-uploader Error 2](#kintone-customize-uploader-error-2)
   * [Error when trying to install kintone-customize-uploader](#error-when-trying-to-install-kintone-customize-uploader)
   * [Errors related to Node.js \& npm](#errors-related-to-nodejs--npm)
   * [`npm install` command is not working](#npm-install-command-is-not-working)
   * [`npm run upload` failed?](#npm-run-upload-failed)
   * [Not seeing a highlighted `TODO:`?](#not-seeing-a-highlighted-todo)
-  * [Errors related to kintone-customize-uploader](#errors-related-to-kintone-customize-uploader-1)
 * [Completed Code](#completed-code)
 * [Overview of the Repo](#overview-of-the-repo)
 
-
 ## Completed Project
-
 ![Kintone_OpenAI_ImageGenerator_Demo.gif](./docs/img/Kintone_OpenAI_ImageGenerator_Demo.gif)
 
 ## Get Started
@@ -89,7 +87,8 @@ For more information, check out the [Workshop_Steps.md > B. Get Your Free Kinton
 ## Quick Dive into OpenAI's API
 
 ### What is DALL-E?
-OpenAI's AI system that generates images from textual descriptions
+OpenAI's AI system that generates images from textual descriptions.  
+The [Image generation](https://platform.openai.com/docs/guides/images) APIs are currently released as a public beta.
 
 Based on a Generative Pre-trained Transformer 3 (GPT-3) neural network architecture
 * Trained on massive amount of text data (i.e., the Internet)
@@ -97,10 +96,6 @@ Based on a Generative Pre-trained Transformer 3 (GPT-3) neural network architect
 
 DALL-E can generate a wide range of images
 * Everything from abstract art to photo-like scenes
-
-### What is DALL-E?
-
-[Image generation](https://platform.openai.com/docs/guides/images) APIs are currently released as a public beta
 
 3 methods for interacting with images:
 * Generating new images based on a text prompt
@@ -156,8 +151,7 @@ Then please verify that
 
 ### Errors related to kintone-customize-uploader
 
-If you get the following error message, please verify that you have installed the `kintone-customize-uploader` package.
-
+#### kintone-customize-uploader Error 1
 Error Message:
 
 ```shell
@@ -167,11 +161,24 @@ spawn kintone-customize-uploader ENOENT
 Parent process exited with signal: 1. Terminating child process...
 ```
 
+If you get the above error message, please verify that you have installed the `kintone-customize-uploader` package.
+
 Solution:
 
 ```shell
 npm install -g kintone-customize-uploader
 ```
+
+#### kintone-customize-uploader Error 2
+Error Message:  
+`KintoneRestAPIError: [403] [CB_NO02] No privilege to proceed. (YvIvLH6UrE8kqnRjT7Va)`
+
+If you get the above error, the Kintone account you are using to upload the code is not a Kintone Administrator.
+
+Solution:  
+Use a Kintone account that has Kintone Administrator privileges. Only Kintone Administrators can upload code to Kintone, regardless of the permissions set for the App.
+
+For detailed steps, checkout this Developer Forum post: <https://forum.kintone.dev/t/766>
 
 ### Error when trying to install kintone-customize-uploader
 
