@@ -231,7 +231,7 @@ npm install
 * Mac: `nodenv local 14.5.0`
 * Windows: `nvm use 14.5.0`
 
-Not the correct versions, or confused? 🤔 → Check out the [Guide on Installing Node.js & npm](./docs/Install_NodeJS_npm.md) Doc
+Not the correct versions, or confused? 🤔 → Check out the [Guide on Installing Node.js & npm](https://dev.to/kintonedevprogram/guide-on-installing-nodejs-npm-macos-windows-16ii) Doc
 
 ### `npm run upload` failed?
 _@kintone/customize-uploader not working?_ Let's try the following:
