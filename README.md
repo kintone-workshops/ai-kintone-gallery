@@ -256,19 +256,6 @@ _@kintone/customize-uploader not working?_ Let's try the following:
 Click the `Install` button on the VS Code pop-up message to install [TODO Highlight extension](https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight).
 * [![vscode-setting-extension.png](./docs/img/vscode-setting-extension.png)](./docs/img/vscode-setting-extension-HD.png)  
 
-### Errors related to kintone-customize-uploader
-
-If you get the following error, the Kintone account you are using to upload the code is not a Kintone Administrator.
-
-Error Message:  
-`KintoneRestAPIError: [403] [CB_NO02] No privilege to proceed. (YvIvLH6UrE8kqnRjT7Va)`
-
-Solution:  
-Use a Kintone account that has Kintone Administrator privileges. Only Kintone Administrators can upload code to Kintone, regardless of the permissions set for the App.
-
-Steps:  
-[Kintone-customize-uploader - KintoneRestAPIError: [403] [CB_NO02] No privilege to proceed. Error](https://forum.kintone.dev/t/kintone-customize-uploader-kintonerestapierror-403-cb-no02-no-privilege-to-proceed-error/766)
-
 ---
 
 ## Completed Code
