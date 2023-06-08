@@ -88,7 +88,7 @@ https://kintone.dev/new
 ## Live on YouTube
 
 If you get lost, you can "rewind" on our lives stream on YouTube:
-https://youtube.com/live/x8eWciMouIU
+https://youtube.com/live/DBKECXKkef4
 
 =   =   =   =   =   =   =   =   =   =
 
@@ -151,7 +151,7 @@ https://kintone.dev/new
 =   =   =   =   =   =   =   =   =   =
 
 This is also live on YouTube:
-https://youtube.com/live/x8eWciMouIU
+https://youtube.com/live/DBKECXKkef4
 
 It is a bit delayed but for those who want to "rewind", this is another great option ~
 
@@ -295,7 +295,7 @@ https://forum.kintone.dev/
 
 Enter to WIN a $25 Amazon Gift Card! 💰️
 
-https://bit.ly/KDP23-APR25
+https://bit.ly/KDP23JUN
 
 Your feedback is vital for us to improve our workshop!
 Thank you for your time & input ~
@@ -414,7 +414,7 @@ https://bit.ly/kdp-ai-art
 https://kintone.dev/new
 
 📺 YouTube live stream
-https://youtube.com/live/x8eWciMouIU
+https://youtube.com/live/DBKECXKkef4
 
 ⚙️ OpenAI API Token
 https://platform.openai.com/account/api-keys
@@ -427,7 +427,7 @@ https://platform.openai.com/account/usage
 ## Live on YouTube
 
 If you get lost, you can "rewind" on our lives stream on YouTube:
-https://youtube.com/live/x8eWciMouIU
+https://youtube.com/live/DBKECXKkef4
 
 =   =   =   =   =   =   =   =   =   =
 
