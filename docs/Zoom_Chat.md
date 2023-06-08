@@ -110,6 +110,8 @@ npm install -g @kintone/customize-uploader
 
 npm install -g @kintone/customize-uploader
 
+Ref: https://github.com/kintone/js-sdk/tree/master/packages/customize-uploader#kintone-customize-uploader
+
 =   =   =   =   =   =   =   =   =   =
 
 ## Workshop Steps
