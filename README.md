@@ -14,6 +14,7 @@ Let's create an AI Art Generator using [OpenAI's DALL·E 2](https://openai.com/p
 * [Quick Dive into OpenAI's API](#quick-dive-into-openais-api)
   * [What is DALL-E?](#what-is-dall-e)
 * [Debugging](#debugging)
+  * [When buttons are not showing up on Kintone Record](#when-buttons-are-not-showing-up-on-kintone-record)
   * [Errors related to OpenAI API Keys](#errors-related-to-openai-api-keys)
   * [Errors related to .env](#errors-related-to-env)
   * [Errors related to kintone-customize-uploader](#errors-related-to-kintone-customize-uploader)
@@ -114,6 +115,12 @@ Pricing is per image and varies by resolution:
 **Let's Fix Those Problems** 💪
 
 Here is a rundown of common problems that may occur & their solutions!
+
+### When buttons are not showing up on Kintone Record
+
+1. Verify the code was uploaded to Kintone
+1. Verify the filed codes are set correctly
+   * Check the [D. Create a Kintone Web Database App](./docs/Workshop_Steps.md#d-create-a-kintone-web-database-app) section for the correct field codes
 
 ### Errors related to OpenAI API Keys
 
