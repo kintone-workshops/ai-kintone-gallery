@@ -23,6 +23,7 @@ Let's create an AI Art Generator using [OpenAI's DALL·E 2](https://openai.com/p
   * [Errors related to Node.js \& npm](#errors-related-to-nodejs--npm)
   * [`npm install` command is not working](#npm-install-command-is-not-working)
   * [`npm run upload` failed?](#npm-run-upload-failed)
+  * [ChatGPT API Key vs. DALL-E API Key](#chatgpt-api-key-vs-dall-e-api-key)
   * [Not seeing a highlighted `TODO:`?](#not-seeing-a-highlighted-todo)
 * [Completed Code](#completed-code)
 * [Overview of the Repo](#overview-of-the-repo)
@@ -251,6 +252,13 @@ _@kintone/customize-uploader not working?_ Let's try the following:
 * ⚙️ Details: [Step 5 - Update customize-manifest.json with the App ID](./docs/Workshop_Steps.md#step-5---update-customize-manifestjson-with-the-app-id-)
 
 (4) Verify that the `npm run build` command was run before the `npm run upload`
+
+### ChatGPT API Key vs. DALL-E API Key
+
+The API keys are the same for both ChatGPT and DALL-E.  
+If you already have an API key for ChatGPT, you can use the same one for DALL-E.
+
+If you do not have an API key, generate one by going to [OpenAI API's API keys setting page](https://platform.openai.com/account/api-keys).
 
 ### Not seeing a highlighted `TODO:`?
 Click the `Install` button on the VS Code pop-up message to install [TODO Highlight extension](https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight).
