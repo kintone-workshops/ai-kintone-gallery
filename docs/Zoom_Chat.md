@@ -19,7 +19,7 @@
 * [Errors related to .env](#errors-related-to-env)
 * [Join our Meetup Group](#join-our-meetup-group)
 * [Got Kintone Questions?](#got-kintone-questions)
-* [Survey - April B Workshop](#survey---april-b-workshop)
+* [Survey!](#survey)
 * [Write up your experience!](#write-up-your-experience)
 * [Log into Kintone Subdomain?](#log-into-kintone-subdomain)
 * [step-by-step guide](#step-by-step-guide)
@@ -293,7 +293,7 @@ https://forum.kintone.dev/
 
 =   =   =   =   =   =   =   =   =   =
 
-## Survey - April B Workshop
+## Survey!
 
 Enter to WIN a $25 Amazon Gift Card! 💰️
 
